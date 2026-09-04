@@ -1,9 +1,9 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Mail, MapPin } from "lucide-react";
 import { InstagramIcon } from "@/components/icons/InstagramIcon";
 import { BRAND } from "@/lib/constants";
 import type { SerializedSiteSettings } from "@/lib/storefront";
-import { LogoReveal } from "@/components/animations/LogoReveal";
 import { FooterNewsletter } from "@/components/layout/FooterNewsletter";
 import { LotusMark } from "@/components/editorial/LotusMark";
 
@@ -103,7 +103,15 @@ export function Footer({ settings }: FooterProps) {
           <div className="relative mx-auto max-w-7xl min-w-0 px-4 pb-10 pt-6 md:px-8 md:pb-12 md:pt-8">
             <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-6 lg:gap-8">
               <div className="space-y-4 md:col-span-2 lg:col-span-2">
-                <LogoReveal size="md" src={settings.logo?.url} />
+                <Link href="/" className="inline-block max-w-full">
+                  <Image
+                    src={BRAND.footerLogoPath}
+                    alt={BRAND.name}
+                    width={380}
+                    height={100}
+                    className="h-[4.25rem] w-auto max-w-[min(100%,20rem)] object-contain object-left mix-blend-screen sm:h-20 md:h-[5.5rem] md:max-w-[22rem]"
+                  />
+                </Link>
                 <p className="max-w-sm text-sm leading-relaxed text-ivory/70">{about}</p>
               </div>
 

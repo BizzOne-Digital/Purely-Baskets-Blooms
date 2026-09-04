@@ -21,6 +21,7 @@ export const BRAND = {
   deliveryArea: "GTA and surrounding cities",
   orderNumberPrefix: "PBB",
   logoPath: "/logo.png",
+  footerLogoPath: "/footer/logo.jpg",
   heroBackgroundPath: "/hero-background.jpg",
 } as const;
 
