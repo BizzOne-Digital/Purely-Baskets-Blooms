@@ -1,8 +1,5 @@
-import Link from 'next/link';
 import { getOrders } from '@/lib/admin-data';
-import { DataTable } from '@/components/admin/DataTable';
-import { StatusBadge } from '@/components/admin/StatusBadge';
-import { formatPrice } from '@/lib/utils';
+import { OrdersTable } from '@/components/admin/OrdersTable';
 import { ORDER_STATUSES, ORDER_STATUS_LABELS, PAYMENT_STATUSES, PAYMENT_STATUS_LABELS } from '@/lib/constants';
 import type { IOrder } from '@/types';
 
@@ -60,36 +57,14 @@ export default async function OrdersPage({ searchParams }: PageProps) {
         </button>
       </form>
 
-      <DataTable<IOrder>
-        data={data.items}
-        keyExtractor={(row) => String(row._id)}
+      <OrdersTable
+        orders={data.items as IOrder[]}
         pagination={{
           page: data.page,
           totalPages: data.totalPages,
           basePath: '/admin/orders',
           searchParams: searchParamsRecord,
         }}
-        columns={[
-          {
-            key: 'orderNumber',
-            header: 'Order',
-            cell: (row) => (
-              <Link href={`/admin/orders/${row._id}`} className="font-medium text-[#7A2048] hover:underline">
-                {row.orderNumber}
-              </Link>
-            ),
-          },
-          { key: 'customer', header: 'Customer', cell: (row) => row.customerName },
-          { key: 'email', header: 'Email', cell: (row) => row.customerEmail },
-          { key: 'total', header: 'Total', cell: (row) => formatPrice(row.pricing.total) },
-          { key: 'status', header: 'Status', cell: (row) => <StatusBadge status={row.status} /> },
-          { key: 'payment', header: 'Payment', cell: (row) => <StatusBadge status={row.paymentStatus} /> },
-          {
-            key: 'date',
-            header: 'Date',
-            cell: (row) => new Date(row.createdAt).toLocaleDateString('en-CA'),
-          },
-        ]}
       />
     </div>
   );

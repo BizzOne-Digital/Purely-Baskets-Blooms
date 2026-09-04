@@ -9,8 +9,7 @@ import { getDashboardData } from '@/lib/admin-data';
 import { StatsCard } from '@/components/admin/StatsCard';
 import { SalesChart } from '@/components/admin/SalesChart';
 import { OrderStatusChart } from '@/components/admin/OrderStatusChart';
-import { StatusBadge } from '@/components/admin/StatusBadge';
-import { DataTable } from '@/components/admin/DataTable';
+import { RecentOrdersTable } from '@/components/admin/RecentOrdersTable';
 import { formatPrice } from '@/lib/utils';
 import type { IOrder } from '@/types';
 
@@ -73,44 +72,7 @@ export default async function AdminDashboardPage() {
             View all
           </Link>
         </div>
-        <DataTable<IOrder>
-          data={data.recentOrders}
-          keyExtractor={(row) => String(row._id)}
-          columns={[
-            {
-              key: 'orderNumber',
-              header: 'Order',
-              cell: (row) => (
-                <Link
-                  href={`/admin/orders/${row._id}`}
-                  className="font-medium text-[#7A2048] hover:underline"
-                >
-                  {row.orderNumber}
-                </Link>
-              ),
-            },
-            {
-              key: 'customer',
-              header: 'Customer',
-              cell: (row) => row.customerName,
-            },
-            {
-              key: 'total',
-              header: 'Total',
-              cell: (row) => formatPrice(row.pricing.total),
-            },
-            {
-              key: 'status',
-              header: 'Status',
-              cell: (row) => <StatusBadge status={row.status} />,
-            },
-            {
-              key: 'date',
-              header: 'Date',
-              cell: (row) => new Date(row.createdAt).toLocaleDateString('en-CA'),
-            },
-          ]}
-        />
+        <RecentOrdersTable orders={data.recentOrders as IOrder[]} />
       </div>
     </div>
   );
