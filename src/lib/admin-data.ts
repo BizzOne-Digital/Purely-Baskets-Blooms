@@ -16,7 +16,28 @@ import { serialize } from '@/actions/helpers';
 
 export async function getDashboardData() {
   await requireAdmin();
-  await connectDB();
+
+  try {
+    await connectDB();
+  } catch (error) {
+    console.error("Admin dashboard database connection failed:", error);
+    return serialize({
+      stats: {
+        totalProducts: 0,
+        publishedProducts: 0,
+        totalOrders: 0,
+        pendingOrders: 0,
+        totalRevenue: 0,
+        newBookings: 0,
+        newInquiries: 0,
+      },
+      recentOrders: [],
+      ordersByStatus: [],
+      salesByDay: [],
+      databaseError:
+        "Unable to connect to the database. Add MONGODB_URI in Vercel environment variables and allow Vercel IPs in MongoDB Atlas.",
+    });
+  }
 
   const now = new Date();
   const thirtyDaysAgo = new Date(now);

@@ -1,3 +1,4 @@
+import { redirect } from "next/navigation";
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
@@ -91,14 +92,18 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 });
 
 export async function getAdminSession() {
-  return auth();
+  try {
+    return await auth();
+  } catch {
+    return null;
+  }
 }
 
 export async function requireAdmin() {
-  const session = await auth();
+  const session = await getAdminSession();
 
   if (!session?.user) {
-    throw new Error("Unauthorized");
+    redirect("/admin/login");
   }
 
   return session;

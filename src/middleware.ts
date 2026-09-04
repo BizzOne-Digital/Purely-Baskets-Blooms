@@ -1,27 +1,34 @@
-import NextAuth from 'next-auth';
 import { NextResponse } from 'next/server';
-import { authConfig } from '@/lib/auth.config';
+import type { NextRequest } from 'next/server';
 
-const { auth } = NextAuth(authConfig);
+const SESSION_COOKIES = [
+  'authjs.session-token',
+  '__Secure-authjs.session-token',
+  '__Host-authjs.session-token',
+];
 
-export default auth((req) => {
-  const { pathname } = req.nextUrl;
-  const isLoggedIn = !!req.auth;
+function hasSessionCookie(request: NextRequest): boolean {
+  return SESSION_COOKIES.some((name) => Boolean(request.cookies.get(name)?.value));
+}
+
+export function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl;
   const isLoginPage = pathname === '/admin/login';
+  const isLoggedIn = hasSessionCookie(request);
 
-  if (pathname.startsWith('/admin') && !isLoginPage && !isLoggedIn) {
-    const loginUrl = new URL('/admin/login', req.nextUrl.origin);
+  if (!isLoginPage && !isLoggedIn) {
+    const loginUrl = new URL('/admin/login', request.url);
     loginUrl.searchParams.set('callbackUrl', pathname);
     return NextResponse.redirect(loginUrl);
   }
 
   if (isLoginPage && isLoggedIn) {
-    return NextResponse.redirect(new URL('/admin', req.nextUrl.origin));
+    return NextResponse.redirect(new URL('/admin', request.url));
   }
 
   return NextResponse.next();
-});
+}
 
 export const config = {
-  matcher: ['/admin/:path*'],
+  matcher: ['/admin', '/admin/:path*'],
 };

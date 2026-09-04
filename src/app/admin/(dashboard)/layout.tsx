@@ -1,5 +1,5 @@
 import { redirect } from 'next/navigation';
-import { auth } from '@/lib/auth';
+import { getAdminSession } from '@/lib/auth';
 import { AdminShell } from '@/components/admin/AdminShell';
 
 export const dynamic = 'force-dynamic';
@@ -9,7 +9,7 @@ export default async function AdminDashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const session = await auth();
+  const session = await getAdminSession();
 
   if (!session?.user) {
     redirect('/admin/login');

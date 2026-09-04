@@ -19,6 +19,12 @@ export default async function AdminDashboardPage() {
 
   return (
     <div className="space-y-6">
+      {'databaseError' in data && data.databaseError ? (
+        <div className="rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-950">
+          {String(data.databaseError)}
+        </div>
+      ) : null}
+
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <StatsCard
           title="Total Revenue"
