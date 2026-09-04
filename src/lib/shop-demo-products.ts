@@ -11,6 +11,12 @@ const LOCAL_PRODUCT_IMAGES: Record<string, string> = {
   "the-berry-edit": "/products/the-berry-edit.jpg",
   "ivory-elegance": "/products/ivory-elegance.jpg",
   "golden-hour-basket": "/products/golden-hour-basket.jpg",
+  "champagne-rose-box": "/products/champagne-rose-box.jpg",
+  "ritual-bloom-tray": "/products/ritual-bloom-tray.jpg",
+  "roka-shagun-tray": "/products/roka-shagun-tray.jpg",
+  "mehndi-celebration-tray": "/products/mehndi-celebration-tray.jpg",
+  "wedding-gifting-tray": "/products/wedding-gifting-tray.jpg",
+  "heritage-bloom-tray": "/products/heritage-bloom-tray.jpg",
 };
 
 export function applyLocalProductImages<
