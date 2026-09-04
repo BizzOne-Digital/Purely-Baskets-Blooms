@@ -3,6 +3,7 @@ import Credentials from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 import { connectDB } from "@/lib/mongodb";
 import AdminUser from "@/models/AdminUser";
+import { authConfig } from "@/lib/auth.config";
 import type { AdminRole } from "@/types";
 
 declare module "next-auth" {
@@ -27,6 +28,7 @@ declare module "@auth/core/jwt" {
 }
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
+  ...authConfig,
   providers: [
     Credentials({
       name: "credentials",
@@ -71,14 +73,6 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       },
     }),
   ],
-  pages: {
-    signIn: "/admin/login",
-    error: "/admin/login",
-  },
-  session: {
-    strategy: "jwt",
-    maxAge: 24 * 60 * 60,
-  },
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
@@ -93,18 +87,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       }
       return session;
     },
-    authorized({ auth, request }) {
-      const isAdminRoute = request.nextUrl.pathname.startsWith("/admin");
-      const isLoginPage = request.nextUrl.pathname === "/admin/login";
-
-      if (!isAdminRoute) return true;
-      if (isLoginPage) return true;
-
-      return !!auth?.user;
-    },
   },
-  secret: process.env.AUTH_SECRET,
-  trustHost: true,
 });
 
 export async function getAdminSession() {
