@@ -75,14 +75,8 @@ export function HeroSection({ settings }: HeroSectionProps) {
         sizes="100vw"
       />
 
-      <div
-        className="absolute inset-0 bg-gradient-to-r from-ivory/94 via-ivory/80 via-42% to-ivory/10 md:via-ivory/58 md:to-transparent"
-        aria-hidden
-      />
-      <div
-        className="absolute inset-0 bg-gradient-to-t from-ivory/35 via-transparent to-ivory/10 lg:hidden"
-        aria-hidden
-      />
+      <div className="hero-scrim-ivory" aria-hidden />
+      <div className="hero-scrim-bottom lg:hidden" aria-hidden />
 
       <div className="relative mx-auto flex min-h-[min(92vh,900px)] max-w-7xl min-w-0 items-center px-4 pb-16 pt-28 md:px-8 md:pb-20 md:pt-32">
         <div className="w-full min-w-0 max-w-xl lg:max-w-2xl">

@@ -17,8 +17,8 @@ export function EventFloralsHero() {
         className="hero-cover-image brightness-[1.02] saturate-[1.04]"
         sizes="100vw"
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-ivory/92 via-ivory/55 to-ivory/10 md:via-ivory/45 md:to-transparent" />
-      <div className="absolute inset-0 bg-gradient-to-t from-ivory/25 via-transparent to-ivory/15" />
+      <div className="hero-scrim-ivory" aria-hidden />
+      <div className="hero-scrim-bottom" aria-hidden />
       <div className="editorial-botanical-lines absolute inset-0 opacity-35" aria-hidden />
 
       <div className="relative mx-auto flex min-h-[520px] max-w-7xl items-center px-4 md:min-h-[600px] md:px-8 lg:min-h-[680px]">

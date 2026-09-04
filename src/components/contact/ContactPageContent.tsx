@@ -104,8 +104,8 @@ export function ContactPageContent({
         sizes="100vw"
         aria-hidden
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-ivory/88 via-ivory/72 to-ivory/35 md:via-ivory/55 md:to-ivory/20" />
-      <div className="absolute inset-0 bg-gradient-to-t from-ivory/30 via-transparent to-ivory/10" />
+      <div className="hero-scrim-ivory" aria-hidden />
+      <div className="hero-scrim-bottom" aria-hidden />
       <div className="editorial-botanical-lines absolute inset-0 opacity-35" aria-hidden />
       <div className="editorial-fabric-swash pointer-events-none absolute -bottom-20 -left-16 h-72 w-72 opacity-50" aria-hidden />
       <div className="editorial-fabric-swash pointer-events-none absolute -right-10 bottom-0 h-64 w-64 rotate-180 opacity-40" aria-hidden />

@@ -17,8 +17,8 @@ export function ShopHeroBanner() {
           className="hero-cover-image brightness-[1.1] saturate-[1.12]"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#FDF8F3]/95 via-[#FDF8F3]/78 via-40% to-[#FDF8F3]/10 md:via-[#FDF8F3]/55 md:to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#FDF8F3]/20 via-transparent to-[#FDF8F3]/5" />
+        <div className="hero-scrim-cream" aria-hidden />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#FDF8F3]/20 via-transparent to-[#FDF8F3]/5 md:hidden" aria-hidden />
 
         <div className="relative z-10 mx-auto flex min-h-[320px] max-w-7xl items-center px-4 md:min-h-[400px] md:px-8">
           <RevealOnScroll className="max-w-xl">

@@ -16,8 +16,8 @@ export function ServicesHero() {
         className="hero-cover-image brightness-[1.03] saturate-[1.04]"
         sizes="100vw"
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-ivory/95 via-ivory/78 to-ivory/15 md:via-ivory/62 md:to-transparent" />
-      <div className="absolute inset-0 bg-gradient-to-t from-ivory/20 via-transparent to-ivory/10" />
+      <div className="hero-scrim-ivory" aria-hidden />
+      <div className="hero-scrim-bottom" aria-hidden />
       <div className="editorial-botanical-lines absolute inset-0 opacity-40" aria-hidden />
       <div className="editorial-fabric-swash pointer-events-none absolute -left-16 bottom-0 h-64 w-64 opacity-40" aria-hidden />
 

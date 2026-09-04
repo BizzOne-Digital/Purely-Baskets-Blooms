@@ -36,7 +36,7 @@ export function FooterNewsletter() {
           sizes="100vw"
           aria-hidden
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#FDFBF7]/98 via-[#FDFBF7]/88 via-42% to-[#FDFBF7]/15 md:via-[#FDFBF7]/72 md:to-transparent" />
+        <div className="hero-scrim-cream" aria-hidden />
         <div className="editorial-botanical-lines pointer-events-none absolute inset-0 opacity-35" aria-hidden />
 
         <div className="relative z-10 mx-auto flex min-h-[360px] max-w-7xl items-center px-4 py-14 md:min-h-[400px] md:px-8 md:py-16">
