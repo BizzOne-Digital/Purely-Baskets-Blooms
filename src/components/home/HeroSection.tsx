@@ -75,7 +75,6 @@ export function HeroSection({ settings }: HeroSectionProps) {
       />
       <AmbientOrbs />
       <div className="grain-overlay absolute inset-0 z-[1] opacity-30" aria-hidden />
-      <div className="gold-rule gold-rule-shimmer absolute inset-x-0 top-[42%] z-[2] hidden opacity-50 lg:block" aria-hidden />
 
       <div className="relative z-10 mx-auto flex min-h-[min(92vh,900px)] max-w-7xl min-w-0 items-center px-4 pb-20 pt-28 md:px-8 md:pb-24 md:pt-32">
         <div className="w-full min-w-0 max-w-2xl">
