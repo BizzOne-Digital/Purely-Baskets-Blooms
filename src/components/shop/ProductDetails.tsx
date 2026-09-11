@@ -81,11 +81,11 @@ export function ProductDetails({ product }: ProductDetailsProps) {
           size="lg"
         />
         {product.leadTime ? (
-          <p className="mt-2 text-sm text-deep-ink/50">Lead time: {product.leadTime}</p>
+          <p className="mt-2 text-sm text-cream/55">Lead time: {product.leadTime}</p>
         ) : null}
       </div>
 
-      <p className="leading-relaxed text-deep-ink/70">{product.shortDescription}</p>
+      <p className="leading-relaxed text-cream/75">{product.shortDescription}</p>
 
       {product.sizeOptions.length > 0 ? (
         <Select
@@ -115,14 +115,14 @@ export function ProductDetails({ product }: ProductDetailsProps) {
 
       {!isQuote && !isOutOfStock ? (
         <div className="flex items-center gap-4">
-          <label className="text-xs uppercase tracking-widest text-deep-ink/70">Qty</label>
+          <label className="text-xs uppercase tracking-widest text-cream/70">Qty</label>
           <input
             type="number"
             min={1}
             max={99}
             value={quantity}
             onChange={(e) => setQuantity(parseInt(e.target.value, 10) || 1)}
-            className="w-20 rounded-xl border border-champagne/50 bg-ivory/80 px-3 py-2 text-center text-sm"
+            className="w-20 rounded-xl border border-gold/25 bg-carbon px-3 py-2 text-center text-sm text-cream"
           />
         </div>
       ) : null}
@@ -164,9 +164,9 @@ export function ProductDetails({ product }: ProductDetailsProps) {
       </div>
 
       {product.careInstructions ? (
-        <div className="rounded-xl border border-champagne/30 bg-blush/10 p-4">
-          <h3 className="text-xs uppercase tracking-widest text-deep-berry">Care Instructions</h3>
-          <p className="mt-2 text-sm text-deep-ink/60">{product.careInstructions}</p>
+        <div className="rounded-sm border border-gold/20 bg-carbon/60 p-4">
+          <h3 className="text-xs uppercase tracking-widest text-gold-light">Care Instructions</h3>
+          <p className="mt-2 text-sm text-cream/70">{product.careInstructions}</p>
         </div>
       ) : null}
     </div>

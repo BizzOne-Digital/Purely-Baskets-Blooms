@@ -29,14 +29,14 @@ export function ShopSortBar({ className }: { className?: string }) {
 
   return (
     <div className={cn("flex items-center gap-2", isPending && "opacity-70", className)}>
-      <label htmlFor="shop-sort" className="text-xs font-medium uppercase tracking-[0.14em] text-deep-ink/55">
+      <label htmlFor="shop-sort" className="text-xs font-medium uppercase tracking-[0.14em] text-cream/60">
         Sort by:
       </label>
       <select
         id="shop-sort"
         value={currentSort}
         onChange={(e) => onSort(e.target.value)}
-        className="rounded-full border border-champagne/70 bg-ivory/90 px-4 py-2 text-sm text-deep-ink focus:border-deep-berry focus:outline-none focus:ring-1 focus:ring-deep-berry"
+        className="rounded-full border border-gold/25 bg-carbon-elevated px-4 py-2 text-sm text-cream focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold/40"
       >
         {SORT_OPTIONS.map((option) => (
           <option key={option.value} value={option.value}>

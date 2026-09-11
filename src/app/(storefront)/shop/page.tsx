@@ -49,7 +49,7 @@ async function ShopContent({
           </Suspense>
         </div>
 
-        <p className="mb-6 text-sm text-deep-ink/50">
+        <p className="mb-6 text-sm text-cream/55">
           {result.total} {result.total === 1 ? "arrangement" : "arrangements"}
         </p>
         <ProductGrid products={result.items} />

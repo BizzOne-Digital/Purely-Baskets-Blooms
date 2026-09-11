@@ -15,8 +15,8 @@ export function ProductGrid({ products }: ProductGridProps) {
   if (products.length === 0) {
     return (
       <div className="py-20 text-center">
-        <p className="font-serif text-xl text-deep-berry">No products found</p>
-        <p className="mt-2 text-sm text-deep-ink/50">
+        <p className="font-serif text-xl text-gold-light">No products found</p>
+        <p className="mt-2 text-sm text-cream/60">
           Try adjusting your filters or browse our full collection
         </p>
       </div>

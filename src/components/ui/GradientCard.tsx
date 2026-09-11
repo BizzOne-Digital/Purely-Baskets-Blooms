@@ -27,8 +27,8 @@ export function GradientCard({
   return (
     <div
       className={cn(
-        "group relative overflow-hidden rounded-2xl border border-champagne/35 bg-ivory/75 p-6 backdrop-blur-md md:p-8",
-        hover && "transition-all duration-500 hover:-translate-y-1 hover:border-dusty-rose/45 hover:shadow-xl hover:shadow-blush/15",
+        "group relative overflow-hidden rounded-sm border border-gold/20 bg-carbon-elevated/95 p-6 backdrop-blur-md md:p-8",
+        hover && "transition-all duration-500 hover:-translate-y-1 hover:border-gold/35 hover:shadow-xl hover:shadow-black/30",
         className
       )}
     >

@@ -1,8 +1,10 @@
 import Link from "next/link";
+import { RevealOnScroll } from "@/components/animations/RevealOnScroll";
 import { PageSection } from "@/components/layout/PageSection";
 import { ServicesHero } from "@/components/services/ServicesHero";
 import { ServiceAlternatingRow } from "@/components/services/ServiceAlternatingRow";
 import { Button } from "@/components/ui/Button";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 
 export const metadata = {
   title: "Services | Purely Baskets & Blooms",
@@ -48,6 +50,15 @@ export default function ServicesPage() {
       <ServicesHero />
 
       <PageSection tone="plain" containerClassName="py-10 md:py-16">
+        <RevealOnScroll className="mb-12 md:mb-16">
+          <SectionHeader
+            eyebrow="What We Offer"
+            title="Our Services"
+            description="From bespoke florals to corporate gifting and full event design — every experience is tailored to your vision."
+            align="center"
+          />
+        </RevealOnScroll>
+
         {services.map((service, i) => (
           <ServiceAlternatingRow
             key={service.number}

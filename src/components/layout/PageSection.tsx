@@ -13,12 +13,12 @@ interface PageSectionProps {
 }
 
 const toneClasses: Record<SectionTone, string> = {
-  plain: "bg-ivory",
-  subtle: "bg-gradient-to-b from-ivory via-blush/15 to-ivory",
-  warm: "bg-gradient-to-br from-ivory via-champagne/20 to-blush/25",
-  blush: "bg-gradient-to-b from-blush/25 via-ivory to-blush/10",
-  berry: "bg-gradient-to-br from-plum/5 via-blush/20 to-ivory",
-  plum: "bg-gradient-to-b from-plum/8 via-ivory to-blush/15",
+  plain: "bg-carbon",
+  subtle: "bg-gradient-to-b from-carbon via-carbon-soft to-carbon",
+  warm: "bg-gradient-to-br from-carbon-soft via-carbon-elevated to-carbon",
+  blush: "bg-gradient-to-b from-carbon-soft via-carbon to-carbon-soft",
+  berry: "bg-gradient-to-br from-carbon via-carbon-soft to-carbon-elevated",
+  plum: "bg-gradient-to-b from-carbon-elevated via-carbon to-carbon-soft",
 };
 
 export function PageSection({

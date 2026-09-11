@@ -74,7 +74,7 @@ export function QuickView({ product, onClose }: QuickViewProps) {
                 />
               </div>
               <div className="flex flex-col">
-                <h2 className="font-serif text-2xl text-deep-berry">{product.name}</h2>
+                <h2 className="font-display text-2xl font-semibold text-gold-light">{product.name}</h2>
                 <div className="mt-2">
                   <PriceDisplay
                     priceType={product.priceType}
@@ -85,7 +85,7 @@ export function QuickView({ product, onClose }: QuickViewProps) {
                     saleEndDate={product.saleEndDate}
                   />
                 </div>
-                <p className="mt-4 flex-1 text-sm leading-relaxed text-deep-ink/70">
+                <p className="mt-4 flex-1 text-sm leading-relaxed text-cream/75">
                   {product.shortDescription}
                 </p>
                 <div className="mt-6 flex flex-col gap-2 sm:flex-row">

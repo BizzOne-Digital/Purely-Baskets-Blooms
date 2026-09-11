@@ -16,7 +16,7 @@ export function RelatedProducts({
   return (
     <section className="mt-20">
       <RevealOnScroll>
-        <h2 className="mb-8 text-center font-serif text-2xl text-deep-berry md:text-3xl">
+        <h2 className="mb-8 text-center font-display text-2xl font-semibold text-gold-light md:text-3xl">
           {title}
         </h2>
       </RevealOnScroll>

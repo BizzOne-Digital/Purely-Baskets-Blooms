@@ -62,11 +62,11 @@ export function PriceDisplay({
           {formatted}
         </span>
         {onSale && compareAtPrice ? (
-          <span className="text-sm text-deep-ink/40 line-through">
+          <span className="text-sm text-cream/40 line-through">
             {formatPrice(compareAtPrice)}
           </span>
         ) : onSale && basePrice ? (
-          <span className="text-sm text-deep-ink/40 line-through">
+          <span className="text-sm text-cream/40 line-through">
             {formatPrice(basePrice)}
           </span>
         ) : null}

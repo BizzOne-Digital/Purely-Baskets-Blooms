@@ -19,7 +19,7 @@ function ServiceWave({ flip }: { flip?: boolean }) {
       viewBox="0 0 1200 48"
       preserveAspectRatio="none"
       className={cn(
-        "pointer-events-none my-6 h-10 w-full text-blush/40 md:my-10 md:h-14",
+        "pointer-events-none my-6 h-10 w-full text-gold/15 md:my-10 md:h-14",
         flip && "rotate-180"
       )}
       aria-hidden
@@ -51,17 +51,23 @@ export function ServiceAlternatingRow({
             reverse && "md:[&>*:first-child]:order-2"
           )}
         >
-          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-xl shadow-blush/15 ring-1 ring-champagne/40">
-            <Image src={imageSrc} alt={title} fill className="object-cover" sizes="50vw" />
+          <div className="flower-surface relative aspect-[4/3] overflow-hidden rounded-sm shadow-xl shadow-black/40 ring-1 ring-gold/25">
+            <Image
+              src={imageSrc}
+              alt={title}
+              fill
+              className="object-contain p-4"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
           </div>
-          <div className={cn("relative px-1", reverse ? "md:pr-6" : "md:pl-6")}>
-            <span className="font-display text-5xl font-semibold leading-none text-champagne/80 md:text-7xl">
+          <div className={cn("relative min-w-0 px-1", reverse ? "md:pr-6" : "md:pl-6")}>
+            <span className="font-display text-5xl font-semibold leading-none text-gold/40 md:text-7xl">
               {number}
             </span>
-            <DisplayHeading as="h2" size="section" className="mt-3">
+            <DisplayHeading as="h2" size="section" className="mt-3 text-cream">
               {title}
             </DisplayHeading>
-            <p className="mt-4 max-w-md text-sm leading-relaxed text-deep-ink/65 md:text-base">
+            <p className="mt-4 max-w-md text-sm leading-relaxed text-cream/72 md:text-base">
               {description}
             </p>
           </div>

@@ -41,17 +41,17 @@ export function ProductPageContent({
 
   return (
     <>
-      <section className="relative overflow-hidden border-b border-champagne/25 py-10 md:py-14">
+      <section className="relative overflow-hidden border-b border-gold/15 bg-carbon py-10 md:py-14">
         <GradientMesh variant="shop" />
         <DecorativeBlobs variant="shop" />
         <div className="relative mx-auto max-w-7xl px-4 md:px-8">
           <RevealOnScroll>
             {categoryName ? <Eyebrow variant="berry">{categoryName}</Eyebrow> : null}
-            <DisplayHeading as="h1" size="page" className="mt-2" italic>
+            <DisplayHeading as="h1" size="page" className="mt-2 text-cream" italic>
               {product.name}
             </DisplayHeading>
             {product.shortDescription ? (
-              <p className="mt-4 max-w-2xl text-deep-ink/70">{product.shortDescription}</p>
+              <p className="mt-4 max-w-2xl text-cream/72">{product.shortDescription}</p>
             ) : null}
           </RevealOnScroll>
         </div>
@@ -82,7 +82,7 @@ export function ProductPageContent({
               About This Piece
             </DisplayHeading>
             <div
-              className="prose prose-sm mt-6 text-deep-ink/70"
+              className="prose prose-sm prose-invert mt-6 text-cream/75"
               dangerouslySetInnerHTML={{ __html: product.fullDescription }}
             />
           </RevealOnScroll>

@@ -125,7 +125,7 @@ export function ProductCard({ product, onQuickView, priority }: ProductCardProps
       </div>
 
       <Link href={`/shop/${product.slug}`} className="mt-4 block space-y-2">
-        <h3 className="font-display text-lg font-semibold text-cream transition-colors group-hover:text-gold-light md:text-xl">
+        <h3 className="font-display text-base font-semibold leading-snug text-gold-light transition-colors group-hover:text-gold sm:text-lg md:text-xl">
           {product.name}
         </h3>
         <PriceDisplay
