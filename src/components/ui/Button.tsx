@@ -6,13 +6,13 @@ import { cn } from "@/lib/utils";
 
 const variants = {
   primary:
-    "bg-deep-berry text-ivory hover:bg-plum shadow-lg shadow-deep-berry/20",
+    "bg-gold text-carbon hover:bg-gold-light shadow-lg shadow-gold/15",
   secondary:
-    "bg-transparent border border-deep-berry/30 text-deep-berry hover:bg-blush/40",
-  ghost: "bg-transparent text-deep-ink hover:bg-blush/30",
-  coral: "bg-coral text-ivory hover:bg-coral/90 shadow-md shadow-coral/25",
+    "bg-transparent border border-gold/40 text-cream hover:bg-gold/10",
+  ghost: "bg-transparent text-cream hover:bg-carbon-elevated",
+  coral: "bg-coral text-carbon hover:bg-coral/90 shadow-md shadow-coral/20",
   outline:
-    "border border-champagne/60 bg-ivory/50 text-deep-ink hover:border-dusty-rose hover:bg-blush/20 backdrop-blur-sm",
+    "border border-gold/35 bg-transparent text-cream hover:border-gold hover:bg-gold/8",
 };
 
 const sizes = {
@@ -48,7 +48,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         disabled={disabled || isLoading}
         className={cn(
           "inline-flex items-center justify-center gap-2 rounded-full font-sans font-medium transition-all duration-300",
-          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-dusty-rose focus-visible:ring-offset-2 focus-visible:ring-offset-ivory",
+          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-carbon",
           "disabled:pointer-events-none disabled:opacity-50",
           variants[variant],
           sizes[size],

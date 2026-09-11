@@ -8,7 +8,7 @@ import { toast } from 'sonner';
 import { createTestimonial, updateTestimonial, deleteTestimonial } from '@/actions/testimonials';
 import { ImageUploader } from './ImageUploader';
 import { ConfirmDialog } from './ConfirmDialog';
-import { CLOUDINARY_FOLDERS } from '@/lib/constants';
+import { UPLOAD_FOLDERS } from '@/lib/constants';
 import type { ITestimonial } from '@/types';
 
 interface TestimonialsManagerProps {
@@ -127,7 +127,7 @@ export function TestimonialsManager({ items }: TestimonialsManagerProps) {
             <ImageUploader
               value={editing.image}
               onChange={(img) => setEditing({ ...editing, image: img ?? undefined })}
-              folder={CLOUDINARY_FOLDERS.testimonials}
+              folder={UPLOAD_FOLDERS.misc}
               label="Photo"
             />
             <label className="flex items-center gap-2 text-sm">

@@ -12,15 +12,15 @@ interface BrandLogoProps {
 }
 
 const sizeClasses = {
-  sm: "h-12 w-auto sm:h-14",
-  md: "h-14 w-auto sm:h-16 md:h-[4.5rem]",
-  lg: "h-20 w-auto sm:h-24 md:h-28",
+  sm: "h-11 w-auto sm:h-12",
+  md: "h-12 w-auto sm:h-14 md:h-16",
+  lg: "h-16 w-auto sm:h-20 md:h-24",
 };
 
 const sizeDimensions = {
-  sm: { width: 220, height: 54 },
-  md: { width: 280, height: 68 },
-  lg: { width: 380, height: 92 },
+  sm: { width: 200, height: 72 },
+  md: { width: 240, height: 86 },
+  lg: { width: 320, height: 115 },
 };
 
 export function BrandLogo({

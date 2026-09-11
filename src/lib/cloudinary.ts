@@ -1,5 +1,13 @@
 import { v2 as cloudinary } from "cloudinary";
-import { CLOUDINARY_FOLDERS } from "@/lib/constants";
+
+const CLOUDINARY_FOLDERS = {
+  products: "pbb/products",
+  hero: "pbb/hero",
+  gallery: "pbb/gallery",
+  bookings: "pbb/bookings",
+  settings: "pbb/settings",
+  testimonials: "pbb/testimonials",
+} as const;
 
 const cloudName = process.env.CLOUDINARY_CLOUD_NAME;
 const apiKey = process.env.CLOUDINARY_API_KEY;

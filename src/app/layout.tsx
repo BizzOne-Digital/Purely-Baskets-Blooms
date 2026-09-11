@@ -50,8 +50,13 @@ export const metadata: Metadata = {
     images: [{ url: BRAND.logoPath, alt: BRAND.name }],
   },
   icons: {
-    icon: BRAND.logoPath,
-    apple: BRAND.logoPath,
+    icon: [
+      { url: BRAND.faviconPath, type: "image/png" },
+      { url: BRAND.faviconPath, type: "image/png", sizes: "32x32" },
+      { url: BRAND.faviconPath, type: "image/png", sizes: "192x192" },
+    ],
+    apple: [{ url: BRAND.faviconPath, type: "image/png" }],
+    shortcut: BRAND.faviconPath,
   },
 };
 
@@ -61,7 +66,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       lang="en"
       className={`${playfair.variable} ${cormorant.variable} ${dmSans.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col font-sans text-deep-ink">
+      <body className="min-h-full flex flex-col bg-carbon font-sans text-cream">
         <AppProviders>{children}</AppProviders>
       </body>
     </html>

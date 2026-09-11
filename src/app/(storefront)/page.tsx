@@ -3,8 +3,10 @@ import {
   getFeaturedProducts,
   getFeaturedTestimonials,
 } from "@/lib/storefront";
+import { MarqueeBand } from "@/components/animations/MarqueeBand";
 import { HeroSection } from "@/components/home/HeroSection";
 import { HomeCategoryStrip } from "@/components/home/HomeCategoryStrip";
+import { BRAND } from "@/lib/constants";
 import { HomeOccasionsSection } from "@/components/home/HomeOccasionsSection";
 import { FeaturedProducts } from "@/components/home/FeaturedProducts";
 import { HomeStorySplit } from "@/components/home/HomeStorySplit";
@@ -24,6 +26,16 @@ export default async function HomePage() {
   return (
     <>
       <HeroSection settings={settings} />
+      <MarqueeBand
+        items={[
+          BRAND.name,
+          BRAND.tagline,
+          "Custom Florals",
+          "Luxury Gifting",
+          "Event Design",
+          "The Riwaaz Collection",
+        ]}
+      />
       <HomeCategoryStrip />
       <HomeOccasionsSection />
       <FeaturedProducts products={products} />

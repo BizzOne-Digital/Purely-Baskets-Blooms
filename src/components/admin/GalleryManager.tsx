@@ -8,7 +8,7 @@ import { toast } from 'sonner';
 import { createGalleryItem, updateGalleryItem, deleteGalleryItem } from '@/actions/gallery';
 import { ImageUploader } from './ImageUploader';
 import { ConfirmDialog } from './ConfirmDialog';
-import { CLOUDINARY_FOLDERS } from '@/lib/constants';
+import { UPLOAD_FOLDERS } from '@/lib/constants';
 import type { IGalleryItem } from '@/types';
 
 interface GalleryManagerProps {
@@ -105,7 +105,7 @@ export function GalleryManager({ items }: GalleryManagerProps) {
             <ImageUploader
               value={editing.image}
               onChange={(img) => setEditing({ ...editing, image: img! })}
-              folder={CLOUDINARY_FOLDERS.gallery}
+              folder={UPLOAD_FOLDERS.gallery}
               label="Image *"
             />
             <input value={editing.title ?? ''} onChange={(e) => setEditing({ ...editing, title: e.target.value })} placeholder="Title" className={inputClass} />

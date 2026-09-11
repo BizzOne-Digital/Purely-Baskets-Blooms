@@ -115,9 +115,8 @@ const SAMPLE_PRODUCTS: SeedProduct[] = [
     occasionTags: ['Corporate'],
     categorySlug: 'corporate',
     collectionSlug: 'corporate',
-    imageUrl:
-      'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=900&q=80',
-    publicId: 'unsplash/corporate-basket',
+    imageUrl: '/products/corporate-welcome-basket.jpg',
+    publicId: 'local/corporate-welcome-basket',
     priceType: 'starting',
     basePrice: 110,
     isFeatured: true,
@@ -131,9 +130,8 @@ const SAMPLE_PRODUCTS: SeedProduct[] = [
       '<p>A serene, comforting arrangement designed with sensitivity for sympathy and remembrance.</p>',
     occasionTags: ['Sympathy'],
     categorySlug: 'sympathy',
-    imageUrl:
-      'https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=900&q=80',
-    publicId: 'unsplash/sympathy',
+    imageUrl: '/products/sympathy-comfort.jpg',
+    publicId: 'local/sympathy-comfort',
     priceType: 'starting',
     basePrice: 78,
     availability: 'in_stock',

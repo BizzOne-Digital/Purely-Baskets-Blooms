@@ -8,7 +8,7 @@ import { createCollection, updateCollection, deleteCollection } from '@/actions/
 import { ImageUploader } from './ImageUploader';
 import { ConfirmDialog } from './ConfirmDialog';
 import { slugify } from '@/lib/utils';
-import { CLOUDINARY_FOLDERS } from '@/lib/constants';
+import { UPLOAD_FOLDERS } from '@/lib/constants';
 import type { ICollection } from '@/types';
 
 interface CollectionsManagerProps {
@@ -118,7 +118,7 @@ export function CollectionsManager({ items }: CollectionsManagerProps) {
             <input value={editing.slug ?? ''} onChange={(e) => setEditing({ ...editing, slug: e.target.value })} placeholder="Slug" className={inputClass} />
             <textarea value={editing.description ?? ''} onChange={(e) => setEditing({ ...editing, description: e.target.value })} placeholder="Description" rows={3} className={inputClass} />
             <input type="number" value={editing.order ?? 0} onChange={(e) => setEditing({ ...editing, order: Number(e.target.value) })} placeholder="Order" className={inputClass} />
-            <ImageUploader value={editing.image} onChange={(img) => setEditing({ ...editing, image: img ?? undefined })} folder={CLOUDINARY_FOLDERS.products} label="Image" />
+            <ImageUploader value={editing.image} onChange={(img) => setEditing({ ...editing, image: img ?? undefined })} folder={UPLOAD_FOLDERS.products} label="Image" />
             <label className="flex items-center gap-2 text-sm">
               <input type="checkbox" checked={editing.isRiwaaz ?? false} onChange={(e) => setEditing({ ...editing, isRiwaaz: e.target.checked })} />
               Riwaaz Collection

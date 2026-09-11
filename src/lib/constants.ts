@@ -20,8 +20,9 @@ export const BRAND = {
   defaultPhone: "905-955-7890",
   deliveryArea: "GTA and surrounding cities",
   orderNumberPrefix: "PBB",
-  logoPath: "/logo.png",
-  footerLogoPath: "/footer/logo.jpg",
+  logoPath: "/brand/logo.png",
+  footerLogoPath: "/brand/logo.png",
+  faviconPath: "/brand/favicon.png",
   heroBackgroundPath: "/hero-background.jpg",
 } as const;
 
@@ -236,17 +237,10 @@ export const RATE_LIMITS = {
 } as const;
 
 // ---------------------------------------------------------------------------
-// Cloudinary
+// Admin uploads (MongoDB-backed, serverless-safe)
 // ---------------------------------------------------------------------------
 
-export const CLOUDINARY_FOLDERS = {
-  products: "pbb/products",
-  hero: "pbb/hero",
-  gallery: "pbb/gallery",
-  bookings: "pbb/bookings",
-  settings: "pbb/settings",
-  testimonials: "pbb/testimonials",
-} as const;
+export { UPLOAD_FOLDERS } from "@/lib/upload-constants";
 
 // ---------------------------------------------------------------------------
 // Navigation (storefront)

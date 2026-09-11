@@ -7,7 +7,7 @@ import { toast } from 'sonner';
 import { siteSettingsSchema } from '@/validations/settings';
 import { updateSiteSettings } from '@/actions/settings';
 import { ImageUploader } from './ImageUploader';
-import { CLOUDINARY_FOLDERS } from '@/lib/constants';
+import { UPLOAD_FOLDERS } from '@/lib/constants';
 import type { SiteSettingsInput } from '@/validations/settings';
 import type { ISiteSettings } from '@/types';
 
@@ -127,13 +127,13 @@ export function SettingsForm({ settings }: SettingsFormProps) {
             <ImageUploader
               value={logo}
               onChange={(img) => setValue('logo', img)}
-              folder={CLOUDINARY_FOLDERS.settings}
+              folder={UPLOAD_FOLDERS.pages}
               label="Logo"
             />
             <ImageUploader
               value={favicon}
               onChange={(img) => setValue('favicon', img)}
-              folder={CLOUDINARY_FOLDERS.settings}
+              folder={UPLOAD_FOLDERS.pages}
               label="Favicon"
             />
           </div>
@@ -193,7 +193,7 @@ export function SettingsForm({ settings }: SettingsFormProps) {
             multiple
             value={heroImages}
             onChange={(imgs) => setValue('heroImages', imgs)}
-            folder={CLOUDINARY_FOLDERS.hero}
+            folder={UPLOAD_FOLDERS.pages}
             label="Hero Images"
             maxImages={5}
           />

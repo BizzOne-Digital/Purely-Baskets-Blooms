@@ -13,10 +13,9 @@ import { Input } from "@/components/ui/Input";
 import { Textarea } from "@/components/ui/Textarea";
 import { Select } from "@/components/ui/Select";
 import { Button } from "@/components/ui/Button";
-import { EditorialBackdrop } from "@/components/editorial/EditorialBackdrop";
 import { StepProgress } from "@/components/editorial/StepProgress";
-import { ArchedImage } from "@/components/editorial/ArchedImage";
 import { RevealOnScroll } from "@/components/animations/RevealOnScroll";
+import { HeroBackdrop } from "@/components/layout/HeroBackdrop";
 import { DisplayHeading } from "@/components/ui/DisplayHeading";
 import { cn } from "@/lib/utils";
 import { Calendar, Truck, Sparkles } from "lucide-react";
@@ -30,10 +29,10 @@ const SERVICE_OPTIONS: {
   image: string;
 }[] = [
   { value: "custom_floral", label: "Custom Arrangement", image: "/products/blush-garden.jpg" },
-  { value: "corporate_gifting", label: "Corporate Gift", image: "/pages/services-hero.jpg" },
-  { value: "riwaaz_collection", label: "Riwaaz Celebration", image: "/pages/riwaaz-hero.jpg" },
-  { value: "wedding_event", label: "Wedding or Event", image: "/pages/events-hero.jpg" },
-  { value: "floral_subscription", label: "Floral Subscription", image: "/pages/editorial-hero.jpg" },
+  { value: "corporate_gifting", label: "Corporate Gift", image: "/pages/services/02-corporate.jpg" },
+  { value: "riwaaz_collection", label: "Riwaaz Celebration", image: "/pages/riwaaz-roka-shagun.jpg" },
+  { value: "wedding_event", label: "Wedding or Event", image: "/pages/services/05-weddings.jpg" },
+  { value: "floral_subscription", label: "Floral Subscription", image: "/products/champagne-rose-box.jpg" },
 ];
 
 export function BookingForm() {
@@ -85,20 +84,30 @@ export function BookingForm() {
   };
 
   return (
-    <EditorialBackdrop variant="warm">
-      <section className="mx-auto max-w-7xl px-4 py-14 md:px-8 md:py-20">
-        <RevealOnScroll className="mb-10 text-center lg:text-left">
-          <DisplayHeading as="h1" size="page" italic>
-            Let&apos;s Create Something Beautiful
-          </DisplayHeading>
-          <p className="mt-4 max-w-xl text-deep-ink/70">
-            Tell us about your vision and we&apos;ll be in touch within 1–2 business days.
-          </p>
-        </RevealOnScroll>
+    <>
+      <section className="relative overflow-hidden border-b border-gold/15">
+        <div className="relative min-h-[360px] md:min-h-[420px]">
+          <HeroBackdrop
+            src="/pages/booking-hero.jpg"
+            alt="Luxury floral gift arrangement"
+            priority
+          />
+          <div className="relative z-10 mx-auto flex min-h-[360px] max-w-7xl items-center px-4 md:min-h-[420px] md:px-8">
+            <RevealOnScroll className="max-w-xl py-12 md:py-16">
+              <DisplayHeading as="h1" size="page" italic className="text-cream">
+                Let&apos;s Create Something Beautiful
+              </DisplayHeading>
+              <p className="mt-4 max-w-xl text-cream/72">
+                Tell us about your vision and we&apos;ll be in touch within 1–2 business days.
+              </p>
+            </RevealOnScroll>
+          </div>
+        </div>
+      </section>
 
-        <div className="grid gap-10 lg:grid-cols-5 lg:gap-14">
-          <div className="lg:col-span-3">
-            <RevealOnScroll>
+      <section className="mx-auto max-w-7xl px-4 py-14 md:px-8 md:py-20">
+        <div className="mx-auto max-w-3xl">
+          <RevealOnScroll>
               <div className="rounded-3xl border border-champagne/35 bg-ivory/90 p-6 shadow-xl shadow-blush/10 backdrop-blur-sm md:p-8">
                 <StepProgress steps={STEPS} currentStep={step} className="mb-8" />
 
@@ -270,20 +279,8 @@ export function BookingForm() {
                 </span>
               </div>
             </RevealOnScroll>
-          </div>
-
-          <div className="hidden lg:col-span-2 lg:block">
-            <RevealOnScroll delay={0.1}>
-              <ArchedImage
-                src="/pages/booking-hero.jpg"
-                alt="Luxury floral gift arrangement"
-                className="aspect-[3/4] w-full"
-                priority
-              />
-            </RevealOnScroll>
-          </div>
         </div>
       </section>
-    </EditorialBackdrop>
+    </>
   );
 }

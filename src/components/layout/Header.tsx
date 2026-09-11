@@ -40,8 +40,8 @@ export function Header({ logoSrc }: { logoSrc?: string | null }) {
         className={cn(
           "fixed inset-x-0 top-0 z-50 transition-all duration-500",
           scrolled
-            ? "glass-panel border-b border-champagne/30 py-3 shadow-sm"
-            : "bg-transparent py-5 md:py-6"
+            ? "glass-panel border-b py-3 shadow-sm shadow-black/30"
+            : "bg-carbon/40 py-5 backdrop-blur-sm md:py-6"
         )}
       >
         <div className="mx-auto grid w-full min-w-0 max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-3 px-4 md:gap-6 md:px-8 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]">
@@ -61,13 +61,13 @@ export function Header({ logoSrc }: { logoSrc?: string | null }) {
                   href={item.href}
                   title={"title" in item ? item.title : undefined}
                   className={cn(
-                    "relative pb-1 text-sm text-deep-ink/75 transition-colors hover:text-deep-berry",
-                    active && "font-medium text-deep-berry"
+                    "relative pb-1 text-sm text-cream/75 transition-colors hover:text-gold-light",
+                    active && "font-medium text-gold-light"
                   )}
                 >
                   {item.label}
                   {active ? (
-                    <span className="absolute inset-x-0 -bottom-0.5 mx-auto h-0.5 w-full rounded-full bg-dusty-rose" />
+                    <span className="absolute inset-x-0 -bottom-0.5 mx-auto h-0.5 w-full rounded-full bg-gold" />
                   ) : null}
                 </Link>
               );
@@ -78,7 +78,7 @@ export function Header({ logoSrc }: { logoSrc?: string | null }) {
             <button
               type="button"
               onClick={openSearch}
-              className="flex h-10 w-10 items-center justify-center rounded-full text-deep-ink/70 transition-colors hover:bg-blush/40 hover:text-deep-berry"
+              className="flex h-10 w-10 items-center justify-center rounded-full text-cream/70 transition-colors hover:bg-carbon-elevated hover:text-gold-light"
               aria-label="Search"
             >
               <Search className="h-4 w-4" />
@@ -87,12 +87,12 @@ export function Header({ logoSrc }: { logoSrc?: string | null }) {
             <button
               type="button"
               onClick={openCart}
-              className="relative flex h-10 w-10 items-center justify-center rounded-full text-deep-ink/70 transition-colors hover:bg-blush/40 hover:text-deep-berry"
+              className="relative flex h-10 w-10 items-center justify-center rounded-full text-cream/70 transition-colors hover:bg-carbon-elevated hover:text-gold-light"
               aria-label={`Cart, ${isHydrated ? itemCount : 0} items`}
             >
               <ShoppingBag className="h-4 w-4" />
               {isHydrated && itemCount > 0 ? (
-                <span className="absolute -right-0.5 -top-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-deep-berry text-[9px] font-medium text-ivory">
+                <span className="absolute -right-0.5 -top-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-gold text-[9px] font-medium text-carbon">
                   {itemCount > 9 ? "9+" : itemCount}
                 </span>
               ) : null}
@@ -111,7 +111,7 @@ export function Header({ logoSrc }: { logoSrc?: string | null }) {
             <button
               type="button"
               onClick={() => setMobileOpen(true)}
-              className="flex h-10 w-10 items-center justify-center rounded-full text-deep-ink lg:hidden"
+              className="flex h-10 w-10 items-center justify-center rounded-full text-cream lg:hidden"
               aria-label="Open menu"
             >
               <Menu className="h-5 w-5" />
@@ -125,7 +125,7 @@ export function Header({ logoSrc }: { logoSrc?: string | null }) {
       {mobileOpen ? (
         <button
           type="button"
-          className="fixed inset-0 z-40 bg-plum/20 backdrop-blur-sm lg:hidden"
+          className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm lg:hidden"
           onClick={() => setMobileOpen(false)}
           aria-label="Close menu overlay"
         />

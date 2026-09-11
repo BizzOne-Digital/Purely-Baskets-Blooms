@@ -12,6 +12,8 @@ const LOCAL_PRODUCT_IMAGES: Record<string, string> = {
   "ivory-elegance": "/products/ivory-elegance.jpg",
   "golden-hour-basket": "/products/golden-hour-basket.jpg",
   "champagne-rose-box": "/products/champagne-rose-box.jpg",
+  "corporate-welcome-basket": "/products/corporate-welcome-basket.jpg",
+  "sympathy-comfort": "/products/sympathy-comfort.jpg",
   "ritual-bloom-tray": "/products/ritual-bloom-tray.jpg",
   "roka-shagun-tray": "/products/roka-shagun-tray.jpg",
   "mehndi-celebration-tray": "/products/mehndi-celebration-tray.jpg",

@@ -1,6 +1,6 @@
 import type { SerializedTestimonial } from "@/lib/storefront";
 import { RevealOnScroll } from "@/components/animations/RevealOnScroll";
-import { DisplayHeading } from "@/components/ui/DisplayHeading";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 import { HOME_TESTIMONIALS_FALLBACK } from "@/lib/home-content";
 
 interface TestimonialsSectionProps {
@@ -18,25 +18,33 @@ export function TestimonialsSection({ testimonials }: TestimonialsSectionProps) 
       : HOME_TESTIMONIALS_FALLBACK;
 
   return (
-    <section className="bg-ivory py-16 md:py-20">
-      <div className="mx-auto max-w-7xl px-4 md:px-8">
-        <RevealOnScroll className="mb-10 text-center md:mb-12">
-          <DisplayHeading as="h2" size="section" className="text-deep-berry">
-            Words From Beautiful Moments
-          </DisplayHeading>
+    <section className="relative overflow-hidden bg-carbon-soft py-16 md:py-24">
+      <div className="editorial-fabric-swash pointer-events-none absolute left-1/2 top-0 h-64 w-64 -translate-x-1/2" aria-hidden />
+      <div className="relative mx-auto max-w-7xl px-4 md:px-8">
+        <RevealOnScroll className="mb-12 md:mb-14">
+          <SectionHeader
+            eyebrow="Kind Words"
+            title="Words From Beautiful Moments"
+            description="Real stories from celebrations we've been honoured to be part of."
+          />
         </RevealOnScroll>
 
-        <div className="grid gap-8 md:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-3 md:gap-8">
           {items.map((item, i) => (
-            <RevealOnScroll key={`${item.name}-${i}`} delay={i * 0.08} className="text-center">
-              <span className="font-display text-5xl leading-none text-marigold/80">&ldquo;</span>
-              <p className="mt-2 text-sm leading-relaxed text-deep-ink/70 italic md:text-base">
-                {item.quote}
-              </p>
-              <p className="mt-5 font-display text-base font-semibold text-deep-berry">{item.name}</p>
-              {item.role ? (
-                <p className="mt-1 text-xs uppercase tracking-[0.16em] text-deep-ink/45">{item.role}</p>
-              ) : null}
+            <RevealOnScroll key={`${item.name}-${i}`} delay={i * 0.1}>
+              <article className="glass-card group h-full rounded-sm p-8 text-center transition-all duration-500 hover:border-gold/35 hover:shadow-[0_0_40px_rgba(201,168,76,0.08)]">
+                <span className="font-display text-5xl leading-none text-gold/70 transition-colors group-hover:text-gold">
+                  &ldquo;
+                </span>
+                <p className="mt-3 text-sm leading-relaxed text-cream/75 italic md:text-base">
+                  {item.quote}
+                </p>
+                <div className="mx-auto my-5 h-px w-10 bg-gradient-to-r from-transparent via-gold/50 to-transparent" />
+                <p className="font-display text-base font-semibold text-gold-light">{item.name}</p>
+                {item.role ? (
+                  <p className="mt-1 text-xs uppercase tracking-[0.16em] text-cream/45">{item.role}</p>
+                ) : null}
+              </article>
             </RevealOnScroll>
           ))}
         </div>

@@ -41,7 +41,7 @@ function FooterColumn({
 }) {
   return (
     <div>
-      <h3 className="font-display text-lg font-semibold text-champagne">{title}</h3>
+      <h3 className="font-display text-lg font-semibold text-gold-light">{title}</h3>
       <div className="mt-2 h-px w-10 bg-gradient-to-r from-marigold/80 to-transparent" />
       <LotusMark size="sm" className="mt-3 text-marigold/80" />
       <ul className="mt-4 space-y-2.5">
@@ -49,7 +49,7 @@ function FooterColumn({
           <li key={item.label}>
             <Link
               href={item.href}
-              className="text-sm text-ivory/75 transition-colors hover:text-champagne"
+              className="text-sm text-cream/70 transition-colors hover:text-gold-light"
             >
               {item.label}
             </Link>
@@ -91,16 +91,9 @@ export function Footer({ settings }: FooterProps) {
     <footer className="mt-auto">
       <FooterNewsletter />
 
-      <div className="relative bg-plum">
-        <div className="relative overflow-hidden">
-          <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-90"
-            style={{ backgroundImage: "url('/footer/footer-bg.jpg')" }}
-            aria-hidden
-          />
-          <div className="absolute inset-0 bg-plum/75" aria-hidden />
-
-          <div className="relative mx-auto max-w-7xl min-w-0 px-4 pb-10 pt-6 md:px-8 md:pb-12 md:pt-8">
+      <div className="relative border-t border-gold/15 bg-carbon">
+          <div className="gold-rule mb-8 opacity-50" aria-hidden />
+          <div className="relative mx-auto max-w-7xl min-w-0 px-4 pb-10 pt-2 md:px-8 md:pb-12">
             <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-6 lg:gap-8">
               <div className="space-y-4 md:col-span-2 lg:col-span-2">
                 <Link href="/" className="inline-block max-w-full">
@@ -109,10 +102,10 @@ export function Footer({ settings }: FooterProps) {
                     alt={BRAND.name}
                     width={380}
                     height={100}
-                    className="h-[4.25rem] w-auto max-w-[min(100%,20rem)] object-contain object-left mix-blend-screen sm:h-20 md:h-[5.5rem] md:max-w-[22rem]"
+                    className="h-[4.25rem] w-auto max-w-[min(100%,20rem)] object-contain object-left sm:h-20 md:h-[5.5rem] md:max-w-[22rem]"
                   />
                 </Link>
-                <p className="max-w-sm text-sm leading-relaxed text-ivory/70">{about}</p>
+                <p className="max-w-sm text-sm leading-relaxed text-cream/65">{about}</p>
               </div>
 
               <FooterColumn title="Explore" links={EXPLORE_LINKS} />
@@ -158,8 +151,8 @@ export function Footer({ settings }: FooterProps) {
               </div>
             </div>
 
-            <div className="mt-12 border-t border-ivory/15 pt-6">
-              <div className="flex flex-col items-center gap-5 text-xs text-ivory/55 md:flex-row md:justify-between">
+            <div className="mt-12 border-t border-gold/15 pt-6">
+              <div className="flex flex-col items-center gap-5 text-xs text-cream/50 md:flex-row md:justify-between">
                 <p className="text-center md:text-left">{copyright}</p>
                 <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4">
                   <Link href="/privacy" className="transition-colors hover:text-champagne">
@@ -178,7 +171,6 @@ export function Footer({ settings }: FooterProps) {
               </div>
             </div>
           </div>
-        </div>
       </div>
     </footer>
   );

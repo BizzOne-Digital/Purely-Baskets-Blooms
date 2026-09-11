@@ -10,3 +10,4 @@ export { default as Testimonial } from "./Testimonial";
 export { default as GalleryItem } from "./GalleryItem";
 export { default as NewsletterSubscriber } from "./NewsletterSubscriber";
 export { default as SiteSettings } from "./SiteSettings";
+export { default as StoredUpload } from "./StoredUpload";

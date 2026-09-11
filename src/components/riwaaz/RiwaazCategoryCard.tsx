@@ -17,7 +17,7 @@ export function RiwaazCategoryCard({
   className,
 }: RiwaazCategoryCardProps) {
   const imageBlock = (
-    <div className="overflow-hidden rounded-2xl border border-champagne/75 bg-ivory shadow-md shadow-blush/10 transition-all duration-500 group-hover:-translate-y-0.5 group-hover:shadow-lg group-hover:shadow-blush/15">
+    <div className="flower-surface overflow-hidden rounded-sm border border-gold/25 shadow-lg shadow-black/30 transition-all duration-500 group-hover:-translate-y-0.5 group-hover:shadow-xl group-hover:shadow-black/40">
       <div className="relative aspect-[4/3] overflow-hidden">
         <Image
           src={imageSrc}
@@ -39,16 +39,16 @@ export function RiwaazCategoryCard({
       ) : (
         imageBlock
       )}
-      <h3 className="mt-4 font-display text-lg font-semibold text-deep-berry md:text-xl">
+      <h3 className="mt-4 font-display text-lg font-semibold text-cream md:text-xl">
         {href ? (
-          <Link href={href} className="transition-colors hover:text-plum">
+          <Link href={href} className="transition-colors hover:text-gold-light">
             {title}
           </Link>
         ) : (
           title
         )}
       </h3>
-      <LotusMark size="sm" className="mx-auto mt-2 text-marigold" />
+      <LotusMark size="sm" className="mx-auto mt-2 text-champagne" />
     </div>
   );
 }

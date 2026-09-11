@@ -8,7 +8,7 @@ import { createCategory, updateCategory, deleteCategory } from '@/actions/catego
 import { ImageUploader } from './ImageUploader';
 import { ConfirmDialog } from './ConfirmDialog';
 import { slugify } from '@/lib/utils';
-import { CLOUDINARY_FOLDERS } from '@/lib/constants';
+import { UPLOAD_FOLDERS } from '@/lib/constants';
 import type { ICategory } from '@/types';
 
 interface CategoriesManagerProps {
@@ -116,7 +116,7 @@ export function CategoriesManager({ items }: CategoriesManagerProps) {
             <input value={editing.slug ?? ''} onChange={(e) => setEditing({ ...editing, slug: e.target.value })} placeholder="Slug" className={inputClass} />
             <textarea value={editing.description ?? ''} onChange={(e) => setEditing({ ...editing, description: e.target.value })} placeholder="Description" rows={3} className={inputClass} />
             <input type="number" value={editing.order ?? 0} onChange={(e) => setEditing({ ...editing, order: Number(e.target.value) })} placeholder="Order" className={inputClass} />
-            <ImageUploader value={editing.image} onChange={(img) => setEditing({ ...editing, image: img ?? undefined })} folder={CLOUDINARY_FOLDERS.products} label="Image" />
+            <ImageUploader value={editing.image} onChange={(img) => setEditing({ ...editing, image: img ?? undefined })} folder={UPLOAD_FOLDERS.products} label="Image" />
             <label className="flex items-center gap-2 text-sm">
               <input type="checkbox" checked={editing.isActive ?? true} onChange={(e) => setEditing({ ...editing, isActive: e.target.checked })} />
               Active

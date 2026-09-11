@@ -36,7 +36,7 @@ export function AnnouncementBar({ settings, coupons }: AnnouncementBarProps) {
   const linkLabel = bar?.linkLabel;
 
   return (
-    <div className="relative z-[60] overflow-hidden bg-deep-berry text-ivory">
+    <div className="relative z-[60] overflow-hidden border-b border-gold/20 bg-carbon-elevated text-cream">
       <div className="mx-auto flex max-w-7xl min-w-0 items-center justify-center gap-2 px-4 py-2.5 text-center text-xs tracking-wide md:text-sm">
         <Tag className="hidden h-3.5 w-3.5 shrink-0 md:block" aria-hidden />
         <span className="min-w-0 break-words">{message}</span>

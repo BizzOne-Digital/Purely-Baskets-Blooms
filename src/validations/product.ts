@@ -1,7 +1,8 @@
 import { z } from "zod";
+import { imagePathSchema } from "@/lib/image-url";
 
 export const productImageSchema = z.object({
-  url: z.string().url("Invalid image URL"),
+  url: imagePathSchema,
   publicId: z.string().min(1, "Public ID is required"),
   alt: z.string().optional(),
   width: z.number().positive().optional(),

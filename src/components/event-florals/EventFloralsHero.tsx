@@ -1,39 +1,34 @@
-import Image from "next/image";
 import Link from "next/link";
 import { RevealOnScroll } from "@/components/animations/RevealOnScroll";
 import { LotusMark } from "@/components/editorial/LotusMark";
+import { HeroBackdrop } from "@/components/layout/HeroBackdrop";
 import { Button } from "@/components/ui/Button";
 import { DisplayHeading } from "@/components/ui/DisplayHeading";
 import { Flower2 } from "lucide-react";
 
 export function EventFloralsHero() {
   return (
-    <section className="relative min-h-[520px] overflow-hidden border-b border-champagne/25 md:min-h-[600px] lg:min-h-[680px]">
-      <Image
+    <section className="relative min-h-[520px] overflow-hidden border-b border-gold/15 md:min-h-[600px] lg:min-h-[680px]">
+      <HeroBackdrop
         src="/pages/events/hero.jpg"
         alt="Grand event floral installation with arches and candles"
-        fill
         priority
-        className="hero-cover-image brightness-[1.02] saturate-[1.04]"
-        sizes="100vw"
       />
-      <div className="hero-scrim-ivory" aria-hidden />
-      <div className="hero-scrim-bottom" aria-hidden />
-      <div className="editorial-botanical-lines absolute inset-0 opacity-35" aria-hidden />
+      <div className="editorial-botanical-lines absolute inset-0 z-[1] opacity-20" aria-hidden />
 
-      <div className="relative mx-auto flex min-h-[520px] max-w-7xl items-center px-4 md:min-h-[600px] md:px-8 lg:min-h-[680px]">
+      <div className="relative z-10 mx-auto flex min-h-[520px] max-w-7xl items-center px-4 md:min-h-[600px] md:px-8 lg:min-h-[680px]">
         <RevealOnScroll className="max-w-xl py-16 md:py-20">
-          <DisplayHeading as="h1" size="page" className="leading-[1.06]">
+          <DisplayHeading as="h1" size="page" className="leading-[1.06] text-cream">
             Florals That Transform the Moment
           </DisplayHeading>
 
           <div className="my-6 flex items-center gap-3">
-            <div className="h-px flex-1 max-w-[4.5rem] bg-gradient-to-r from-transparent to-champagne/80" />
-            <LotusMark size="sm" className="text-marigold" />
-            <div className="h-px flex-1 max-w-[4.5rem] bg-gradient-to-l from-transparent to-champagne/80" />
+            <div className="h-px flex-1 max-w-[4.5rem] bg-gradient-to-r from-transparent to-gold/60" />
+            <LotusMark size="sm" className="text-champagne" />
+            <div className="h-px flex-1 max-w-[4.5rem] bg-gradient-to-l from-transparent to-gold/60" />
           </div>
 
-          <p className="max-w-md text-base leading-relaxed text-deep-ink/70 md:text-lg">
+          <p className="max-w-md text-base leading-relaxed text-cream/72 md:text-lg">
             Bespoke floral styling for weddings, showers, milestones and unforgettable
             celebrations.
           </p>
@@ -46,8 +41,8 @@ export function EventFloralsHero() {
               </Button>
             </Link>
             <a href="#process">
-              <Button variant="outline" className="gap-2 border-deep-berry/30 bg-ivory/50">
-                <LotusMark size="sm" className="text-marigold" />
+              <Button variant="outline" className="gap-2">
+                <LotusMark size="sm" className="text-champagne" />
                 View Our Process
               </Button>
             </a>

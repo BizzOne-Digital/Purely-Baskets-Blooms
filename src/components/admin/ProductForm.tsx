@@ -13,7 +13,7 @@ import {
   PRICE_TYPES,
   AVAILABILITY_TYPES,
   OCCASIONS,
-  CLOUDINARY_FOLDERS,
+  UPLOAD_FOLDERS,
 } from '@/lib/constants';
 import { ImageUploader } from './ImageUploader';
 import type { ProductInput } from '@/validations/product';
@@ -379,7 +379,7 @@ export function ProductForm({ product, categories, collections }: ProductFormPro
             <ImageUploader
               value={mainImage}
               onChange={(img) => setValue('mainImage', img!, { shouldValidate: true })}
-              folder={CLOUDINARY_FOLDERS.products}
+              folder={UPLOAD_FOLDERS.products}
               label="Main Image *"
             />
             {errors.mainImage && (
@@ -389,7 +389,7 @@ export function ProductForm({ product, categories, collections }: ProductFormPro
               multiple
               value={gallery}
               onChange={(imgs) => setValue('gallery', imgs)}
-              folder={CLOUDINARY_FOLDERS.products}
+              folder={UPLOAD_FOLDERS.products}
               label="Gallery Images"
             />
           </div>

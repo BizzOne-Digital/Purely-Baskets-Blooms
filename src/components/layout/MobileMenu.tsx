@@ -25,14 +25,14 @@ export function MobileMenu({ open, onClose, logoSrc }: MobileMenuProps) {
           animate={{ x: 0 }}
           exit={reducedMotion ? undefined : { x: "100%" }}
           transition={{ type: "spring", damping: 30, stiffness: 300 }}
-          className="fixed inset-y-0 right-0 z-50 w-full max-w-sm glass-panel border-l border-champagne/30 p-6 shadow-2xl"
+          className="fixed inset-y-0 right-0 z-50 w-full max-w-sm glass-panel border-l border-gold/20 p-6 shadow-2xl"
         >
           <div className="flex items-center justify-between">
             <BrandLogo src={logoSrc} size="sm" />
             <button
               type="button"
               onClick={onClose}
-              className="flex h-10 w-10 items-center justify-center rounded-full hover:bg-blush/40"
+              className="flex h-10 w-10 items-center justify-center rounded-full text-cream hover:bg-carbon-elevated"
               aria-label="Close menu"
             >
               <X className="h-5 w-5" />
@@ -50,7 +50,7 @@ export function MobileMenu({ open, onClose, logoSrc }: MobileMenuProps) {
                 <Link
                   href={item.href}
                   onClick={onClose}
-                  className="block border-b border-champagne/20 py-4 text-sm text-deep-ink/80 transition-colors hover:text-deep-berry"
+                  className="block border-b border-gold/15 py-4 text-sm text-cream/80 transition-colors hover:text-gold-light"
                 >
                   {item.label}
                 </Link>

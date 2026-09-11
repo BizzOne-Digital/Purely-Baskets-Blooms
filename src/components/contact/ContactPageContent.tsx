@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
@@ -13,6 +12,7 @@ import { Button } from "@/components/ui/Button";
 import { GoldFrame } from "@/components/editorial/GoldFrame";
 import { LotusMark } from "@/components/editorial/LotusMark";
 import { RevealOnScroll } from "@/components/animations/RevealOnScroll";
+import { HeroBackdrop } from "@/components/layout/HeroBackdrop";
 import { DisplayHeading } from "@/components/ui/DisplayHeading";
 import { BRAND } from "@/lib/constants";
 import { Mail, Phone, Truck } from "lucide-react";
@@ -94,36 +94,24 @@ export function ContactPageContent({
   };
 
   return (
-    <section className="relative min-h-[720px] overflow-hidden border-b border-champagne/25 md:min-h-[820px]">
-      <Image
-        src="/pages/contact/background.jpg"
-        alt=""
-        fill
-        priority
-        className="hero-cover-image brightness-[1.02] saturate-[1.03]"
-        sizes="100vw"
-        aria-hidden
-      />
-      <div className="hero-scrim-ivory" aria-hidden />
-      <div className="hero-scrim-bottom" aria-hidden />
-      <div className="editorial-botanical-lines absolute inset-0 opacity-35" aria-hidden />
-      <div className="editorial-fabric-swash pointer-events-none absolute -bottom-20 -left-16 h-72 w-72 opacity-50" aria-hidden />
-      <div className="editorial-fabric-swash pointer-events-none absolute -right-10 bottom-0 h-64 w-64 rotate-180 opacity-40" aria-hidden />
+    <section className="relative min-h-[720px] overflow-hidden border-b border-gold/15 md:min-h-[820px]">
+      <HeroBackdrop src="/pages/contact/background.jpg" alt="" priority />
+      <div className="editorial-botanical-lines absolute inset-0 z-[1] opacity-15" aria-hidden />
 
-      <div className="relative mx-auto max-w-7xl px-4 py-14 md:px-8 md:py-20 lg:py-24">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 py-14 md:px-8 md:py-20 lg:py-24">
         <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
           <RevealOnScroll className="lg:pt-6">
-            <DisplayHeading as="h1" size="page" className="max-w-lg leading-[1.06]">
+            <DisplayHeading as="h1" size="page" className="max-w-lg leading-[1.06] text-cream">
               We&apos;d Love to Hear Your Vision
             </DisplayHeading>
 
             <div className="my-6 flex items-center gap-3">
-              <div className="h-px w-12 bg-gradient-to-r from-transparent to-champagne/80" />
-              <LotusMark size="sm" className="text-marigold" />
-              <div className="h-px w-12 bg-gradient-to-l from-transparent to-champagne/80" />
+              <div className="h-px w-12 bg-gradient-to-r from-transparent to-gold/60" />
+              <LotusMark size="sm" className="text-champagne" />
+              <div className="h-px w-12 bg-gradient-to-l from-transparent to-gold/60" />
             </div>
 
-            <p className="max-w-md text-base leading-relaxed text-deep-ink/70 md:text-lg">
+            <p className="max-w-md text-base leading-relaxed text-cream/72 md:text-lg">
               Whether you&apos;re planning a celebration, arranging a corporate gift or looking for
               something completely custom, start the conversation with us.
             </p>

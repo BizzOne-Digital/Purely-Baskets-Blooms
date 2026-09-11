@@ -3,7 +3,7 @@ import type { SerializedProduct } from "@/lib/storefront";
 import { ProductCard } from "@/components/shop/ProductCard";
 import { RevealOnScroll } from "@/components/animations/RevealOnScroll";
 import { Button } from "@/components/ui/Button";
-import { DisplayHeading } from "@/components/ui/DisplayHeading";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 import { getDemoShopProducts } from "@/lib/shop-demo-products";
 
 interface FeaturedProductsProps {
@@ -19,25 +19,28 @@ export function FeaturedProducts({ products }: FeaturedProductsProps) {
   if (items.length === 0) return null;
 
   return (
-    <section className="bg-[#F7F0E8] py-16 md:py-20">
-      <div className="mx-auto max-w-7xl px-4 md:px-8">
-        <RevealOnScroll className="mb-10 text-center md:mb-12">
-          <DisplayHeading as="h2" size="section" className="text-deep-berry">
-            Featured Blooms &amp; Gifts
-          </DisplayHeading>
+    <section className="relative overflow-hidden bg-carbon-soft py-16 md:py-24">
+      <div className="pointer-events-none absolute inset-0 editorial-botanical-lines opacity-15" aria-hidden />
+      <div className="relative mx-auto max-w-7xl px-4 md:px-8">
+        <RevealOnScroll className="mb-12 md:mb-14">
+          <SectionHeader
+            eyebrow="Curated For You"
+            title="Featured Blooms & Gifts"
+            description="Hand-selected arrangements and gift experiences — each one designed to feel personal, polished and unforgettable."
+          />
         </RevealOnScroll>
 
         <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
           {items.map((product, i) => (
-            <RevealOnScroll key={product._id} delay={i * 0.06}>
+            <RevealOnScroll key={product._id} delay={i * 0.08}>
               <ProductCard product={product} priority={i < 4} />
             </RevealOnScroll>
           ))}
         </div>
 
-        <RevealOnScroll delay={0.2} className="mt-10 flex justify-center">
+        <RevealOnScroll delay={0.25} className="mt-12 flex justify-center">
           <Link href="/shop">
-            <Button variant="outline" className="border-deep-berry/30 bg-ivory/70 px-8">
+            <Button variant="outline" className="btn-glow-outline px-10">
               View All Arrangements
             </Button>
           </Link>
