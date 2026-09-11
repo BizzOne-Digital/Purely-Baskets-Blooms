@@ -20,7 +20,10 @@ export function HeroBackdrop({
 
   return (
     <div
-      className={cn("pointer-events-none absolute inset-0", className)}
+      className={cn(
+        "pointer-events-none absolute inset-0 overflow-hidden",
+        className
+      )}
       aria-hidden={decorative || undefined}
     >
       <Image
@@ -32,7 +35,7 @@ export function HeroBackdrop({
           "hero-cover-image brightness-[0.88] saturate-[1.05]",
           imageClassName
         )}
-        sizes="100vw"
+        sizes="(max-width: 768px) 100vw, 100vw"
       />
       <div className="hero-scrim-cinematic" />
       <div className="hero-scrim-bottom" />

@@ -36,7 +36,7 @@ const categories = [
 
 export function RiwaazPageHero() {
   return (
-    <section className="relative overflow-hidden border-b border-gold/15">
+    <section className="relative w-full max-w-full overflow-hidden border-b border-gold/15">
       <div className="relative min-h-[480px] md:min-h-[560px]">
         <HeroBackdrop
           src="/pages/riwaaz-hero.jpg"
@@ -63,8 +63,8 @@ export function RiwaazPageHero() {
       </div>
 
       <div className="relative bg-carbon">
-        <div className="mx-auto max-w-7xl px-4 pb-14 pt-12 md:px-8 md:pb-16 md:pt-14">
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 md:gap-6 lg:gap-8">
+        <div className="mx-auto min-w-0 w-full max-w-7xl px-4 pb-14 pt-12 md:px-8 md:pb-16 md:pt-14">
+          <div className="grid min-w-0 w-full gap-8 sm:grid-cols-2 lg:grid-cols-3 md:gap-6 lg:gap-8">
             {categories.map((cat, i) => (
               <RevealOnScroll key={cat.title} delay={0.12 + i * 0.08}>
                 <RiwaazCategoryCard

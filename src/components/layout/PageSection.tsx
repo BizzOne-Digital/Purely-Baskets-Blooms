@@ -32,11 +32,14 @@ export function PageSection({
   const hasMesh = tone !== "plain";
 
   return (
-    <section id={id} className={cn("relative overflow-hidden", toneClasses[tone], className)}>
+    <section
+      id={id}
+      className={cn("relative w-full max-w-full overflow-hidden", toneClasses[tone], className)}
+    >
       {hasMesh ? <GradientMesh variant={tone === "berry" || tone === "plum" ? "berry" : "subtle"} className="opacity-60" /> : null}
       <div
         className={cn(
-          "relative",
+          "relative min-w-0 w-full max-w-full",
           !fullWidth && "mx-auto max-w-7xl px-4 py-16 md:px-8 md:py-20",
           containerClassName
         )}

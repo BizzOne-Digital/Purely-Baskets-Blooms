@@ -7,7 +7,7 @@ import { DisplayHeading } from "@/components/ui/DisplayHeading";
 
 export function HomeStorySplit() {
   return (
-    <section className="grid overflow-hidden md:grid-cols-2">
+    <section className="grid w-full max-w-full overflow-hidden md:grid-cols-2">
       <RevealOnScroll className="bg-carbon-soft px-6 py-12 md:px-10 md:py-14 lg:px-12">
         <div className="grid items-end gap-8 md:grid-cols-[minmax(0,1fr)_210px] md:gap-6 lg:grid-cols-[minmax(0,1fr)_240px]">
           <div className="min-w-0">

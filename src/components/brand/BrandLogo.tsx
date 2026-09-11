@@ -39,7 +39,11 @@ export function BrandLogo({
       width={width}
       height={height}
       priority={priority}
-      className={cn("object-contain object-left", sizeClasses[size], className)}
+      className={cn(
+        "max-w-full object-contain object-left",
+        sizeClasses[size],
+        className
+      )}
     />
   );
 }

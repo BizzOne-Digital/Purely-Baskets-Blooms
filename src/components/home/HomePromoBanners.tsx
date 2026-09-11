@@ -6,7 +6,7 @@ import { DisplayHeading } from "@/components/ui/DisplayHeading";
 
 export function HomePromoBanners() {
   return (
-    <section className="space-y-0">
+    <section className="w-full max-w-full space-y-0 overflow-x-clip">
       <RevealOnScroll>
         <div className="relative overflow-hidden border-y border-gold/15 bg-carbon-elevated">
           <div className="mx-auto grid max-w-7xl items-center gap-8 px-4 py-12 md:grid-cols-2 md:px-8 md:py-14">

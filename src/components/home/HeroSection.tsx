@@ -66,7 +66,7 @@ export function HeroSection({ settings }: HeroSectionProps) {
       : { duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] as const };
 
   return (
-    <section className="relative -mt-28 overflow-hidden bg-carbon md:-mt-32">
+    <section className="relative -mt-28 w-full max-w-full overflow-hidden bg-carbon md:-mt-32">
       <HeroBackdrop
         src={bgImage}
         alt=""

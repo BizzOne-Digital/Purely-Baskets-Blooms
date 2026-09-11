@@ -19,9 +19,9 @@ export function FeaturedProducts({ products }: FeaturedProductsProps) {
   if (items.length === 0) return null;
 
   return (
-    <section className="relative overflow-hidden bg-carbon-soft py-16 md:py-24">
+    <section className="relative w-full max-w-full overflow-hidden bg-carbon-soft py-16 md:py-24">
       <div className="pointer-events-none absolute inset-0 editorial-botanical-lines opacity-15" aria-hidden />
-      <div className="relative mx-auto max-w-7xl px-4 md:px-8">
+      <div className="relative mx-auto min-w-0 w-full max-w-7xl px-4 md:px-8">
         <RevealOnScroll className="mb-12 md:mb-14">
           <SectionHeader
             eyebrow="Curated For You"
@@ -30,7 +30,7 @@ export function FeaturedProducts({ products }: FeaturedProductsProps) {
           />
         </RevealOnScroll>
 
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
+        <div className="grid min-w-0 w-full grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4 md:gap-6">
           {items.map((product, i) => (
             <RevealOnScroll key={product._id} delay={i * 0.08}>
               <ProductCard product={product} priority={i < 4} />

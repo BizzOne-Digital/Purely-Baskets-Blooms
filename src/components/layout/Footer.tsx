@@ -88,7 +88,7 @@ export function Footer({ settings }: FooterProps) {
   const deliveryArea = settings.deliveryAreaText ?? BRAND.deliveryArea;
 
   return (
-    <footer className="mt-auto">
+    <footer className="mt-auto w-full max-w-full overflow-x-clip">
       <FooterNewsletter />
 
       <div className="relative border-t border-gold/15 bg-carbon">

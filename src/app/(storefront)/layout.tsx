@@ -18,11 +18,13 @@ export default async function StorefrontLayout({
 
   return (
     <StorefrontProviders>
-      <div className="flex min-w-0 flex-1 flex-col overflow-x-clip">
+      <div className="storefront-shell flex min-w-0 flex-1 flex-col">
         <AnnouncementBar settings={settings} coupons={coupons} />
         <Header logoSrc={settings.logo?.url} />
         <HeaderSpacer />
-        <main className="min-w-0 flex-1 scroll-mt-28 md:scroll-mt-32">{children}</main>
+        <main className="storefront-main min-w-0 flex-1 scroll-mt-28 md:scroll-mt-32">
+          {children}
+        </main>
         <Footer settings={settings} />
       </div>
     </StorefrontProviders>

@@ -18,9 +18,9 @@ export function TestimonialsSection({ testimonials }: TestimonialsSectionProps) 
       : HOME_TESTIMONIALS_FALLBACK;
 
   return (
-    <section className="relative overflow-hidden bg-carbon-soft py-16 md:py-24">
+    <section className="relative w-full max-w-full overflow-hidden bg-carbon-soft py-16 md:py-24">
       <div className="editorial-fabric-swash pointer-events-none absolute left-1/2 top-0 h-64 w-64 -translate-x-1/2" aria-hidden />
-      <div className="relative mx-auto max-w-7xl px-4 md:px-8">
+      <div className="relative mx-auto min-w-0 w-full max-w-7xl px-4 md:px-8">
         <RevealOnScroll className="mb-12 md:mb-14">
           <SectionHeader
             eyebrow="Kind Words"

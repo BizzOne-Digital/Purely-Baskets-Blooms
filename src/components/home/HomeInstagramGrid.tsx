@@ -7,8 +7,8 @@ import { HOME_GALLERY } from "@/lib/home-content";
 
 export function HomeInstagramGrid() {
   return (
-    <section className="bg-carbon py-16 md:py-24">
-      <div className="mx-auto max-w-7xl px-4 md:px-8">
+    <section className="w-full max-w-full overflow-hidden bg-carbon py-16 md:py-24">
+      <div className="mx-auto min-w-0 w-full max-w-7xl px-4 md:px-8">
         <RevealOnScroll className="mb-12 md:mb-14">
           <SectionHeader
             eyebrow="On Instagram"
@@ -29,7 +29,7 @@ export function HomeInstagramGrid() {
           />
         </RevealOnScroll>
 
-        <div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4">
+        <div className="grid min-w-0 w-full grid-cols-2 gap-3 md:grid-cols-3 md:gap-4">
           {HOME_GALLERY.map((src, i) => (
             <RevealOnScroll key={src} delay={i * 0.06}>
               <Link

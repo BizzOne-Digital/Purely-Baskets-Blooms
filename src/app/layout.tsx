@@ -25,6 +25,12 @@ const dmSans = DM_Sans({
   display: "swap",
 });
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
   title: {
@@ -64,9 +70,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${playfair.variable} ${cormorant.variable} ${dmSans.variable} h-full antialiased`}
+      className={`${playfair.variable} ${cormorant.variable} ${dmSans.variable} h-full w-full overflow-x-clip antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-carbon font-sans text-cream">
+      <body className="flex min-h-full w-full max-w-full flex-col overflow-x-clip bg-carbon font-sans text-cream">
         <AppProviders>{children}</AppProviders>
       </body>
     </html>

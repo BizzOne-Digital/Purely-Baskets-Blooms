@@ -19,7 +19,7 @@ export function EditorialBackdrop({
   variant = "default",
 }: EditorialBackdropProps) {
   return (
-    <div className={cn("relative overflow-hidden", className)}>
+    <div className={cn("relative w-full max-w-full overflow-x-clip", className)}>
       <div
         className={cn(
           "pointer-events-none absolute inset-0 bg-gradient-to-br",

@@ -38,15 +38,15 @@ export function Header({ logoSrc }: { logoSrc?: string | null }) {
     <>
       <header
         className={cn(
-          "fixed inset-x-0 top-0 z-50 transition-all duration-500",
+          "fixed inset-x-0 top-0 z-50 w-full max-w-full overflow-x-clip transition-all duration-500",
           scrolled
             ? "glass-panel border-b py-3 shadow-sm shadow-black/30"
             : "bg-carbon/40 py-5 backdrop-blur-sm md:py-6"
         )}
       >
-        <div className="mx-auto grid w-full min-w-0 max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-3 px-4 md:gap-6 md:px-8 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]">
-          <Link href="/" className="relative z-10 shrink-0 justify-self-start">
-            <LogoReveal size="md" src={logoSrc} priority />
+        <div className="mx-auto grid w-full min-w-0 max-w-7xl grid-cols-[minmax(0,auto)_1fr_auto] items-center gap-2 px-4 sm:gap-3 md:gap-6 md:px-8 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]">
+          <Link href="/" className="relative z-10 min-w-0 max-w-[42vw] shrink justify-self-start sm:max-w-[200px] md:max-w-none">
+            <LogoReveal size="md" src={logoSrc} priority className="max-w-full" />
           </Link>
 
           <nav
@@ -74,7 +74,7 @@ export function Header({ logoSrc }: { logoSrc?: string | null }) {
             })}
           </nav>
 
-          <div className="flex items-center justify-end gap-1.5 md:gap-2">
+          <div className="flex shrink-0 items-center justify-end gap-1 sm:gap-1.5 md:gap-2">
             <button
               type="button"
               onClick={openSearch}

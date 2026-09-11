@@ -40,7 +40,7 @@ async function ShopContent({
       <ShopHeroBanner />
 
       <PageSection tone="plain" containerClassName="py-10 md:py-14">
-        <div className="mb-8 flex flex-col gap-4 border-b border-champagne/30 pb-6 md:flex-row md:items-center md:justify-between">
+        <div className="mb-8 flex min-w-0 w-full flex-col gap-4 border-b border-champagne/30 pb-6 md:flex-row md:items-center md:justify-between">
           <Suspense fallback={<div className="h-10" />}>
             <ShopOccasionPills />
           </Suspense>

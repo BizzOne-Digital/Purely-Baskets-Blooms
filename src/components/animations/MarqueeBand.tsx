@@ -14,7 +14,7 @@ export function MarqueeBand({ items, className, speed = "normal" }: MarqueeBandP
   return (
     <div
       className={cn(
-        "overflow-hidden border-y border-gold/15 bg-carbon-elevated py-4",
+        "w-full max-w-full overflow-hidden border-y border-gold/15 bg-carbon-elevated py-4",
         className
       )}
     >

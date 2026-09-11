@@ -94,12 +94,12 @@ export function ContactPageContent({
   };
 
   return (
-    <section className="relative min-h-[720px] overflow-hidden border-b border-gold/15 md:min-h-[820px]">
+    <section className="relative min-h-[720px] w-full max-w-full overflow-hidden border-b border-gold/15 md:min-h-[820px]">
       <HeroBackdrop src="/pages/contact/background.jpg" alt="" priority />
       <div className="editorial-botanical-lines absolute inset-0 z-[1] opacity-15" aria-hidden />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 py-14 md:px-8 md:py-20 lg:py-24">
-        <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
+      <div className="relative z-10 mx-auto min-w-0 w-full max-w-7xl px-4 py-14 md:px-8 md:py-20 lg:py-24">
+        <div className="grid min-w-0 w-full items-start gap-12 lg:grid-cols-2 lg:gap-16">
           <RevealOnScroll className="lg:pt-6">
             <DisplayHeading as="h1" size="page" className="max-w-lg leading-[1.06] text-cream">
               We&apos;d Love to Hear Your Vision

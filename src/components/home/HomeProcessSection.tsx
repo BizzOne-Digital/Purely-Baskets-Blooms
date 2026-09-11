@@ -5,8 +5,8 @@ import { HOME_PROCESS_STEPS } from "@/lib/home-content";
 
 export function HomeProcessSection() {
   return (
-    <section className="border-y border-gold/15 bg-carbon-soft py-16 md:py-20">
-      <div className="mx-auto max-w-7xl px-4 md:px-8">
+    <section className="w-full max-w-full overflow-hidden border-y border-gold/15 bg-carbon-soft py-16 md:py-20">
+      <div className="mx-auto min-w-0 w-full max-w-7xl px-4 md:px-8">
         <RevealOnScroll className="mb-10 text-center md:mb-12">
           <DisplayHeading as="h2" size="section">
             Created With You, For You

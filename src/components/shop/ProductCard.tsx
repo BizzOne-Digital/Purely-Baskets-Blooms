@@ -36,7 +36,7 @@ export function ProductCard({ product, onQuickView, priority }: ProductCardProps
 
   return (
     <motion.article
-      className="group relative"
+      className="group relative min-w-0 w-full max-w-full"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       whileHover={{ y: -6 }}
