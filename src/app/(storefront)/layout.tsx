@@ -20,7 +20,7 @@ export default async function StorefrontLayout({
     <StorefrontProviders>
       <div className="storefront-shell flex min-w-0 flex-1 flex-col">
         <AnnouncementBar settings={settings} coupons={coupons} />
-        <Header logoSrc={settings.logo?.url} />
+        <Header />
         <HeaderSpacer />
         <main className="storefront-main min-w-0 flex-1 scroll-mt-28 md:scroll-mt-32">
           {children}

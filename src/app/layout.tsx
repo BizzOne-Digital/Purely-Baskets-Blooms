@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, DM_Sans, Cormorant_Garamond } from "next/font/google";
+import { Playfair_Display, DM_Sans, Cormorant_Garamond, Great_Vibes } from "next/font/google";
 import { BRAND } from "@/lib/constants";
 import { getSiteUrl } from "@/lib/site-url";
 import { AppProviders } from "@/components/layout/AppProviders";
@@ -22,6 +22,13 @@ const cormorant = Cormorant_Garamond({
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
   subsets: ["latin"],
+  display: "swap",
+});
+
+const greatVibes = Great_Vibes({
+  variable: "--font-script",
+  subsets: ["latin"],
+  weight: "400",
   display: "swap",
 });
 
@@ -70,7 +77,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${playfair.variable} ${cormorant.variable} ${dmSans.variable} h-full w-full overflow-x-clip antialiased`}
+      className={`${playfair.variable} ${cormorant.variable} ${dmSans.variable} ${greatVibes.variable} h-full w-full overflow-x-clip antialiased`}
     >
       <body className="flex min-h-full w-full max-w-full flex-col overflow-x-clip bg-pure-white font-sans text-deep-ink">
         <AppProviders>{children}</AppProviders>

@@ -5,19 +5,21 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCartStore } from "@/store/cart-store";
 import { useCartDrawer } from "@/components/layout/cart-drawer-context";
+import { useSearchModal } from "@/components/layout/search-modal-context";
 import { cn } from "@/lib/utils";
 import { STOREFRONT_NAV } from "@/lib/constants";
-import { ShoppingBag, Menu } from "lucide-react";
+import { Menu, Search, ShoppingBag } from "lucide-react";
 import { BrandWordmark } from "@/components/brand/BrandWordmark";
 import { MobileMenu } from "./MobileMenu";
 
-export function Header({ logoSrc }: { logoSrc?: string | null }) {
+export function Header() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const itemCount = useCartStore((s) => s.getItemCount());
   const isHydrated = useCartStore((s) => s.isHydrated);
   const { openCart } = useCartDrawer();
+  const { openSearch } = useSearchModal();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -36,36 +38,50 @@ export function Header({ logoSrc }: { logoSrc?: string | null }) {
 
   const navLinkClass = (href: string) =>
     cn(
-      "text-[11px] font-semibold uppercase tracking-[0.18em] text-deep-ink/70 transition-colors hover:text-deep-berry",
-      isActive(href) && "text-deep-berry underline decoration-deep-berry/40 underline-offset-4"
+      "text-[11px] font-medium uppercase tracking-[0.22em] text-deep-ink/75 transition-colors hover:text-deep-berry",
+      isActive(href) && "text-deep-berry"
     );
 
   return (
     <>
       <header
         className={cn(
-          "fixed inset-x-0 top-0 z-50 w-full max-w-full overflow-x-clip border-b border-deep-ink/10 bg-pure-white/95 backdrop-blur-md transition-shadow",
+          "fixed inset-x-0 top-0 z-50 w-full max-w-full overflow-x-clip border-b border-deep-ink/8 bg-pure-white transition-shadow",
           scrolled && "shadow-sm shadow-black/5"
         )}
       >
-        <div className="mx-auto flex w-full min-w-0 max-w-7xl items-center justify-between gap-2 px-3 py-3 sm:px-4 md:grid md:grid-cols-[1fr_auto_1fr] md:items-end md:gap-4 md:px-8 md:py-4">
-          <nav className="hidden min-w-0 items-center gap-5 md:flex md:justify-start lg:gap-8" aria-label="Primary left">
+        <div className="mx-auto grid w-full min-w-0 max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-2 px-3 py-3.5 md:grid-cols-[1fr_auto_1fr] md:gap-6 md:px-8 md:py-5">
+          <nav
+            className="hidden min-w-0 items-center gap-6 md:flex lg:gap-10"
+            aria-label="Primary left"
+          >
             {leftNav.map((item) => (
               <Link key={item.href} href={item.href} className={navLinkClass(item.href)}>
-                {item.label}
+                {item.href === "/" && isActive("/") ? (
+                  <span className="inline-flex items-center gap-1.5">
+                    <span className="text-deep-ink/40" aria-hidden>
+                      −
+                    </span>
+                    {item.label}
+                  </span>
+                ) : (
+                  item.label
+                )}
               </Link>
             ))}
           </nav>
 
-          <Link
-            href="/"
-            className="relative z-10 mx-auto min-w-0 shrink px-1 md:justify-self-center"
-          >
-            <BrandWordmark src={logoSrc} priority variant="header" />
-          </Link>
+          <div className="flex min-w-0 justify-center px-0.5 md:justify-self-center">
+            <Link href="/" className="min-w-0 text-center">
+              <BrandWordmark
+                variant="header"
+                className="text-[1.35rem] sm:text-4xl md:text-[2.35rem] lg:text-[2.65rem]"
+              />
+            </Link>
+          </div>
 
-          <div className="flex shrink-0 items-center justify-end gap-1 sm:gap-2 md:gap-3">
-            <nav className="hidden items-center gap-5 md:flex lg:gap-8" aria-label="Primary right">
+          <div className="flex min-w-0 items-center justify-end gap-0.5 sm:gap-1 md:gap-2">
+            <nav className="hidden items-center gap-6 md:flex lg:gap-10" aria-label="Primary right">
               {rightNav.map((item) => (
                 <Link key={item.href} href={item.href} className={navLinkClass(item.href)}>
                   {item.label}
@@ -75,13 +91,22 @@ export function Header({ logoSrc }: { logoSrc?: string | null }) {
 
             <button
               type="button"
+              onClick={openSearch}
+              className="hidden h-10 w-10 items-center justify-center text-deep-ink/70 transition-colors hover:text-deep-berry sm:flex"
+              aria-label="Search"
+            >
+              <Search className="h-[1.125rem] w-[1.125rem] stroke-[1.5]" />
+            </button>
+
+            <button
+              type="button"
               onClick={openCart}
-              className="relative flex h-10 w-10 items-center justify-center rounded-full text-deep-ink/75 transition-colors hover:bg-blush/60 hover:text-deep-berry"
+              className="relative flex h-10 w-10 items-center justify-center text-deep-ink/70 transition-colors hover:text-deep-berry"
               aria-label={`Cart, ${isHydrated ? itemCount : 0} items`}
             >
-              <ShoppingBag className="h-4 w-4" />
+              <ShoppingBag className="h-[1.125rem] w-[1.125rem] stroke-[1.5]" />
               {isHydrated && itemCount > 0 ? (
-                <span className="absolute -right-0.5 -top-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-deep-berry text-[9px] font-medium text-pure-white">
+                <span className="absolute right-1 top-1 flex h-3.5 w-3.5 items-center justify-center rounded-full bg-deep-berry text-[8px] font-medium text-pure-white">
                   {itemCount > 9 ? "9+" : itemCount}
                 </span>
               ) : null}
@@ -90,7 +115,7 @@ export function Header({ logoSrc }: { logoSrc?: string | null }) {
             <button
               type="button"
               onClick={() => setMobileOpen(true)}
-              className="flex h-10 w-10 items-center justify-center rounded-full text-deep-ink md:hidden"
+              className="flex h-10 w-10 items-center justify-center text-deep-ink md:hidden"
               aria-label="Open menu"
             >
               <Menu className="h-5 w-5" />
@@ -99,7 +124,7 @@ export function Header({ logoSrc }: { logoSrc?: string | null }) {
         </div>
       </header>
 
-      <MobileMenu open={mobileOpen} onClose={() => setMobileOpen(false)} logoSrc={logoSrc} />
+      <MobileMenu open={mobileOpen} onClose={() => setMobileOpen(false)} />
 
       {mobileOpen ? (
         <button
@@ -114,5 +139,5 @@ export function Header({ logoSrc }: { logoSrc?: string | null }) {
 }
 
 export function HeaderSpacer() {
-  return <div className="h-[5.5rem] shrink-0 sm:h-24 md:h-28" aria-hidden />;
+  return <div className="h-[4.25rem] shrink-0 md:h-24" aria-hidden />;
 }

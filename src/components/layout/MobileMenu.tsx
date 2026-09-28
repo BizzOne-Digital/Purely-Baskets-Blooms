@@ -11,10 +11,9 @@ import { cn } from "@/lib/utils";
 interface MobileMenuProps {
   open: boolean;
   onClose: () => void;
-  logoSrc?: string | null;
 }
 
-export function MobileMenu({ open, onClose, logoSrc }: MobileMenuProps) {
+export function MobileMenu({ open, onClose }: MobileMenuProps) {
   const pathname = usePathname();
 
   if (!open) return null;
@@ -22,7 +21,7 @@ export function MobileMenu({ open, onClose, logoSrc }: MobileMenuProps) {
   return (
     <aside className="fixed inset-y-0 right-0 z-50 w-full max-w-sm border-l border-deep-ink/10 bg-pure-white p-6 shadow-xl">
       <div className="flex items-center justify-between">
-        <BrandWordmark src={logoSrc} variant="compact" />
+        <BrandWordmark variant="compact" />
         <button
           type="button"
           onClick={onClose}
