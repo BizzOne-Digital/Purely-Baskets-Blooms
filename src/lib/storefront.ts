@@ -71,8 +71,7 @@ const DEFAULT_SETTINGS: Partial<SerializedSiteSettings> = {
   heroContent: {
     eyebrow: "Custom florals · GTA delivery",
     heading: "Beautiful flowers for every occasion.",
-    subheading:
-      "Thoughtful blooms and gifts, made just for you — with customized floral design at the centre of everything we create.",
+    subheading: "Thoughtful blooms and gifts, made just for you.",
     primaryCtaLabel: "Shop Flowers →",
     primaryCtaHref: "/shop",
     secondaryCtaLabel: "Request a Custom Design",
