@@ -33,8 +33,8 @@ export function Header() {
     return pathname.startsWith(href);
   };
 
-  const leftNav = STOREFRONT_NAV.slice(0, 2);
-  const rightNav = STOREFRONT_NAV.slice(2);
+  const leftNav = STOREFRONT_NAV.slice(0, 3);
+  const rightNav = STOREFRONT_NAV.slice(3);
 
   const navLinkClass = (href: string) =>
     cn(
@@ -52,7 +52,7 @@ export function Header() {
       >
         <div className="relative mx-auto flex h-[4.25rem] max-w-7xl items-center justify-between px-3 md:h-24 md:px-6 lg:px-8">
           {/* Left: mobile wordmark + desktop nav */}
-          <div className="flex min-w-0 flex-1 items-center md:justify-end md:pr-[clamp(5.5rem,16vw,11.5rem)] lg:pr-[clamp(6.5rem,18vw,12.5rem)]">
+          <div className="flex min-w-0 flex-1 items-center md:justify-end md:pr-[clamp(6rem,17vw,12rem)] lg:pr-[clamp(7rem,19vw,13rem)]">
             <Link href="/" className="block min-w-0 max-w-[calc(100vw-6.25rem)] md:hidden">
               <BrandWordmark
                 variant="header"
@@ -60,7 +60,7 @@ export function Header() {
               />
             </Link>
             <nav
-              className="hidden items-center gap-5 md:flex lg:gap-8 xl:gap-10"
+              className="hidden items-center gap-3 md:flex lg:gap-5 xl:gap-7"
               aria-label="Primary left"
             >
               {leftNav.map((item) => (
@@ -92,9 +92,9 @@ export function Header() {
           </Link>
 
           {/* Right: nav + utilities */}
-          <div className="flex min-w-0 flex-1 items-center justify-end gap-0.5 sm:gap-1 md:justify-start md:pl-[clamp(5.5rem,16vw,11.5rem)] lg:pl-[clamp(6.5rem,18vw,12.5rem)]">
+          <div className="flex min-w-0 flex-1 items-center justify-end gap-0.5 sm:gap-1 md:justify-start md:pl-[clamp(6rem,17vw,12rem)] lg:pl-[clamp(7rem,19vw,13rem)]">
             <nav
-              className="mr-1 hidden min-w-0 items-center gap-3 md:flex lg:gap-5 xl:gap-8"
+              className="mr-1 hidden min-w-0 items-center gap-4 md:flex lg:gap-6 xl:gap-8"
               aria-label="Primary right"
             >
               {rightNav.map((item) => (
@@ -107,7 +107,7 @@ export function Header() {
             <button
               type="button"
               onClick={openSearch}
-              className="hidden h-10 w-10 shrink-0 items-center justify-center text-deep-ink/70 transition-colors hover:text-deep-berry lg:flex"
+              className="hidden h-10 w-10 shrink-0 items-center justify-center text-deep-ink/70 transition-colors hover:text-deep-berry md:flex"
               aria-label="Search"
             >
               <Search className="h-[1.125rem] w-[1.125rem] stroke-[1.5]" />

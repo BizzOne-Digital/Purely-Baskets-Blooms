@@ -13,7 +13,6 @@ import { DisplayHeading } from "@/components/ui/DisplayHeading";
 import { BRAND } from "@/lib/constants";
 import { Mail, Truck } from "lucide-react";
 import { InstagramIcon } from "@/components/icons/InstagramIcon";
-import Image from "next/image";
 
 interface ContactFormProps {
   email: string;
@@ -68,15 +67,6 @@ export function ContactPageContent({
           <p className="mt-4 max-w-md text-sm leading-relaxed text-deep-ink/70 md:text-base">
             Questions, special requests, or a vision to share? We&apos;d love to hear from you.
           </p>
-          <div className="flower-surface relative mt-8 aspect-square max-w-sm overflow-hidden rounded-sm ring-1 ring-deep-ink/10">
-            <Image
-              src="/pages/contact/background.jpg"
-              alt=""
-              fill
-              className="object-contain p-4"
-              sizes="400px"
-            />
-          </div>
         </div>
 
         <div>

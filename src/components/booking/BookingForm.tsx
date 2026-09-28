@@ -28,9 +28,21 @@ const SERVICE_OPTIONS: {
   image: string;
 }[] = [
   { value: "custom_floral", label: "Custom Arrangement", image: "/products/blush-garden.jpg" },
-  { value: "corporate_gifting", label: "Corporate / Subscription", image: "/products/corporate-welcome-basket.jpg" },
-  { value: "riwaaz_collection", label: "Riwaaz Collection", image: "/products/ritual-bloom-tray.jpg" },
-  { value: "floral_subscription", label: "Floral Subscription", image: "/products/champagne-rose-box.jpg" },
+  {
+    value: "corporate_gifting",
+    label: "Corporate / Subscription",
+    image: "/booking/corporate-gifting.png",
+  },
+  {
+    value: "riwaaz_collection",
+    label: "Riwaaz Collection",
+    image: "/booking/riwaaz-collection.jpg",
+  },
+  {
+    value: "floral_subscription",
+    label: "Floral Subscription",
+    image: "/products/champagne-rose-box.jpg",
+  },
 ];
 
 export function BookingForm() {
@@ -122,7 +134,7 @@ export function BookingForm() {
                       <p className="font-display text-lg font-semibold text-deep-berry">
                         What are we creating?
                       </p>
-                      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                      <div className="grid gap-3 sm:grid-cols-2">
                         {SERVICE_OPTIONS.map((option) => {
                           const selected = selectedService === option.value;
                           return (
@@ -137,16 +149,21 @@ export function BookingForm() {
                                   : "border-champagne/50 hover:border-dusty-rose/50"
                               )}
                             >
-                              <div className="relative aspect-square">
+                              <div className="relative aspect-[4/3] bg-pure-white">
                                 <Image
                                   src={option.image}
                                   alt={option.label}
                                   fill
-                                  className="object-cover"
-                                  sizes="200px"
+                                  className={
+                                    option.value === "corporate_gifting" ||
+                                    option.value === "riwaaz_collection"
+                                      ? "object-cover object-center"
+                                      : "object-cover"
+                                  }
+                                  sizes="(max-width: 640px) 50vw, 240px"
                                 />
                               </div>
-                              <p className="px-3 py-2.5 text-xs font-semibold uppercase tracking-wide text-deep-berry">
+                              <p className="bg-pure-white px-3 py-2.5 text-xs font-semibold uppercase tracking-wide text-deep-berry">
                                 {option.label}
                               </p>
                             </button>
@@ -157,11 +174,12 @@ export function BookingForm() {
                         <Input label="Event Date" type="date" {...register("eventDate")} />
                         <Select
                           label="Budget Range"
+                          placeholder="Select budget range"
                           {...register("budgetRange")}
-                          options={[
-                            { value: "", label: "Select budget range" },
-                            ...BUDGET_RANGES.map((b) => ({ value: b.value, label: b.label })),
-                          ]}
+                          options={BUDGET_RANGES.map((b) => ({
+                            value: b.value,
+                            label: b.label,
+                          }))}
                         />
                       </div>
                     </>

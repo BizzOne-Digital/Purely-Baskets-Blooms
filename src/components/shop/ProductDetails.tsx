@@ -145,19 +145,29 @@ export function ProductDetails({ product }: ProductDetailsProps) {
         rows={3}
       />
 
-      <div className="flex flex-col gap-3 sm:flex-row">
+      <div className="flex w-full min-w-0 flex-col gap-3 sm:flex-row sm:items-stretch">
         {!isQuote && !isOutOfStock ? (
-          <Button onClick={handleAddToCart} className="flex-1">
-            <ShoppingBag className="h-4 w-4" />
+          <Button
+            onClick={handleAddToCart}
+            size="lg"
+            className="w-full normal-case tracking-normal sm:flex-1"
+          >
+            <ShoppingBag className="h-4 w-4 shrink-0" aria-hidden />
             Add to Cart
           </Button>
         ) : isQuote ? (
-          <Link href="/booking" className="flex-1">
-            <Button className="w-full">Request a Quote</Button>
+          <Link href="/booking" className="block w-full sm:flex-1">
+            <Button size="lg" className="w-full normal-case tracking-normal">
+              Request a Quote
+            </Button>
           </Link>
         ) : null}
-        <Link href="/contact" className="flex-1">
-          <Button variant="outline" className="w-full">
+        <Link href="/contact" className="block w-full sm:flex-1">
+          <Button
+            variant="outline"
+            size="lg"
+            className="w-full normal-case tracking-normal"
+          >
             Ask a Question
           </Button>
         </Link>

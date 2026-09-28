@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { Check } from "lucide-react";
 import { DisplayHeading } from "@/components/ui/DisplayHeading";
 import { Button } from "@/components/ui/Button";
@@ -44,15 +43,6 @@ export function BusinessSubscriptionsContent() {
                   : "flex flex-col overflow-hidden rounded-sm border border-deep-ink/10 bg-pure-white"
               }
             >
-              <div className="flower-surface relative aspect-[4/3]">
-                <Image
-                  src={plan.image}
-                  alt={plan.title}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                />
-              </div>
               <div className="flex flex-1 flex-col p-6">
                 <h2 className="font-display text-xl font-semibold text-deep-berry">
                   {plan.title}
@@ -89,15 +79,6 @@ export function BusinessSubscriptionsContent() {
               key={service.id}
               className="overflow-hidden rounded-sm border border-deep-ink/10 bg-pure-white"
             >
-              <div className="flower-surface relative aspect-[16/10]">
-                <Image
-                  src={service.image}
-                  alt={service.title}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              </div>
               <div className="p-6 md:p-8">
                 <h2 className="font-display text-xl font-semibold text-deep-berry md:text-2xl">
                   {service.title}

@@ -121,6 +121,19 @@ svg {
   overflow-x: hidden;
 }
 
+.storefront-shell select,
+.storefront-main select {
+  color: var(--deep-ink);
+  background-color: var(--pure-white);
+  color-scheme: light;
+}
+
+.storefront-shell select option,
+.storefront-main select option {
+  color: var(--deep-ink);
+  background-color: var(--pure-white);
+}
+
 .storefront-main > * {
   max-width: 100%;
   min-width: 0;

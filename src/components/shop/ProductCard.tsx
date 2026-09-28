@@ -81,19 +81,21 @@ export function ProductCard({ product, onQuickView, priority }: ProductCardProps
         <h3 className="font-display text-base font-semibold leading-snug text-deep-berry sm:text-lg">
           {product.name}
         </h3>
-        <PriceDisplay
-          priceType={product.priceType}
-          basePrice={product.basePrice}
-          salePrice={product.salePrice}
-          compareAtPrice={product.compareAtPrice}
-          saleStartDate={product.saleStartDate}
-          saleEndDate={product.saleEndDate}
-          size="sm"
-        />
-        <span className="inline-flex items-center gap-1 text-xs font-medium text-deep-ink/55 group-hover:text-deep-berry">
-          View details
-          <ArrowRight className="h-3 w-3" />
-        </span>
+        <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+          <PriceDisplay
+            priceType={product.priceType}
+            basePrice={product.basePrice}
+            salePrice={product.salePrice}
+            compareAtPrice={product.compareAtPrice}
+            saleStartDate={product.saleStartDate}
+            saleEndDate={product.saleEndDate}
+            size="sm"
+          />
+          <span className="inline-flex shrink-0 items-center gap-1 text-xs font-medium text-deep-ink/55 group-hover:text-deep-berry">
+            View details
+            <ArrowRight className="h-3 w-3" />
+          </span>
+        </div>
       </Link>
     </article>
   );

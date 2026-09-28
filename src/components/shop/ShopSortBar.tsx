@@ -28,7 +28,13 @@ export function ShopSortBar({ className }: { className?: string }) {
   );
 
   return (
-    <div className={cn("flex w-full min-w-0 max-w-full flex-col gap-2 sm:flex-row sm:items-center sm:justify-end", isPending && "opacity-70", className)}>
+    <div
+      className={cn(
+        "flex w-full shrink-0 flex-row items-center justify-start gap-2 md:w-auto md:justify-end",
+        isPending && "opacity-70",
+        className
+      )}
+    >
       <label
         htmlFor="shop-sort"
         className="shrink-0 text-xs font-medium uppercase tracking-[0.14em] text-deep-ink/55"
@@ -39,7 +45,7 @@ export function ShopSortBar({ className }: { className?: string }) {
         id="shop-sort"
         value={currentSort}
         onChange={(e) => onSort(e.target.value)}
-        className="min-w-0 max-w-full rounded-full border border-deep-ink/15 bg-pure-white px-4 py-2 text-sm text-deep-ink focus:border-deep-berry focus:outline-none focus:ring-1 focus:ring-deep-berry/30"
+        className="min-w-[10.5rem] max-w-full rounded-full border border-deep-ink/15 bg-pure-white px-4 py-2 text-sm text-deep-ink focus:border-deep-berry focus:outline-none focus:ring-1 focus:ring-deep-berry/30"
       >
         {SORT_OPTIONS.map((option) => (
           <option key={option.value} value={option.value}>

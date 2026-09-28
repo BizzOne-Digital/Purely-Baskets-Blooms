@@ -1,24 +1,11 @@
 import Link from "next/link";
-import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { DisplayHeading } from "@/components/ui/DisplayHeading";
 
 const MOMENTS = [
-  {
-    title: "Occasion Flowers",
-    href: "/shop?occasion=Birthdays",
-    image: "/home/occasion-birthdays.jpg",
-  },
-  {
-    title: "Gift Baskets",
-    href: "/shop",
-    image: "/products/golden-hour-basket.jpg",
-  },
-  {
-    title: "Sacred Spaces",
-    href: "/shop?occasion=Sympathy",
-    image: "/home/occasion-weddings.jpg",
-  },
+  { title: "Occasion Flowers", href: "/shop?occasion=Birthdays" },
+  { title: "Gift Baskets", href: "/shop" },
+  { title: "Sacred Spaces", href: "/shop?occasion=Sympathy" },
 ] as const;
 
 export function HomeMomentsSection() {
@@ -32,25 +19,17 @@ export function HomeMomentsSection() {
           <div className="mx-auto mt-4 h-px w-12 bg-marigold/60" aria-hidden />
         </div>
 
-        <ul className="mt-10 grid gap-6 md:grid-cols-3 md:gap-8">
+        <ul className="mt-10 grid gap-4 md:grid-cols-3 md:gap-6">
           {MOMENTS.map((item) => (
             <li key={item.title}>
-              <Link href={item.href} className="group block overflow-hidden bg-ivory/80">
-                <div className="relative aspect-[4/5] overflow-hidden">
-                  <Image
-                    src={item.image}
-                    alt=""
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                  />
-                </div>
-                <div className="flex items-center justify-between border-t border-deep-ink/8 bg-ivory px-5 py-4">
-                  <span className="font-display text-lg font-semibold text-deep-berry">
-                    {item.title}
-                  </span>
-                  <ArrowRight className="h-4 w-4 text-deep-berry/70 transition-transform group-hover:translate-x-0.5" />
-                </div>
+              <Link
+                href={item.href}
+                className="group flex items-center justify-between rounded-sm border border-deep-ink/10 bg-ivory/80 px-5 py-6 transition-colors hover:border-deep-berry/30 hover:bg-blush/25"
+              >
+                <span className="font-display text-lg font-semibold text-deep-berry">
+                  {item.title}
+                </span>
+                <ArrowRight className="h-4 w-4 shrink-0 text-deep-berry/70 transition-transform group-hover:translate-x-0.5" />
               </Link>
             </li>
           ))}

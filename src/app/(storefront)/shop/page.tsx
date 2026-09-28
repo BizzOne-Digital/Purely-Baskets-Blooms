@@ -40,12 +40,12 @@ async function ShopContent({
       <ShopHeroBanner />
 
       <PageSection tone="plain" containerClassName="py-10 md:py-14">
-        <div className="mb-8 flex min-w-0 w-full flex-col gap-4 border-b border-champagne/30 pb-6 md:flex-row md:items-center md:justify-between">
-          <Suspense fallback={<div className="h-10" />}>
-            <ShopOccasionPills />
+        <div className="mb-8 grid w-full min-w-0 gap-4 border-b border-deep-ink/10 pb-6 sm:grid-cols-1 md:grid-cols-[minmax(0,1fr)_auto] md:items-center md:gap-6">
+          <Suspense fallback={<div className="h-10 min-w-0" />}>
+            <ShopOccasionPills className="min-w-0 w-full" />
           </Suspense>
           <Suspense fallback={null}>
-            <ShopSortBar className="shrink-0" />
+            <ShopSortBar />
           </Suspense>
         </div>
 

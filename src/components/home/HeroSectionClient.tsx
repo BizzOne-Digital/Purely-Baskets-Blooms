@@ -24,14 +24,16 @@ function HeroSlides({
   activeIndex,
   sizes,
   className,
+  blendFromLeft = false,
 }: {
   images: readonly string[];
   activeIndex: number;
   sizes: string;
   className?: string;
+  blendFromLeft?: boolean;
 }) {
   return (
-    <div className={`relative h-full w-full ${className ?? ""}`}>
+    <div className={`relative h-full w-full overflow-hidden ${className ?? ""}`}>
       {images.map((src, i) => (
         <Image
           key={src}
@@ -39,12 +41,22 @@ function HeroSlides({
           alt={i === activeIndex ? "Floral arrangement" : ""}
           fill
           priority={i === 0}
-          className={`object-cover object-right transition-opacity duration-1000 ease-in-out ${
+          className={`object-cover object-[75%_center] transition-opacity duration-1000 ease-in-out md:object-right ${
             i === activeIndex ? "opacity-100" : "opacity-0"
           }`}
           sizes={sizes}
         />
       ))}
+      {blendFromLeft ? (
+        <div
+          className="pointer-events-none absolute inset-0 z-[1]"
+          style={{
+            background:
+              "linear-gradient(to right, #ffffff 0%, #ffffff 8%, rgba(255,255,255,0.92) 22%, rgba(255,255,255,0.55) 38%, rgba(255,255,255,0.15) 52%, transparent 68%)",
+          }}
+          aria-hidden
+        />
+      ) : null}
     </div>
   );
 }
@@ -62,22 +74,23 @@ export function HeroSectionClient({ images, hero }: HeroSectionClientProps) {
 
   return (
     <>
-      <div className="absolute bottom-5 right-0 top-[4.75rem] hidden w-[54%] md:block md:top-[5.25rem] md:bottom-8 lg:top-[5.75rem] lg:w-[56%]">
+      <div className="absolute bottom-5 right-0 top-[4.75rem] hidden w-[62%] max-w-[920px] md:block md:top-[5.25rem] md:bottom-8 lg:top-[5.75rem]">
         <HeroSlides
           images={images}
           activeIndex={activeIndex}
           sizes="60vw"
+          blendFromLeft
         />
       </div>
 
-      <div className="relative z-10 flex min-h-[min(72vh,640px)] w-full max-w-full min-w-0 flex-col px-4 pb-10 pt-[6.25rem] md:min-h-[min(78vh,680px)] md:max-w-[46%] md:justify-start md:pb-16 md:pl-8 md:pr-4 md:pt-[7.5rem] lg:pt-[8.25rem]">
-        <h1 className="max-w-full break-words font-display text-[1.65rem] font-semibold leading-[1.15] text-deep-berry sm:text-[1.85rem] md:text-[2.65rem] lg:text-[2.85rem]">
+      <div className="relative z-10 flex w-full max-w-full min-w-0 flex-col px-5 pb-6 pt-[5.75rem] sm:px-6 md:min-h-[min(78vh,680px)] md:max-w-[46%] md:justify-start md:pb-16 md:pl-8 md:pr-4 md:pt-[7.5rem] lg:pt-[8.25rem]">
+        <h1 className="max-w-full text-balance font-display text-[1.75rem] font-semibold leading-[1.2] text-deep-berry sm:text-[1.85rem] md:text-[2.65rem] md:leading-[1.15] lg:text-[2.85rem]">
           {hero.heading}
         </h1>
-        <p className="mt-4 max-w-md text-base leading-relaxed text-deep-ink/65 md:mt-5 md:text-lg">
+        <p className="mt-3 max-w-md text-[0.9375rem] leading-relaxed text-deep-ink/65 sm:mt-4 sm:text-base md:mt-5 md:text-lg">
           {hero.subheading}
         </p>
-        <div className="mt-7 flex w-full max-w-full min-w-0 flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center md:mt-8">
+        <div className="mt-5 flex w-full max-w-full min-w-0 flex-col gap-3 sm:mt-7 sm:flex-row sm:flex-wrap sm:items-center md:mt-8">
           <Link href={hero.primaryCtaHref} className="w-full min-w-0 sm:w-auto">
             <Button size="lg" className="w-full max-w-full sm:w-auto sm:min-w-[11rem]">
               {hero.primaryCtaLabel}
@@ -91,8 +104,8 @@ export function HeroSectionClient({ images, hero }: HeroSectionClientProps) {
         </div>
       </div>
 
-      <div className="w-full max-w-full min-w-0 px-4 pb-8 md:hidden">
-        <div className="relative aspect-[4/3] w-full max-w-full overflow-hidden rounded-sm">
+      <div className="w-full max-w-full min-w-0 px-5 pb-8 sm:px-6 md:hidden">
+        <div className="relative aspect-[5/4] w-full max-w-full overflow-hidden rounded-sm sm:aspect-[4/3]">
           <HeroSlides
             images={images}
             activeIndex={activeIndex}
