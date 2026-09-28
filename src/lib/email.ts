@@ -278,20 +278,61 @@ export function buildAdminBookingNotificationEmail(booking: IBooking): {
   html: string;
   text: string;
 } {
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ?? "";
+  const eventDateStr = booking.eventDate
+    ? new Date(booking.eventDate).toLocaleDateString("en-CA", {
+        weekday: "short",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      })
+    : null;
+
+  const imageLinks =
+    booking.inspirationImages?.length > 0
+      ? booking.inspirationImages
+          .map((img, i) => {
+            const href =
+              img.url.startsWith("http") || !siteUrl
+                ? img.url
+                : `${siteUrl}${img.url.startsWith("/") ? img.url : `/${img.url}`}`;
+            return `<li><a href="${href}" style="color:${BRAND_COLORS.deepBerry};">Reference ${i + 1}</a></li>`;
+          })
+          .join("")
+      : "";
+
   const content = `
     <h2 style="margin:0 0 16px;font-family:Georgia,serif;font-size:22px;color:${BRAND_COLORS.plum};">
-      New Booking Request
+      New Booking / Customize Request
     </h2>
     <p style="font-size:15px;"><strong>Customer:</strong> ${booking.customerName}</p>
     <p style="font-size:15px;"><strong>Email:</strong> ${booking.customerEmail}</p>
     <p style="font-size:15px;"><strong>Phone:</strong> ${booking.customerPhone}</p>
     <p style="font-size:15px;"><strong>Service:</strong> ${booking.serviceType.replace(/_/g, " ")}</p>
-    <p style="font-size:14px;"><strong>Message:</strong> ${booking.message}</p>`;
+    ${booking.occasion ? `<p style="font-size:15px;"><strong>Occasion:</strong> ${booking.occasion}</p>` : ""}
+    ${eventDateStr ? `<p style="font-size:15px;"><strong>Event date:</strong> ${eventDateStr}</p>` : ""}
+    ${booking.eventLocation ? `<p style="font-size:15px;"><strong>Location:</strong> ${booking.eventLocation}</p>` : ""}
+    ${booking.preferredColors ? `<p style="font-size:14px;"><strong>Colours:</strong> ${booking.preferredColors}</p>` : ""}
+    ${booking.floralStyle ? `<p style="font-size:14px;"><strong>Style:</strong> ${booking.floralStyle}</p>` : ""}
+    <p style="font-size:14px;white-space:pre-wrap;"><strong>Details:</strong><br/>${booking.message.replace(/</g, "&lt;")}</p>
+    ${
+      imageLinks
+        ? `<p style="font-size:14px;margin-top:16px;"><strong>Reference images:</strong></p><ul style="padding-left:20px;">${imageLinks}</ul>`
+        : ""
+    }
+    <p style="font-size:14px;color:${BRAND_COLORS.dustyRose};margin-top:16px;">
+      View full details in the admin portal under Bookings.
+    </p>`;
+
+  const textImages =
+    booking.inspirationImages?.length > 0
+      ? `\nReferences: ${booking.inspirationImages.map((img) => img.url).join(", ")}`
+      : "";
 
   return {
-    subject: `New Booking Request from ${booking.customerName}`,
+    subject: `New customize request from ${booking.customerName}${eventDateStr ? ` — ${eventDateStr}` : ""}`,
     html: emailLayout(content, `New booking from ${booking.customerName}`),
-    text: `New booking from ${booking.customerName} (${booking.customerEmail}). Service: ${booking.serviceType}.`,
+    text: `New booking from ${booking.customerName} (${booking.customerEmail}). Service: ${booking.serviceType}.${eventDateStr ? ` Event: ${eventDateStr}.` : ""}${textImages}\n\n${booking.message}`,
   };
 }
 

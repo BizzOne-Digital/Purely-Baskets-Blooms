@@ -10,6 +10,7 @@
  *   ADMIN_PASSWORD
  */
 
+import './load-env';
 import bcrypt from 'bcryptjs';
 import { connectDB } from '../src/lib/mongodb';
 import AdminUser from '../src/models/AdminUser';

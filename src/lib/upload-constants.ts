@@ -2,6 +2,7 @@ export const UPLOAD_FOLDERS = {
   products: "products",
   gallery: "gallery",
   pages: "pages",
+  bookings: "bookings",
   misc: "misc",
 } as const;
 

@@ -99,9 +99,18 @@ Required variables:
 
 ### 6. Seed Database
 
+After `MONGODB_URI` is set in `.env.local`:
+
 ```bash
-npm run seed-admin      # Create admin user
-npx tsx scripts/seed-defaults.ts  # Default settings, categories, collections
+npm run seed-defaults   # Site settings, categories, collections
+npm run seed-products   # 19 shop products (website catalog)
+npm run seed-admin      # Admin login from ADMIN_EMAIL / ADMIN_PASSWORD
+```
+
+Or run all three in order:
+
+```bash
+npm run seed
 ```
 
 ### 7. Run Development Server

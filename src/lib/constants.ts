@@ -23,7 +23,7 @@ export const BRAND = {
   logoPath: "/brand/logo.png",
   footerLogoPath: "/brand/logo.png",
   faviconPath: "/brand/favicon.png",
-  heroBackgroundPath: "/hero-background.jpg",
+  heroBackgroundPath: "/home/hero-1.jpg",
 } as const;
 
 export const BRAND_COLORS = {
@@ -249,6 +249,8 @@ export { UPLOAD_FOLDERS } from "@/lib/upload-constants";
 export const STOREFRONT_NAV = [
   { label: "Home", href: "/" },
   { label: "Shop", href: "/shop" },
+  { label: "Subscriptions", href: "/business-subcriptions" },
+  { label: "Customize", href: "/customize" },
   { label: "Custom Florals", href: "/booking" },
   { label: "Contact", href: "/contact" },
 ] as const;

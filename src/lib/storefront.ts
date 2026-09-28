@@ -75,7 +75,7 @@ const DEFAULT_SETTINGS: Partial<SerializedSiteSettings> = {
     primaryCtaLabel: "Shop Flowers →",
     primaryCtaHref: "/shop",
     secondaryCtaLabel: "Request a Custom Design",
-    secondaryCtaHref: "/booking",
+    secondaryCtaHref: "/customize",
     trustLine: "Advance notice recommended for custom orders",
   },
   announcementBar: { enabled: false },

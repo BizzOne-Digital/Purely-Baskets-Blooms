@@ -6,23 +6,248 @@ type DemoProduct = Omit<IProduct, "_id" | "category" | "collection"> & {
   collection?: string;
 };
 
+/** Product photos (slug → path under public/products). */
 const LOCAL_PRODUCT_IMAGES: Record<string, string> = {
-  "your-love-story": "/products/blush-garden.jpg",
-  "blush-garden": "/products/blush-garden.jpg",
-  "birthday-blooms": "/products/the-berry-edit.jpg",
-  "the-berry-edit": "/products/the-berry-edit.jpg",
-  "sympathy-comfort": "/products/sympathy-comfort.jpg",
-  "corporate-welcome-basket": "/products/corporate-welcome-basket.jpg",
-  "special-occasion-florals": "/products/champagne-rose-box.jpg",
-  "champagne-rose-box": "/products/champagne-rose-box.jpg",
-  "ivory-elegance": "/products/ivory-elegance.jpg",
-  "golden-hour-basket": "/products/golden-hour-basket.jpg",
-  "ritual-bloom-tray": "/products/ritual-bloom-tray.jpg",
-  "roka-shagun-tray": "/products/roka-shagun-tray.jpg",
-  "mehndi-celebration-tray": "/products/mehndi-celebration-tray.jpg",
-  "wedding-gifting-tray": "/products/wedding-gifting-tray.jpg",
-  "heritage-bloom-tray": "/products/heritage-bloom-tray.jpg",
+  "roses-are-red": "/products/roses-are-red.jpg",
+  "luxury-rose-box": "/products/luxury-rose-box.jpg",
+  "romance-me": "/products/romance-me.jpg",
+  "crimson-ivory-embrace": "/products/crimson-ivory-embrace.jpg",
+  "blushing-romance": "/products/blushing-romance.jpg",
+  "sweetheart-indulgence-heart-box": "/products/sweetheart-indulgence-heart-box.jpg",
+  "azure-elegance": "/products/azure-elegance.jpg",
+  "eclipse-of-thorns-bouquet": "/products/eclipse-of-thorns-bouquet.jpg",
+  "crimson-embrace": "/products/crimson-embrace.jpg",
+  "sweet-and-blooms": "/products/sweet-and-blooms.jpg",
+  "the-signature-rose-box": "/products/the-signature-rose-box.jpg",
+  "pink-whisper": "/products/pink-whisper.jpg",
+  "forever-yours": "/products/forever-yours.jpg",
+  "petal-keepsake-rose-box": "/products/petal-keepsake-rose-box.jpg",
+  "pure-elegance-lily-bouquet": "/products/pure-elegance-lily-bouquet.jpg",
+  "spring-harmony": "/products/spring-harmony.jpg",
+  "golden-radiance": "/products/golden-radiance.jpg",
+  "lily-luxe": "/products/lily-luxe.jpg",
+  "radiant-tulip-symphony": "/products/radiant-tulip-symphony.jpg",
 };
+
+const PLACEHOLDER_DETAIL =
+  "A beautiful arrangement from our collection. Contact us for seasonal bloom availability and delivery details.";
+
+type CatalogRow = {
+  name: string;
+  slug: string;
+  shortDescription: string;
+  fullDescription?: string;
+  basePrice: number;
+  occasionTags: string[];
+  isFeatured?: boolean;
+};
+
+const CATALOG: CatalogRow[] = [
+  {
+    name: "Roses Are Red",
+    slug: "roses-are-red",
+    shortDescription: "One dozen red roses arranged in a clear glass vase.",
+    fullDescription:
+      "<p>One dozen red roses arranged in a clear glass vase — a classic gesture for anniversaries, birthdays, and romantic occasions.</p>",
+    basePrice: 130,
+    occasionTags: ["Anniversaries", "Birthdays", "Just Because"],
+    isFeatured: true,
+  },
+  {
+    name: "Luxury Rose Box",
+    slug: "luxury-rose-box",
+    shortDescription: PLACEHOLDER_DETAIL,
+    basePrice: 140,
+    occasionTags: ["Anniversaries", "Just Because"],
+  },
+  {
+    name: "Romance Me",
+    slug: "romance-me",
+    shortDescription:
+      "A hand-tied romantic bouquet of red and pink blooms with seasonal flowers and greenery.",
+    fullDescription:
+      "<p>Red and pink blooms with seasonal flowers and greenery in a hand-tied romantic bouquet.</p>",
+    basePrice: 108.99,
+    occasionTags: ["Anniversaries", "Just Because"],
+    isFeatured: true,
+  },
+  {
+    name: "Crimson & Ivory Embrace",
+    slug: "crimson-ivory-embrace",
+    shortDescription:
+      "Hand-tied bouquet of red roses and ivory blooms with eucalyptus and seasonal greenery.",
+    fullDescription:
+      "<p>Red roses and ivory blooms in a hand-tied bouquet, finished with eucalyptus and seasonal greenery.</p>",
+    basePrice: 139,
+    occasionTags: ["Anniversaries", "Weddings"],
+  },
+  {
+    name: "Blushing Romance",
+    slug: "blushing-romance",
+    shortDescription: PLACEHOLDER_DETAIL,
+    basePrice: 129.99,
+    occasionTags: ["Anniversaries", "Birthdays"],
+  },
+  {
+    name: "Sweetheart Indulgence Heart Box",
+    slug: "sweetheart-indulgence-heart-box",
+    shortDescription: "Pink roses and Ferrero Rocher chocolates in a heart-shaped box.",
+    fullDescription:
+      "<p>Pink roses paired with Ferrero Rocher chocolates, presented in a heart-shaped gift box.</p>",
+    basePrice: 135,
+    occasionTags: ["Anniversaries", "Birthdays"],
+    isFeatured: true,
+  },
+  {
+    name: "Azure Elegance",
+    slug: "azure-elegance",
+    shortDescription: PLACEHOLDER_DETAIL,
+    basePrice: 160,
+    occasionTags: ["Just Because", "Congratulations"],
+  },
+  {
+    name: "Eclipse of Thorns Bouquet",
+    slug: "eclipse-of-thorns-bouquet",
+    shortDescription: "A large, dramatic bouquet of three dozen black roses.",
+    fullDescription:
+      "<p>Three dozen black roses in a bold, dramatic bouquet for a striking statement.</p>",
+    basePrice: 275,
+    occasionTags: ["Just Because", "Congratulations"],
+  },
+  {
+    name: "Crimson Embrace",
+    slug: "crimson-embrace",
+    shortDescription: PLACEHOLDER_DETAIL,
+    basePrice: 175,
+    occasionTags: ["Anniversaries"],
+  },
+  {
+    name: "Sweet & Blooms",
+    slug: "sweet-and-blooms",
+    shortDescription: PLACEHOLDER_DETAIL,
+    basePrice: 140,
+    occasionTags: ["Birthdays", "Just Because"],
+  },
+  {
+    name: "The Signature Rose Box",
+    slug: "the-signature-rose-box",
+    shortDescription: "Premium red roses arranged in an elegant round gift box.",
+    fullDescription:
+      "<p>Premium red roses styled in an elegant round box — perfect for gifting.</p>",
+    basePrice: 150,
+    occasionTags: ["Anniversaries", "Just Because"],
+    isFeatured: true,
+  },
+  {
+    name: "Pink Whisper",
+    slug: "pink-whisper",
+    shortDescription:
+      "Two dozen baby pink roses with greenery in a clear vase. Preferred delivery date confirmed by phone.",
+    fullDescription:
+      "<p>Two dozen baby pink roses with greenery in a clear vase. Preferred delivery date is confirmed with you by phone when you order.</p>",
+    basePrice: 150,
+    occasionTags: ["Birthdays", "Anniversaries"],
+  },
+  {
+    name: "Forever Yours",
+    slug: "forever-yours",
+    shortDescription:
+      "One dozen red roses in a wrapped bouquet with greenery and red accents.",
+    fullDescription:
+      "<p>One dozen red roses in a wrapped bouquet with greenery and red accents.</p>",
+    basePrice: 99.99,
+    occasionTags: ["Anniversaries", "Just Because"],
+    isFeatured: true,
+  },
+  {
+    name: "Petal Keepsake Rose Box",
+    slug: "petal-keepsake-rose-box",
+    shortDescription: PLACEHOLDER_DETAIL,
+    basePrice: 120,
+    occasionTags: ["Anniversaries", "Birthdays"],
+  },
+  {
+    name: "Pure Elegance Lily Bouquet",
+    slug: "pure-elegance-lily-bouquet",
+    shortDescription: "Fresh white lilies and green foliage in a bouquet.",
+    fullDescription: "<p>Fresh white lilies with green foliage in an elegant bouquet.</p>",
+    basePrice: 90,
+    occasionTags: ["Sympathy", "Just Because"],
+  },
+  {
+    name: "Spring Harmony",
+    slug: "spring-harmony",
+    shortDescription:
+      "Hand-tied bouquet of blush tulips, freesias, white blooms, and seasonal greenery.",
+    fullDescription:
+      "<p>Blush tulips, freesias, white blooms, and seasonal greenery in a hand-tied bouquet.</p>",
+    basePrice: 110,
+    occasionTags: ["Birthdays", "Just Because"],
+  },
+  {
+    name: "Golden Radiance",
+    slug: "golden-radiance",
+    shortDescription: "Bright hand-tied bouquet of yellow daffodils.",
+    fullDescription: "<p>Yellow daffodils in a bright, cheerful hand-tied bouquet.</p>",
+    basePrice: 78,
+    occasionTags: ["Birthdays", "Just Because"],
+  },
+  {
+    name: "Lily Luxe",
+    slug: "lily-luxe",
+    shortDescription: "White lilies and seasonal greenery with a soft ribbon detail.",
+    fullDescription:
+      "<p>White lilies and seasonal greenery, finished with a soft ribbon detail.</p>",
+    basePrice: 98,
+    occasionTags: ["Sympathy", "Just Because"],
+  },
+  {
+    name: "Radiant Tulip Symphony",
+    slug: "radiant-tulip-symphony",
+    shortDescription: "Red, yellow, and pink tulips arranged in a clear glass vase.",
+    fullDescription:
+      "<p>Red, yellow, and pink tulips arranged in a clear glass vase.</p>",
+    basePrice: 78,
+    occasionTags: ["Birthdays", "Just Because"],
+  },
+];
+
+function toDemoProduct(row: CatalogRow, index: number): DemoProduct {
+  const imagePath = LOCAL_PRODUCT_IMAGES[row.slug] ?? "/products/the-berry-edit.jpg";
+  const full =
+    row.fullDescription ??
+    `<p>${row.shortDescription}</p><p>Every arrangement can be customized — share your vision and we will bring it to life.</p>`;
+
+  return {
+    _id: `demo-${row.slug}`,
+    name: row.name,
+    slug: row.slug,
+    shortDescription: row.shortDescription,
+    fullDescription: full,
+    occasionTags: row.occasionTags,
+    mainImage: {
+      url: imagePath,
+      publicId: `local/${row.slug}`,
+      alt: row.name,
+    },
+    gallery: [],
+    priceType: "fixed",
+    basePrice: row.basePrice,
+    productOptions: [],
+    sizeOptions: [],
+    colorPaletteOptions: [],
+    addOns: [],
+    availability: "in_stock",
+    isFeatured: row.isFeatured ?? index < 4,
+    isBestseller: index < 3,
+    isRiwaaz: false,
+    status: "published",
+    createdAt: new Date("2026-01-01"),
+    updatedAt: new Date("2026-01-01"),
+  };
+}
+
+export const DEMO_SHOP_PRODUCTS: DemoProduct[] = CATALOG.map(toDemoProduct);
 
 export function applyLocalProductImages<
   T extends { slug: string; name: string; mainImage?: { url: string; alt?: string } },
@@ -40,301 +265,6 @@ export function applyLocalProductImages<
     };
   });
 }
-
-/** Catalog aligned with purelybasketsandblooms.com categories and copy */
-export const DEMO_SHOP_PRODUCTS: DemoProduct[] = [
-  {
-    _id: "demo-your-love-story",
-    name: "Your Love Story",
-    slug: "your-love-story",
-    shortDescription:
-      "Your wedding bouquet should be as unique as your love story. Each bouquet can be customized to complement your wedding colours, personal style and overall vision.",
-    fullDescription:
-      "<p>An elegant all-white bridal bouquet featuring graceful calla lilies, delicate lisianthus and lush seasonal blooms. Accented with flowing pearls and finished with a satin-wrapped handle, this timeless design brings romance, sophistication and a touch of luxury to your wedding day. Every bouquet can be customized to reflect your preferred flowers, colours, size and personal style.</p><p>Because flowers are seasonal, we will work with you to create a beautiful design using the freshest available blooms.</p>",
-    occasionTags: ["Weddings", "Anniversaries"],
-    mainImage: {
-      url: "/products/blush-garden.jpg",
-      publicId: "local/your-love-story",
-      alt: "Your Love Story custom wedding bouquet",
-    },
-    gallery: [],
-    priceType: "starting",
-    basePrice: 150,
-    productOptions: [],
-    sizeOptions: [],
-    colorPaletteOptions: [],
-    addOns: [],
-    availability: "made_to_order",
-    leadTime: "2–4 weeks advance notice recommended",
-    isFeatured: true,
-    isBestseller: true,
-    isRiwaaz: false,
-    status: "published",
-    createdAt: new Date("2025-06-01"),
-    updatedAt: new Date("2025-06-01"),
-  },
-  {
-    _id: "demo-birthday-blooms",
-    name: "Birthday Flowers",
-    slug: "birthday-blooms",
-    shortDescription:
-      "Make someone's birthday extra special with our beautiful range of birthday flowers — from classic bouquets to unique arrangements.",
-    fullDescription:
-      "<p>We have something for everyone. Tell us their favourite colours and flowers and we will create a thoughtful birthday design using the freshest seasonal blooms.</p>",
-    occasionTags: ["Birthdays"],
-    mainImage: {
-      url: "/products/the-berry-edit.jpg",
-      publicId: "local/birthday-blooms",
-      alt: "Birthday flower arrangement",
-    },
-    gallery: [],
-    priceType: "starting",
-    basePrice: 75,
-    productOptions: [],
-    sizeOptions: [],
-    colorPaletteOptions: [],
-    addOns: [],
-    availability: "in_stock",
-    leadTime: "24–48 hours advance notice",
-    isFeatured: true,
-    isBestseller: false,
-    isRiwaaz: false,
-    status: "published",
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-  {
-    _id: "demo-sympathy-comfort",
-    name: "Sympathy Flowers",
-    slug: "sympathy-comfort",
-    shortDescription:
-      "Express your condolences with sympathy flowers — our florists will work with you to create an arrangement that captures your sentiments.",
-    fullDescription:
-      "<p>Compassionate, understated designs in soft palettes to honour and comfort. Each piece is crafted with care and can be customized on request.</p>",
-    occasionTags: ["Sympathy"],
-    mainImage: {
-      url: "/products/sympathy-comfort.jpg",
-      publicId: "local/sympathy-comfort",
-      alt: "Sympathy floral arrangement",
-    },
-    gallery: [],
-    priceType: "starting",
-    basePrice: 85,
-    productOptions: [],
-    sizeOptions: [],
-    colorPaletteOptions: [],
-    addOns: [],
-    availability: "made_to_order",
-    leadTime: "24–48 hours advance notice",
-    isFeatured: true,
-    isBestseller: false,
-    isRiwaaz: false,
-    status: "published",
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-  {
-    _id: "demo-corporate-welcome",
-    name: "Corporate Flowers",
-    slug: "corporate-welcome-basket",
-    shortDescription:
-      "Make a lasting impression with corporate flowers — perfect for events, conferences, business meetings, and subscription programs.",
-    fullDescription:
-      "<p>Elevate your workspace or client gifting with refined florals and presentation. Ask about business subscriptions for recurring delivery.</p>",
-    occasionTags: ["Corporate"],
-    mainImage: {
-      url: "/products/corporate-welcome-basket.jpg",
-      publicId: "local/corporate-welcome-basket",
-      alt: "Corporate floral gift",
-    },
-    gallery: [],
-    priceType: "starting",
-    basePrice: 95,
-    productOptions: [],
-    sizeOptions: [],
-    colorPaletteOptions: [],
-    addOns: [],
-    availability: "made_to_order",
-    leadTime: "3–5 business days for subscriptions",
-    isFeatured: true,
-    isBestseller: false,
-    isRiwaaz: false,
-    status: "published",
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-  {
-    _id: "demo-special-occasion",
-    name: "Special Occasion Flowers",
-    slug: "special-occasion-florals",
-    shortDescription:
-      "Anniversary, graduation, or just because — bespoke arrangements for life's meaningful moments.",
-    fullDescription:
-      "<p>Our expert florists will create a bespoke arrangement just for you. Share your vision and we will bring it to life.</p>",
-    occasionTags: ["Anniversaries", "Congratulations", "Just Because"],
-    mainImage: {
-      url: "/products/champagne-rose-box.jpg",
-      publicId: "local/special-occasion",
-      alt: "Special occasion florals",
-    },
-    gallery: [],
-    priceType: "starting",
-    basePrice: 80,
-    productOptions: [],
-    sizeOptions: [],
-    colorPaletteOptions: [],
-    addOns: [],
-    availability: "in_stock",
-    isFeatured: false,
-    isBestseller: false,
-    isRiwaaz: false,
-    status: "published",
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-  {
-    _id: "demo-ritual-bloom-tray",
-    name: "Bangle Bouquets & Celebration Trays",
-    slug: "ritual-bloom-tray",
-    shortDescription:
-      "Riwaaz Collection — floral bangle bouquets, sweets trays, potlis, and celebration baskets, fully customized.",
-    fullDescription:
-      "<p>The Riwaaz Collection honours tradition while embracing a modern, elegant touch. Products include bangle bouquets, sweets trays, potlis, and celebration baskets — tailored to your event, vision, and colours.</p>",
-    occasionTags: ["Cultural Celebrations", "Weddings"],
-    mainImage: {
-      url: "/products/ritual-bloom-tray.jpg",
-      publicId: "local/ritual-bloom-tray",
-      alt: "Riwaaz celebration tray",
-    },
-    gallery: [],
-    priceType: "starting",
-    basePrice: 125,
-    productOptions: [],
-    sizeOptions: [],
-    colorPaletteOptions: [],
-    addOns: [],
-    availability: "made_to_order",
-    leadTime: "2–3 weeks advance notice",
-    isFeatured: true,
-    isBestseller: false,
-    isRiwaaz: true,
-    status: "published",
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-  {
-    _id: "demo-roka-shagun",
-    name: "Roka & Shagun Tray",
-    slug: "roka-shagun-tray",
-    shortDescription: "Meaningful florals for Roka and Shagun ceremonies — customized to your family traditions.",
-    fullDescription:
-      "<p>In every celebration, flowers symbolize purity, blessings, and new beginnings. We design each tray to feel personal, meaningful, and unforgettable.</p>",
-    occasionTags: ["Roka", "Shagun", "Cultural Celebrations"],
-    mainImage: {
-      url: "/products/roka-shagun-tray.jpg",
-      publicId: "local/roka-shagun-tray",
-      alt: "Roka Shagun floral tray",
-    },
-    gallery: [],
-    priceType: "starting",
-    basePrice: 135,
-    productOptions: [],
-    sizeOptions: [],
-    colorPaletteOptions: [],
-    addOns: [],
-    availability: "made_to_order",
-    isFeatured: false,
-    isBestseller: false,
-    isRiwaaz: true,
-    status: "published",
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-  {
-    _id: "demo-mehndi",
-    name: "Mehndi Celebration Tray",
-    slug: "mehndi-celebration-tray",
-    shortDescription: "Vibrant florals for mehndi celebrations — colours and styling tailored to your event.",
-    fullDescription:
-      "<p>Whether it is mehndi, wedding, or a special family celebration, every detail is designed to honour your heritage with elegance.</p>",
-    occasionTags: ["Mehndi", "Cultural Celebrations"],
-    mainImage: {
-      url: "/products/mehndi-celebration-tray.jpg",
-      publicId: "local/mehndi-celebration-tray",
-      alt: "Mehndi celebration floral tray",
-    },
-    gallery: [],
-    priceType: "starting",
-    basePrice: 130,
-    productOptions: [],
-    sizeOptions: [],
-    colorPaletteOptions: [],
-    addOns: [],
-    availability: "made_to_order",
-    isFeatured: false,
-    isBestseller: false,
-    isRiwaaz: true,
-    status: "published",
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-  {
-    _id: "demo-wedding-gifting",
-    name: "Wedding Gifting Tray",
-    slug: "wedding-gifting-tray",
-    shortDescription: "Luxury wedding gifting presentations from the Riwaaz Collection.",
-    fullDescription:
-      "<p>Thoughtfully designed trays and baskets for wedding celebrations — reimagined with fresh florals and refined finishing.</p>",
-    occasionTags: ["Weddings", "Cultural Celebrations"],
-    mainImage: {
-      url: "/products/wedding-gifting-tray.jpg",
-      publicId: "local/wedding-gifting-tray",
-      alt: "Wedding gifting floral tray",
-    },
-    gallery: [],
-    priceType: "starting",
-    basePrice: 145,
-    productOptions: [],
-    sizeOptions: [],
-    colorPaletteOptions: [],
-    addOns: [],
-    availability: "made_to_order",
-    isFeatured: false,
-    isBestseller: false,
-    isRiwaaz: true,
-    status: "published",
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-  {
-    _id: "demo-heritage-bloom",
-    name: "Heritage Bloom Tray",
-    slug: "heritage-bloom-tray",
-    shortDescription: "Celebrate culture and family traditions with a fully customized Riwaaz presentation.",
-    fullDescription:
-      "<p>Riwaaz means tradition — and every culture, family, and individual has traditions worth celebrating. Let us connect and create it together.</p>",
-    occasionTags: ["Cultural Celebrations", "Weddings"],
-    mainImage: {
-      url: "/products/heritage-bloom-tray.jpg",
-      publicId: "local/heritage-bloom-tray",
-      alt: "Heritage bloom celebration tray",
-    },
-    gallery: [],
-    priceType: "starting",
-    basePrice: 140,
-    productOptions: [],
-    sizeOptions: [],
-    colorPaletteOptions: [],
-    addOns: [],
-    availability: "made_to_order",
-    isFeatured: false,
-    isBestseller: false,
-    isRiwaaz: true,
-    status: "published",
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-];
 
 export type DemoProductFilters = {
   occasion?: string;
@@ -367,7 +297,9 @@ function filterDemoProducts(filters: DemoProductFilters = {}): DemoProduct[] {
   return items;
 }
 
-export function getDemoShopProducts(filters?: DemoProductFilters & { page?: number; pageSize?: number }): DemoProduct[] {
+export function getDemoShopProducts(
+  filters?: DemoProductFilters & { page?: number; pageSize?: number }
+): DemoProduct[] {
   const items = filterDemoProducts(filters);
   const page = filters?.page ?? 1;
   const pageSize = filters?.pageSize ?? 12;
@@ -379,10 +311,11 @@ export function getDemoShopProductsTotal(filters?: DemoProductFilters): number {
   return filterDemoProducts(filters).length;
 }
 
-/** Legacy slug redirect support */
 export function getDemoProductBySlug(slug: string): DemoProduct | undefined {
-  if (slug === "blush-garden") {
-    return DEMO_SHOP_PRODUCTS.find((p) => p.slug === "your-love-story");
-  }
   return DEMO_SHOP_PRODUCTS.find((p) => p.slug === slug);
 }
+
+/** Slugs for MongoDB seed — keep in sync with demo catalog */
+export const WEBSITE_CATALOG_SLUGS = CATALOG.map((p) => p.slug);
+
+export { CATALOG as WEBSITE_PRODUCT_CATALOG };

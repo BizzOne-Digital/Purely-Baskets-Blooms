@@ -9,11 +9,13 @@ const SITE_URL = getSiteUrl();
 const staticRoutes = [
   '',
   '/shop',
+  '/business-subcriptions',
   '/riwaaz',
   '/event-florals',
   '/services',
   '/about',
   '/booking',
+  '/customize',
   '/contact',
   '/privacy',
   '/terms',

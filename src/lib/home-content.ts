@@ -1,4 +1,12 @@
-export const HOME_HERO_IMAGE = "/home/hero.jpg";
+export const HOME_HERO_IMAGES = [
+  "/home/hero-1.jpg",
+  "/home/hero-2.jpg",
+  "/home/hero-3.jpg",
+  "/home/hero-4.jpg",
+] as const;
+
+/** @deprecated Use HOME_HERO_IMAGES */
+export const HOME_HERO_IMAGE = HOME_HERO_IMAGES[0];
 
 export const HOME_CATEGORIES = [
   "Birthdays",

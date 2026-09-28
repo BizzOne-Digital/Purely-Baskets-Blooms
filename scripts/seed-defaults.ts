@@ -4,6 +4,8 @@
  * Usage: npx tsx scripts/seed-defaults.ts
  */
 
+import './load-env';
+
 import { connectDB } from '../src/lib/mongodb';
 import { SiteSettings, Category, Collection } from '../src/models';
 import { OCCASIONS } from '../src/lib/constants';
