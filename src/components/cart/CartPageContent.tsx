@@ -31,7 +31,7 @@ export function CartPageContent() {
 
   return (
     <EditorialBackdrop variant="shop">
-      <section className="mx-auto max-w-7xl px-4 py-14 md:px-8 md:py-20">
+      <section className="mx-auto min-w-0 w-full max-w-7xl px-4 py-14 md:px-8 md:py-20">
         {items.length === 0 ? (
           <RevealOnScroll className="py-16 text-center">
             <ShoppingBag className="mx-auto h-12 w-12 text-blush" />

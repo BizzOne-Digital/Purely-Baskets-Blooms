@@ -83,7 +83,7 @@ export function BookingForm() {
 
   return (
     <>
-      <section className="border-b border-deep-ink/10 bg-ivory">
+      <section className="w-full max-w-full overflow-x-hidden border-b border-deep-ink/10 bg-ivory">
         <div className="mx-auto max-w-3xl px-4 py-12 text-center md:px-8 md:py-16">
           <DisplayHeading as="h1" size="page" className="text-deep-berry">
             Custom Florals — bringing your vision to life
@@ -95,7 +95,7 @@ export function BookingForm() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-14 md:px-8 md:py-20">
+      <section className="mx-auto w-full min-w-0 max-w-7xl overflow-x-hidden px-4 py-14 md:px-8 md:py-20">
         <div className="mx-auto max-w-3xl">
           <div className="mb-8 space-y-4 rounded-2xl border border-deep-ink/10 bg-blush/25 p-5 text-sm text-deep-ink/75">
             <p>

@@ -24,10 +24,10 @@ export function Footer({ settings }: FooterProps) {
   const instagram = settings.instagramUrl ?? BRAND.instagramUrl;
 
   return (
-    <footer className="mt-auto w-full max-w-full border-t border-deep-ink/10 bg-pure-white">
-      <div className="mx-auto flex max-w-7xl flex-col gap-8 px-4 py-10 md:flex-row md:items-start md:justify-between md:px-8 md:py-12">
-        <Link href="/" className="inline-block">
-          <BrandWordmark variant="footer" />
+    <footer className="mt-auto w-full max-w-full overflow-x-hidden border-t border-deep-ink/10 bg-pure-white">
+      <div className="mx-auto flex min-w-0 max-w-7xl flex-col gap-8 px-4 py-10 md:flex-row md:items-start md:justify-between md:px-8 md:py-12">
+        <Link href="/" className="inline-block min-w-0 max-w-full">
+          <BrandWordmark variant="footer" className="max-w-full text-2xl sm:text-3xl md:text-4xl" />
         </Link>
 
         <nav className="flex flex-wrap gap-x-6 gap-y-2 text-sm font-medium uppercase tracking-[0.12em] text-deep-ink/70">

@@ -38,7 +38,7 @@ export function Header() {
 
   const navLinkClass = (href: string) =>
     cn(
-      "text-[11px] font-medium uppercase tracking-[0.22em] text-deep-ink/75 transition-colors hover:text-deep-berry",
+      "whitespace-nowrap text-[10px] font-medium uppercase tracking-[0.16em] text-deep-ink/75 transition-colors hover:text-deep-berry lg:text-[11px] lg:tracking-[0.2em]",
       isActive(href) && "text-deep-berry"
     );
 
@@ -46,42 +46,57 @@ export function Header() {
     <>
       <header
         className={cn(
-          "fixed inset-x-0 top-0 z-50 w-full max-w-full overflow-x-clip border-b border-deep-ink/8 bg-pure-white transition-shadow",
+          "fixed inset-x-0 top-0 z-50 w-full max-w-full overflow-x-hidden border-b border-deep-ink/8 bg-pure-white transition-shadow",
           scrolled && "shadow-sm shadow-black/5"
         )}
       >
-        <div className="mx-auto grid w-full min-w-0 max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-2 px-3 py-3.5 md:grid-cols-[1fr_auto_1fr] md:gap-6 md:px-8 md:py-5">
-          <nav
-            className="hidden min-w-0 items-center gap-6 md:flex lg:gap-10"
-            aria-label="Primary left"
-          >
-            {leftNav.map((item) => (
-              <Link key={item.href} href={item.href} className={navLinkClass(item.href)}>
-                {item.href === "/" && isActive("/") ? (
-                  <span className="inline-flex items-center gap-1.5">
-                    <span className="text-deep-ink/40" aria-hidden>
-                      −
-                    </span>
-                    {item.label}
-                  </span>
-                ) : (
-                  item.label
-                )}
-              </Link>
-            ))}
-          </nav>
-
-          <div className="flex min-w-0 justify-center px-0.5 md:justify-self-center">
-            <Link href="/" className="min-w-0 text-center">
+        <div className="relative mx-auto flex h-[4.25rem] max-w-7xl items-center justify-between px-3 md:h-24 md:px-6 lg:px-8">
+          {/* Left: mobile wordmark + desktop nav */}
+          <div className="flex min-w-0 flex-1 items-center md:justify-end md:pr-[clamp(5.5rem,16vw,11.5rem)] lg:pr-[clamp(6.5rem,18vw,12.5rem)]">
+            <Link href="/" className="block min-w-0 max-w-[calc(100vw-6.25rem)] md:hidden">
               <BrandWordmark
                 variant="header"
-                className="text-[1.35rem] sm:text-4xl md:text-[2.35rem] lg:text-[2.65rem]"
+                className="text-[clamp(0.9rem,3.8vw,1.2rem)] leading-none"
               />
             </Link>
+            <nav
+              className="hidden items-center gap-5 md:flex lg:gap-8 xl:gap-10"
+              aria-label="Primary left"
+            >
+              {leftNav.map((item) => (
+                <Link key={item.href} href={item.href} className={navLinkClass(item.href)}>
+                  {item.href === "/" && isActive("/") ? (
+                    <span className="inline-flex items-center gap-1.5">
+                      <span className="text-deep-ink/40" aria-hidden>
+                        −
+                      </span>
+                      {item.label}
+                    </span>
+                  ) : (
+                    item.label
+                  )}
+                </Link>
+              ))}
+            </nav>
           </div>
 
-          <div className="flex min-w-0 items-center justify-end gap-0.5 sm:gap-1 md:gap-2">
-            <nav className="hidden items-center gap-6 md:flex lg:gap-10" aria-label="Primary right">
+          {/* Center wordmark (desktop) — absolute so side nav never overlaps */}
+          <Link
+            href="/"
+            className="pointer-events-none absolute left-1/2 top-1/2 hidden max-w-[min(92vw,22rem)] -translate-x-1/2 -translate-y-1/2 md:pointer-events-auto md:block lg:max-w-none"
+          >
+            <BrandWordmark
+              variant="header"
+              className="whitespace-nowrap text-[1.55rem] leading-none lg:text-[2rem] xl:text-[2.35rem]"
+            />
+          </Link>
+
+          {/* Right: nav + utilities */}
+          <div className="flex min-w-0 flex-1 items-center justify-end gap-0.5 sm:gap-1 md:justify-start md:pl-[clamp(5.5rem,16vw,11.5rem)] lg:pl-[clamp(6.5rem,18vw,12.5rem)]">
+            <nav
+              className="mr-1 hidden min-w-0 items-center gap-3 md:flex lg:gap-5 xl:gap-8"
+              aria-label="Primary right"
+            >
               {rightNav.map((item) => (
                 <Link key={item.href} href={item.href} className={navLinkClass(item.href)}>
                   {item.label}
@@ -92,7 +107,7 @@ export function Header() {
             <button
               type="button"
               onClick={openSearch}
-              className="hidden h-10 w-10 items-center justify-center text-deep-ink/70 transition-colors hover:text-deep-berry sm:flex"
+              className="hidden h-10 w-10 shrink-0 items-center justify-center text-deep-ink/70 transition-colors hover:text-deep-berry lg:flex"
               aria-label="Search"
             >
               <Search className="h-[1.125rem] w-[1.125rem] stroke-[1.5]" />
@@ -101,7 +116,7 @@ export function Header() {
             <button
               type="button"
               onClick={openCart}
-              className="relative flex h-10 w-10 items-center justify-center text-deep-ink/70 transition-colors hover:text-deep-berry"
+              className="relative flex h-10 w-10 shrink-0 items-center justify-center text-deep-ink/70 transition-colors hover:text-deep-berry"
               aria-label={`Cart, ${isHydrated ? itemCount : 0} items`}
             >
               <ShoppingBag className="h-[1.125rem] w-[1.125rem] stroke-[1.5]" />
@@ -115,7 +130,7 @@ export function Header() {
             <button
               type="button"
               onClick={() => setMobileOpen(true)}
-              className="flex h-10 w-10 items-center justify-center text-deep-ink md:hidden"
+              className="flex h-10 w-10 shrink-0 items-center justify-center text-deep-ink md:hidden"
               aria-label="Open menu"
             >
               <Menu className="h-5 w-5" />

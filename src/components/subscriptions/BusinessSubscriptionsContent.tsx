@@ -16,8 +16,8 @@ export function BusinessSubscriptionsContent() {
 
   return (
     <>
-      <section className="border-b border-deep-ink/10 bg-ivory">
-        <div className="mx-auto max-w-3xl px-4 py-14 text-center md:px-8 md:py-20">
+      <section className="w-full max-w-full overflow-x-hidden border-b border-deep-ink/10 bg-ivory">
+        <div className="mx-auto min-w-0 w-full max-w-3xl px-4 py-14 text-center md:px-8 md:py-20">
           <DisplayHeading as="h1" size="page" className="text-deep-berry">
             {intro.title}
           </DisplayHeading>
@@ -47,7 +47,7 @@ export function BusinessSubscriptionsContent() {
               <div className="flower-surface relative aspect-[4/3]">
                 <Image
                   src={plan.image}
-                  alt=""
+                  alt={plan.title}
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 33vw"
@@ -92,7 +92,7 @@ export function BusinessSubscriptionsContent() {
               <div className="flower-surface relative aspect-[16/10]">
                 <Image
                   src={service.image}
-                  alt=""
+                  alt={service.title}
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 50vw"

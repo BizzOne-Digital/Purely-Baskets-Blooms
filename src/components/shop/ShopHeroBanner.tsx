@@ -3,8 +3,8 @@ import { DisplayHeading } from "@/components/ui/DisplayHeading";
 
 export function ShopHeroBanner() {
   return (
-    <section className="border-b border-deep-ink/10 bg-ivory">
-      <div className="mx-auto grid max-w-7xl items-center gap-8 px-4 py-12 md:grid-cols-2 md:px-8 md:py-16">
+    <section className="w-full max-w-full overflow-x-hidden border-b border-deep-ink/10 bg-ivory">
+      <div className="mx-auto grid min-w-0 w-full max-w-7xl grid-cols-1 items-center gap-8 px-4 py-12 md:grid-cols-2 md:px-8 md:py-16">
         <div>
           <DisplayHeading as="h1" size="page" className="text-deep-berry">
             Shop Flowers &amp; Gifts

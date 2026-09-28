@@ -32,8 +32,8 @@ function heroCopy(settings: SerializedSiteSettings) {
 
 export function HeroSection({ settings }: HeroSectionProps) {
   return (
-    <section className="relative -mt-[4.25rem] w-full max-w-full overflow-hidden border-b border-deep-ink/10 bg-pure-white md:-mt-24">
-      <div className="relative mx-auto min-h-[min(72vh,640px)] max-w-7xl md:min-h-[min(78vh,680px)]">
+    <section className="relative -mt-[4.25rem] w-full max-w-full overflow-x-hidden border-b border-deep-ink/10 bg-pure-white md:-mt-24">
+      <div className="relative mx-auto min-h-[min(74vh,660px)] max-w-7xl md:min-h-[min(80vh,720px)]">
         <HeroSectionClient images={HOME_HERO_IMAGES} hero={heroCopy(settings)} />
       </div>
     </section>

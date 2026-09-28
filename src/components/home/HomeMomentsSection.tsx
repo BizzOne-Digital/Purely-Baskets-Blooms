@@ -23,8 +23,8 @@ const MOMENTS = [
 
 export function HomeMomentsSection() {
   return (
-    <section className="border-b border-deep-ink/10 bg-pure-white py-14 md:py-20">
-      <div className="mx-auto max-w-7xl px-4 md:px-8">
+    <section className="w-full max-w-full overflow-x-hidden border-b border-deep-ink/10 bg-pure-white py-14 md:py-20">
+      <div className="mx-auto min-w-0 w-full max-w-7xl px-4 md:px-8">
         <div className="text-center">
           <DisplayHeading as="h2" size="section" className="text-deep-berry">
             Made for your moments

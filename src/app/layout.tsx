@@ -77,9 +77,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${playfair.variable} ${cormorant.variable} ${dmSans.variable} ${greatVibes.variable} h-full w-full overflow-x-clip antialiased`}
+      className={`${playfair.variable} ${cormorant.variable} ${dmSans.variable} ${greatVibes.variable} h-full w-full overflow-x-hidden antialiased`}
     >
-      <body className="flex min-h-full w-full max-w-full flex-col overflow-x-clip bg-pure-white font-sans text-deep-ink">
+      <body className="flex min-h-full w-full max-w-full flex-col overflow-x-hidden bg-pure-white font-sans text-deep-ink">
         <AppProviders>{children}</AppProviders>
       </body>
     </html>

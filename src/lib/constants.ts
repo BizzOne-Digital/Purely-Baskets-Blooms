@@ -251,7 +251,6 @@ export const STOREFRONT_NAV = [
   { label: "Shop", href: "/shop" },
   { label: "Subscriptions", href: "/business-subcriptions" },
   { label: "Customize", href: "/customize" },
-  { label: "Custom Florals", href: "/booking" },
   { label: "Contact", href: "/contact" },
 ] as const;
 

@@ -24,13 +24,11 @@ function HeroSlides({
   activeIndex,
   sizes,
   className,
-  withGradient,
 }: {
   images: readonly string[];
   activeIndex: number;
   sizes: string;
   className?: string;
-  withGradient?: boolean;
 }) {
   return (
     <div className={`relative h-full w-full ${className ?? ""}`}>
@@ -41,18 +39,12 @@ function HeroSlides({
           alt={i === activeIndex ? "Floral arrangement" : ""}
           fill
           priority={i === 0}
-          className={`object-cover object-center transition-opacity duration-1000 ease-in-out ${
+          className={`object-cover object-right transition-opacity duration-1000 ease-in-out ${
             i === activeIndex ? "opacity-100" : "opacity-0"
           }`}
           sizes={sizes}
         />
       ))}
-      {withGradient ? (
-        <div
-          className="pointer-events-none absolute inset-0 bg-gradient-to-r from-pure-white via-pure-white/85 to-transparent"
-          aria-hidden
-        />
-      ) : null}
     </div>
   );
 }
@@ -70,43 +62,44 @@ export function HeroSectionClient({ images, hero }: HeroSectionClientProps) {
 
   return (
     <>
-      <div className="absolute inset-y-0 right-0 hidden w-[55%] md:block lg:w-[58%]">
+      <div className="absolute bottom-5 right-0 top-[4.75rem] hidden w-[54%] md:block md:top-[5.25rem] md:bottom-8 lg:top-[5.75rem] lg:w-[56%]">
         <HeroSlides
           images={images}
           activeIndex={activeIndex}
           sizes="60vw"
-          withGradient
         />
       </div>
 
-      <div className="relative z-10 flex min-h-[min(72vh,640px)] flex-col px-4 pb-10 pt-[5.5rem] md:min-h-[min(78vh,680px)] md:max-w-[46%] md:justify-start md:pb-14 md:pl-8 md:pr-4 md:pt-[6.75rem] lg:pt-28">
-        <h1 className="font-display text-[1.85rem] font-semibold leading-[1.15] text-deep-berry sm:text-4xl md:text-[2.65rem] lg:text-[2.85rem]">
+      <div className="relative z-10 flex min-h-[min(72vh,640px)] w-full max-w-full min-w-0 flex-col px-4 pb-10 pt-[6.25rem] md:min-h-[min(78vh,680px)] md:max-w-[46%] md:justify-start md:pb-16 md:pl-8 md:pr-4 md:pt-[7.5rem] lg:pt-[8.25rem]">
+        <h1 className="max-w-full break-words font-display text-[1.65rem] font-semibold leading-[1.15] text-deep-berry sm:text-[1.85rem] md:text-[2.65rem] lg:text-[2.85rem]">
           {hero.heading}
         </h1>
         <p className="mt-4 max-w-md text-base leading-relaxed text-deep-ink/65 md:mt-5 md:text-lg">
           {hero.subheading}
         </p>
-        <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center md:mt-8">
-          <Link href={hero.primaryCtaHref}>
-            <Button size="lg" className="w-full min-w-[11rem] sm:w-auto">
+        <div className="mt-7 flex w-full max-w-full min-w-0 flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center md:mt-8">
+          <Link href={hero.primaryCtaHref} className="w-full min-w-0 sm:w-auto">
+            <Button size="lg" className="w-full max-w-full sm:w-auto sm:min-w-[11rem]">
               {hero.primaryCtaLabel}
             </Button>
           </Link>
-          <Link href={hero.secondaryCtaHref} className="w-full sm:w-auto">
-            <Button size="lg" variant="outline" className="w-full sm:w-auto">
+          <Link href={hero.secondaryCtaHref} className="w-full min-w-0 sm:w-auto">
+            <Button size="lg" variant="outline" className="w-full max-w-full sm:w-auto">
               {hero.secondaryCtaLabel}
             </Button>
           </Link>
         </div>
       </div>
 
-      <div className="relative mx-4 mb-8 aspect-[4/3] overflow-hidden rounded-sm md:hidden">
-        <HeroSlides
-          images={images}
-          activeIndex={activeIndex}
-          sizes="100vw"
-          className="absolute inset-0"
-        />
+      <div className="w-full max-w-full min-w-0 px-4 pb-8 md:hidden">
+        <div className="relative aspect-[4/3] w-full max-w-full overflow-hidden rounded-sm">
+          <HeroSlides
+            images={images}
+            activeIndex={activeIndex}
+            sizes="(max-width: 768px) 100vw"
+            className="absolute inset-0"
+          />
+        </div>
       </div>
     </>
   );

@@ -19,7 +19,7 @@ export function EditorialBackdrop({
   variant = "default",
 }: EditorialBackdropProps) {
   return (
-    <div className={cn("relative w-full max-w-full overflow-x-clip", className)}>
+    <div className={cn("relative isolate w-full max-w-full overflow-hidden", className)}>
       <div
         className={cn(
           "pointer-events-none absolute inset-0 bg-gradient-to-br",
@@ -27,10 +27,19 @@ export function EditorialBackdrop({
         )}
         aria-hidden
       />
-      <div className="editorial-botanical-lines pointer-events-none absolute inset-0 opacity-40" aria-hidden />
-      <div className="editorial-fabric-swash pointer-events-none absolute -right-24 top-0 h-[420px] w-[420px] opacity-60" aria-hidden />
-      <div className="editorial-fabric-swash pointer-events-none absolute -bottom-32 -left-20 h-[360px] w-[360px] rotate-180 opacity-50" aria-hidden />
-      <div className="relative">{children}</div>
+      <div
+        className="editorial-botanical-lines pointer-events-none absolute inset-0 opacity-40"
+        aria-hidden
+      />
+      <div
+        className="editorial-fabric-swash pointer-events-none absolute right-0 top-0 hidden h-[min(420px,70vw)] w-[min(420px,70vw)] translate-x-1/3 opacity-60 sm:block"
+        aria-hidden
+      />
+      <div
+        className="editorial-fabric-swash pointer-events-none absolute bottom-0 left-0 hidden h-[min(360px,65vw)] w-[min(360px,65vw)] -translate-x-1/4 translate-y-1/4 rotate-180 opacity-50 sm:block"
+        aria-hidden
+      />
+      <div className="relative min-w-0 max-w-full">{children}</div>
     </div>
   );
 }

@@ -21,14 +21,14 @@ export const SUBSCRIPTION_PLANS = [
     id: "office-fresh",
     title: "Office Fresh",
     frequency: "1 arrangement per month",
-    image: "/home/service-corporate.jpg",
+    image: "/subscriptions/office-fresh.jpg",
     highlight: false,
   },
   {
     id: "client-impression",
     title: "Client Impression",
     frequency: "Bi-weekly — 2 arrangements per month",
-    image: "/home/occasion-corporate.jpg",
+    image: "/subscriptions/client-impression.jpg",
     highlight: true,
     showBenefits: true,
   },
@@ -36,7 +36,7 @@ export const SUBSCRIPTION_PLANS = [
     id: "corporate-elegance",
     title: "Corporate Elegance",
     frequency: "4 arrangements per month",
-    image: "/pages/services/02-corporate.jpg",
+    image: "/subscriptions/corporate-elegance.jpg",
     highlight: false,
   },
 ] as const;
@@ -50,7 +50,7 @@ export const SUBSCRIPTION_SERVICES = [
       "Thoughtful gifts that strengthen professional relationships",
       "Custom designs available upon request",
     ],
-    image: "/products/corporate-welcome-basket.jpg",
+    image: "/subscriptions/corporate-gift-giving.jpg",
   },
   {
     id: "employee-appreciation",
@@ -60,6 +60,6 @@ export const SUBSCRIPTION_SERVICES = [
       "Ideal for recognition, gratitude, and special moments",
       "Handcrafted designs created with care",
     ],
-    image: "/home/banner-corporate.jpg",
+    image: "/subscriptions/employee-appreciation.jpg",
   },
 ] as const;

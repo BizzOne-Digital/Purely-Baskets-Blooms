@@ -59,7 +59,7 @@ export function CustomizeForm() {
 
   return (
     <>
-      <section className="border-b border-deep-ink/10 bg-ivory">
+      <section className="w-full max-w-full overflow-x-hidden border-b border-deep-ink/10 bg-ivory">
         <div className="mx-auto max-w-3xl px-4 py-12 text-center md:px-8 md:py-16">
           <DisplayHeading as="h1" size="page" className="text-deep-berry">
             Customize your florals
@@ -71,7 +71,7 @@ export function CustomizeForm() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-3xl px-4 py-14 md:px-8 md:py-20">
+      <section className="mx-auto w-full min-w-0 max-w-3xl overflow-x-hidden px-4 py-14 md:px-8 md:py-20">
         <div
           className="mb-8 rounded-2xl border border-deep-berry/25 bg-deep-berry/5 p-5 text-sm text-deep-ink/85"
           role="note"

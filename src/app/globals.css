@@ -63,7 +63,7 @@
 
 html {
   scroll-behavior: auto;
-  overflow-x: clip;
+  overflow-x: hidden;
   width: 100%;
   max-width: 100%;
   background: var(--pure-white);
@@ -98,7 +98,7 @@ body {
   font-family: var(--font-dm-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: clip;
+  overflow-x: hidden;
   width: 100%;
   max-width: 100%;
   min-width: 0;
@@ -118,7 +118,12 @@ svg {
   width: 100%;
   max-width: 100%;
   min-width: 0;
-  overflow-x: clip;
+  overflow-x: hidden;
+}
+
+.storefront-main > * {
+  max-width: 100%;
+  min-width: 0;
 }
 
 /* White surface for floral product photography */
