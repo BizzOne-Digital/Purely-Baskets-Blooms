@@ -11,6 +11,8 @@ const staticRoutes = [
   '/shop',
   '/business-subcriptions',
   '/riwaaz',
+  '/sympathy',
+  '/sacred-spaces',
   '/event-florals',
   '/services',
   '/about',

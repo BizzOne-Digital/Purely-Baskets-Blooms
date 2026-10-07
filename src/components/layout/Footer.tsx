@@ -11,6 +11,9 @@ interface FooterProps {
 const FOOTER_LINKS = [
   { label: "Home", href: "/" },
   { label: "Shop", href: "/shop" },
+  { label: "Riwaaz", href: "/riwaaz" },
+  { label: "Sympathy", href: "/sympathy" },
+  { label: "Sacred Spaces", href: "/sacred-spaces" },
   { label: "Customize", href: "/customize" },
   { label: "Subscriptions", href: "/business-subcriptions" },
   { label: "Custom Florals", href: "/booking" },

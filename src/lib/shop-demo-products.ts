@@ -27,6 +27,10 @@ const LOCAL_PRODUCT_IMAGES: Record<string, string> = {
   "golden-radiance": "/products/golden-radiance.jpg",
   "lily-luxe": "/products/lily-luxe.jpg",
   "radiant-tulip-symphony": "/products/radiant-tulip-symphony.jpg",
+  "bangle-flower-bouquet": "/products/bangle-flower-bouquet.jpg",
+  "petals-of-affection": "/products/petals-of-affection.jpg",
+  "elegant-harmony": "/products/elegant-harmony.jpg",
+  "pink-lily-haven": "/products/pink-lily-haven.jpg",
 };
 
 const PLACEHOLDER_DETAIL =
@@ -40,9 +44,55 @@ type CatalogRow = {
   basePrice: number;
   occasionTags: string[];
   isFeatured?: boolean;
+  isRiwaaz?: boolean;
 };
 
 const CATALOG: CatalogRow[] = [
+  {
+    name: "Bangle Flower Bouquet",
+    slug: "bangle-flower-bouquet",
+    shortDescription:
+      "A ceremonial bangle bouquet with pink roses, marigolds, and baby's breath — wrapped with our signature touch.",
+    fullDescription:
+      "<p>Traditional bangles nestled in fresh florals, perfect for mehndi, roka, and family celebrations. Fully customizable to your colours and vision.</p>",
+    basePrice: 165,
+    occasionTags: ["Cultural Celebrations", "Mehndi", "Weddings", "Just Because"],
+    isFeatured: true,
+    isRiwaaz: true,
+  },
+  {
+    name: "Petals of Affection",
+    slug: "petals-of-affection",
+    shortDescription:
+      "Soft cream roses and blush carnations wrapped in pale pink paper with a gold-trimmed bow.",
+    fullDescription:
+      "<p>A romantic hand-tied bouquet of cream roses and blush carnations — ideal for anniversaries, birthdays, or simply showing you care.</p>",
+    basePrice: 145,
+    occasionTags: ["Anniversaries", "Birthdays", "Just Because"],
+    isFeatured: true,
+  },
+  {
+    name: "Elegant Harmony",
+    slug: "elegant-harmony",
+    shortDescription:
+      "White orchids, lilies, and peach spray roses in an elegant wrapped bouquet.",
+    fullDescription:
+      "<p>White orchids and lilies with peach spray roses and greenery — a refined gift for any occasion.</p>",
+    basePrice: 180,
+    occasionTags: ["Anniversaries", "Congratulations", "Just Because"],
+    isFeatured: true,
+  },
+  {
+    name: "Pink Lily Haven",
+    slug: "pink-lily-haven",
+    shortDescription:
+      "Pink spray roses and lily buds in a clear vase with satin ribbon accents.",
+    fullDescription:
+      "<p>Pink spray roses and lily buds arranged in a clear vase — a fresh celebration of colour and light.</p>",
+    basePrice: 140,
+    occasionTags: ["Birthdays", "Just Because", "Congratulations"],
+    isFeatured: true,
+  },
   {
     name: "Roses Are Red",
     slug: "roses-are-red",
@@ -240,7 +290,7 @@ function toDemoProduct(row: CatalogRow, index: number): DemoProduct {
     availability: "in_stock",
     isFeatured: row.isFeatured ?? index < 4,
     isBestseller: index < 3,
-    isRiwaaz: false,
+    isRiwaaz: row.isRiwaaz ?? false,
     status: "published",
     createdAt: new Date("2026-01-01"),
     updatedAt: new Date("2026-01-01"),

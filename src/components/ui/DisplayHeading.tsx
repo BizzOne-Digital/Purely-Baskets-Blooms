@@ -27,7 +27,7 @@ export function DisplayHeading({
   return (
     <Tag
       className={cn(
-        "font-display font-semibold text-gold-light break-words",
+        "font-display font-semibold text-neutral-950 break-words",
         italic && "italic",
         sizeClasses[size],
         className

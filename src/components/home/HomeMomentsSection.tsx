@@ -3,9 +3,10 @@ import { ArrowRight } from "lucide-react";
 import { DisplayHeading } from "@/components/ui/DisplayHeading";
 
 const MOMENTS = [
-  { title: "Occasion Flowers", href: "/shop?occasion=Birthdays" },
-  { title: "Gift Baskets", href: "/shop" },
-  { title: "Sacred Spaces", href: "/shop?occasion=Sympathy" },
+  { title: "Shop All", href: "/shop" },
+  { title: "Sympathy Flowers", href: "/sympathy" },
+  { title: "Riwaaz Collection", href: "/riwaaz" },
+  { title: "Sacred Spaces", href: "/sacred-spaces" },
 ] as const;
 
 export function HomeMomentsSection() {
@@ -19,7 +20,7 @@ export function HomeMomentsSection() {
           <div className="mx-auto mt-4 h-px w-12 bg-marigold/60" aria-hidden />
         </div>
 
-        <ul className="mt-10 grid gap-4 md:grid-cols-3 md:gap-6">
+        <ul className="mt-10 grid gap-4 sm:grid-cols-2 md:grid-cols-4 md:gap-6">
           {MOMENTS.map((item) => (
             <li key={item.title}>
               <Link

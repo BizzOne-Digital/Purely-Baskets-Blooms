@@ -1,11 +1,11 @@
-import { RiwaazPageHero } from "@/components/riwaaz/RiwaazPageHero";
+import { RiwaazPageContent } from "@/components/riwaaz/RiwaazPageContent";
 
 export const metadata = {
   title: "The Riwaaz Collection | Purely Baskets & Blooms",
   description:
-    "Celebrate heritage with our Riwaaz collection — floral arrangements for Roka, Mehndi, Shagun, and South Asian weddings.",
+    "Indian-inspired florals — bangle bouquets, ceremonial trays, mehndi gifting, and celebration baskets, fully customized for your event.",
 };
 
 export default function RiwaazPage() {
-  return <RiwaazPageHero />;
+  return <RiwaazPageContent />;
 }

@@ -3,7 +3,7 @@
 export const ORDER_TIMELINE = {
   headline: "Planning timeline & advance notice",
   standard:
-    "Everyday shop orders: please order at least 24–48 hours before your preferred delivery date so we can source the freshest blooms.",
+    "All orders require at least 48 hours notice before your preferred delivery date so we can source the freshest blooms and prepare your arrangement with care.",
   custom:
     "Custom floral designs, weddings, and large installations: we recommend 2–4 weeks notice (or more for peak seasons). Share your date early and we will confirm what is possible.",
   madeToOrder:

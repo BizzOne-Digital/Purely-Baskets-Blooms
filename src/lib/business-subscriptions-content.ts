@@ -1,19 +1,21 @@
-/** Content from https://purelybasketsandblooms.com/business-subcriptions */
+/** Corporate flower subscriptions — storefront copy */
 
 export const BUSINESS_SUBSCRIPTIONS_INTRO = {
-  title: "Business Subscriptions",
+  title: "Corporate Flower Subscriptions",
   lead:
-    "Enhance your office, impress clients, and build a welcoming environment. Ideal for offices, reception areas, or client gifts.",
+    "Bring fresh beauty to your workplace with a flower subscription from Purely Baskets & Blooms. From welcoming reception areas to boardrooms and client spaces, our seasonal arrangements add warmth and leave a lasting impression.",
   secondary:
-    "From classic roses to exotic orchids, we have something for every taste.",
-  pricingNote: "Subscription pricing is customized to your floral preferences.",
+    "Choose weekly, biweekly or monthly deliveries, with designs tailored to your space, style and budget. We take care of the flowers so you can enjoy a beautifully refreshed workplace.",
+  pricingNote: "Contact us to create a subscription that's right for your business.",
+  heroImage: "/pages/corporate/reception-flowers.png",
+  heroImageAlt: "Colleagues celebrating with fresh flowers in a corporate office",
 } as const;
 
 export const SUBSCRIPTION_BENEFITS = [
   "Fresh flowers delivered weekly, bi-weekly, or monthly",
   "Hand-selected seasonal blooms",
-  "FREE delivery",
-  "Flexible subscription — you can pause or change anytime",
+  "FREE delivery in the GTA",
+  "Flexible subscription — pause or change anytime",
 ] as const;
 
 export const SUBSCRIPTION_PLANS = [
@@ -21,14 +23,12 @@ export const SUBSCRIPTION_PLANS = [
     id: "office-fresh",
     title: "Office Fresh",
     frequency: "1 arrangement per month",
-    image: "/subscriptions/office-fresh.jpg",
     highlight: false,
   },
   {
     id: "client-impression",
     title: "Client Impression",
     frequency: "Bi-weekly — 2 arrangements per month",
-    image: "/subscriptions/client-impression.jpg",
     highlight: true,
     showBenefits: true,
   },
@@ -36,7 +36,6 @@ export const SUBSCRIPTION_PLANS = [
     id: "corporate-elegance",
     title: "Corporate Elegance",
     frequency: "4 arrangements per month",
-    image: "/subscriptions/corporate-elegance.jpg",
     highlight: false,
   },
 ] as const;
@@ -50,7 +49,6 @@ export const SUBSCRIPTION_SERVICES = [
       "Thoughtful gifts that strengthen professional relationships",
       "Custom designs available upon request",
     ],
-    image: "/subscriptions/corporate-gift-giving.jpg",
   },
   {
     id: "employee-appreciation",
@@ -60,6 +58,5 @@ export const SUBSCRIPTION_SERVICES = [
       "Ideal for recognition, gratitude, and special moments",
       "Handcrafted designs created with care",
     ],
-    image: "/subscriptions/employee-appreciation.jpg",
   },
 ] as const;

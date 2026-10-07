@@ -41,7 +41,7 @@ function HeroSlides({
           alt={i === activeIndex ? "Floral arrangement" : ""}
           fill
           priority={i === 0}
-          className={`object-cover object-[75%_center] transition-opacity duration-1000 ease-in-out md:object-right ${
+          className={`object-contain object-center bg-ivory p-1 transition-opacity duration-1000 ease-in-out md:object-contain md:p-3 ${
             i === activeIndex ? "opacity-100" : "opacity-0"
           }`}
           sizes={sizes}
@@ -84,10 +84,10 @@ export function HeroSectionClient({ images, hero }: HeroSectionClientProps) {
       </div>
 
       <div className="relative z-10 flex w-full max-w-full min-w-0 flex-col px-5 pb-6 pt-[5.75rem] sm:px-6 md:min-h-[min(78vh,680px)] md:max-w-[46%] md:justify-start md:pb-16 md:pl-8 md:pr-4 md:pt-[7.5rem] lg:pt-[8.25rem]">
-        <h1 className="max-w-full text-balance font-display text-[1.75rem] font-semibold leading-[1.2] text-deep-berry sm:text-[1.85rem] md:text-[2.65rem] md:leading-[1.15] lg:text-[2.85rem]">
+        <h1 className="max-w-full text-balance font-display text-[1.75rem] font-semibold leading-[1.2] text-neutral-950 sm:text-[1.85rem] md:text-[2.65rem] md:leading-[1.15] lg:text-[2.85rem]">
           {hero.heading}
         </h1>
-        <p className="mt-3 max-w-md text-[0.9375rem] leading-relaxed text-deep-ink/65 sm:mt-4 sm:text-base md:mt-5 md:text-lg">
+        <p className="mt-3 max-w-md text-[0.9375rem] leading-relaxed text-neutral-800 sm:mt-4 sm:text-base md:mt-5 md:text-lg">
           {hero.subheading}
         </p>
         <div className="mt-5 flex w-full max-w-full min-w-0 flex-col gap-3 sm:mt-7 sm:flex-row sm:flex-wrap sm:items-center md:mt-8">

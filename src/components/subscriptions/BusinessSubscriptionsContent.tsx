@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Check } from "lucide-react";
 import { DisplayHeading } from "@/components/ui/DisplayHeading";
@@ -16,19 +17,31 @@ export function BusinessSubscriptionsContent() {
   return (
     <>
       <section className="w-full max-w-full overflow-x-hidden border-b border-deep-ink/10 bg-ivory">
-        <div className="mx-auto min-w-0 w-full max-w-3xl px-4 py-14 text-center md:px-8 md:py-20">
-          <DisplayHeading as="h1" size="page" className="text-deep-berry">
-            {intro.title}
-          </DisplayHeading>
-          <p className="mt-6 text-base leading-relaxed text-deep-ink/75 md:text-lg">
-            {intro.lead}
-          </p>
-          <p className="mt-4 text-sm leading-relaxed text-deep-ink/65 md:text-base">
-            {intro.secondary}
-          </p>
-          <p className="mt-6 font-display text-lg font-semibold text-deep-berry md:text-xl">
-            {intro.pricingNote}
-          </p>
+        <div className="mx-auto grid min-w-0 w-full max-w-5xl gap-10 px-4 py-14 md:grid-cols-2 md:items-center md:px-8 md:py-16">
+          <div className="text-center md:text-left">
+            <DisplayHeading as="h1" size="page" className="text-neutral-950">
+              {intro.title}
+            </DisplayHeading>
+            <p className="mt-6 text-base leading-relaxed text-neutral-800 md:text-lg">
+              {intro.lead}
+            </p>
+            <p className="mt-4 text-sm leading-relaxed text-neutral-700 md:text-base">
+              {intro.secondary}
+            </p>
+            <p className="mt-6 font-display text-lg font-semibold text-neutral-950 md:text-xl">
+              {intro.pricingNote}
+            </p>
+          </div>
+          <div className="relative mx-auto aspect-[4/3] w-full max-w-md overflow-hidden rounded-sm border border-deep-ink/10 bg-pure-white shadow-sm">
+            <Image
+              src={intro.heroImage}
+              alt={intro.heroImageAlt}
+              fill
+              className="object-cover object-center"
+              sizes="(max-width: 768px) 100vw, 400px"
+              priority
+            />
+          </div>
         </div>
       </section>
 
@@ -44,7 +57,7 @@ export function BusinessSubscriptionsContent() {
               }
             >
               <div className="flex flex-1 flex-col p-6">
-                <h2 className="font-display text-xl font-semibold text-deep-berry">
+                <h2 className="font-display text-xl font-semibold text-neutral-950">
                   {plan.title}
                 </h2>
                 <p className="mt-2 text-sm text-deep-ink/70">{plan.frequency}</p>
@@ -80,7 +93,7 @@ export function BusinessSubscriptionsContent() {
               className="overflow-hidden rounded-sm border border-deep-ink/10 bg-pure-white"
             >
               <div className="p-6 md:p-8">
-                <h2 className="font-display text-xl font-semibold text-deep-berry md:text-2xl">
+                <h2 className="font-display text-xl font-semibold text-neutral-950 md:text-2xl">
                   {service.title}
                 </h2>
                 <ul className="mt-4 space-y-2.5">

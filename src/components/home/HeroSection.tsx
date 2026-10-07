@@ -14,10 +14,12 @@ function heroCopy(settings: SerializedSiteSettings) {
       ? "Beautiful flowers for every occasion."
       : rawHeading.replace(/\n/g, " ");
 
-  const rawSub = hero.subheading ?? "Thoughtful blooms and gifts, made just for you.";
+  const rawSub =
+    hero.subheading ??
+    "Custom florals and thoughtful gifts — please allow 48 hours notice. We bring your vision to life.";
   const subheading =
-    rawSub.includes("customized floral") || rawSub.length > 72
-      ? "Thoughtful blooms and gifts, made just for you."
+    rawSub.includes("customized floral") || rawSub.length > 120
+      ? "Custom florals and thoughtful gifts — please allow 48 hours notice. We bring your vision to life."
       : rawSub;
 
   return {

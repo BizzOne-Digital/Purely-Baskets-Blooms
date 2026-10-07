@@ -44,7 +44,7 @@ async function seedProducts() {
         basePrice: item.basePrice,
         isFeatured: item.isFeatured ?? false,
         isBestseller: item.isBestseller ?? false,
-        isRiwaaz: false,
+        isRiwaaz: item.isRiwaaz ?? false,
         availability: item.availability,
         status: 'published' as const,
         leadTime: '24–48 hours advance notice recommended',
