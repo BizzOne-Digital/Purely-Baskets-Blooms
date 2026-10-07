@@ -8,6 +8,7 @@ import { PageSection } from "@/components/layout/PageSection";
 import { ShopHeroBanner } from "@/components/shop/ShopHeroBanner";
 import { ShopOccasionPills } from "@/components/shop/ShopOccasionPills";
 import { ShopSortBar } from "@/components/shop/ShopSortBar";
+import { ShopPagination } from "@/components/shop/ShopPagination";
 
 interface ShopPageProps {
   searchParams: Promise<{
@@ -53,6 +54,9 @@ async function ShopContent({
           {result.total} {result.total === 1 ? "arrangement" : "arrangements"}
         </p>
         <ProductGrid products={result.items} />
+        <Suspense fallback={null}>
+          <ShopPagination page={result.page} totalPages={result.totalPages} />
+        </Suspense>
       </PageSection>
     </>
   );
