@@ -31,7 +31,7 @@ const SERVICE_OPTIONS: {
   {
     value: "corporate_gifting",
     label: "Corporate / Subscription",
-    image: "/booking/corporate-gifting.png",
+    image: "/booking/corporate-subscription.jpg",
   },
   {
     value: "riwaaz_collection",
