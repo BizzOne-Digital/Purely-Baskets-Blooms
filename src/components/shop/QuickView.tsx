@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/Button";
 import { createCartItemFromProduct, useCartStore } from "@/store/cart-store";
 import { useCartDrawer } from "@/components/layout/cart-drawer-context";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
+import { resolveImageSrc, shouldUnoptimizeImageSrc } from "@/lib/image-url";
 
 interface QuickViewProps {
   product: SerializedProduct | null;
@@ -66,11 +67,12 @@ export function QuickView({ product, onClose }: QuickViewProps) {
             <div className="grid gap-6 md:grid-cols-2">
               <div className="relative aspect-square overflow-hidden rounded-xl bg-blush/20">
                 <Image
-                  src={product.mainImage.url}
+                  src={resolveImageSrc(product.mainImage.url)}
                   alt={product.mainImage.alt ?? product.name}
                   fill
                   className="object-cover"
                   sizes="400px"
+                  unoptimized={shouldUnoptimizeImageSrc(product.mainImage.url)}
                 />
               </div>
               <div className="flex flex-col">

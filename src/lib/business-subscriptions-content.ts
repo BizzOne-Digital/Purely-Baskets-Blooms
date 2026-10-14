@@ -1,14 +1,16 @@
 /** Corporate flower subscriptions — storefront copy */
 
 export const BUSINESS_SUBSCRIPTIONS_INTRO = {
-  title: "Corporate Flower Subscriptions",
+  title: "Corporate Floral Subscriptions",
   lead:
-    "Bring fresh beauty to your workplace with a flower subscription from Purely Baskets & Blooms. From welcoming reception areas to boardrooms and client spaces, our seasonal arrangements add warmth and leave a lasting impression.",
+    "Bring a fresh touch of elegance to your workplace with Purely Baskets & Blooms. Our corporate floral subscriptions feature seasonal arrangements tailored to your space, style, and budget—creating a warm welcome in reception areas, offices, and boardrooms.",
   secondary:
-    "Choose weekly, biweekly or monthly deliveries, with designs tailored to your space, style and budget. We take care of the flowers so you can enjoy a beautifully refreshed workplace.",
-  pricingNote: "Contact us to create a subscription that's right for your business.",
-  heroImage: "/pages/corporate/reception-flowers.png",
-  heroImageAlt: "Colleagues celebrating with fresh flowers in a corporate office",
+    "Choose weekly, biweekly, or monthly deliveries to keep your business beautifully refreshed and leave a lasting impression on clients and your team.",
+  pricingNote:
+    "Contact us to create a floral subscription that works for your business.",
+  heroImage: "/pages/corporate/corporate-floral-subscriptions.jpg",
+  heroImageAlt:
+    "Corporate floral arrangements in a reception area, boardroom, and executive lounge",
 } as const;
 
 export const SUBSCRIPTION_BENEFITS = [

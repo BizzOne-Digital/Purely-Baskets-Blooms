@@ -17,8 +17,8 @@ export function BusinessSubscriptionsContent() {
   return (
     <>
       <section className="w-full max-w-full overflow-x-hidden border-b border-deep-ink/10 bg-ivory">
-        <div className="mx-auto grid min-w-0 w-full max-w-5xl gap-10 px-4 py-14 md:grid-cols-2 md:items-center md:px-8 md:py-16">
-          <div className="text-center md:text-left">
+        <div className="mx-auto min-w-0 w-full max-w-5xl px-4 py-14 md:px-8 md:py-16">
+          <div className="mx-auto max-w-3xl text-center md:text-left">
             <DisplayHeading as="h1" size="page" className="text-neutral-950">
               {intro.title}
             </DisplayHeading>
@@ -32,13 +32,14 @@ export function BusinessSubscriptionsContent() {
               {intro.pricingNote}
             </p>
           </div>
-          <div className="relative mx-auto aspect-[4/3] w-full max-w-md overflow-hidden rounded-sm border border-deep-ink/10 bg-pure-white shadow-sm">
+          <div className="relative mx-auto mt-10 aspect-[1024/381] w-full max-w-4xl overflow-hidden rounded-sm border border-deep-ink/10 bg-pure-white shadow-sm">
             <Image
               src={intro.heroImage}
               alt={intro.heroImageAlt}
               fill
               className="object-cover object-center"
-              sizes="(max-width: 768px) 100vw, 400px"
+              sizes="(max-width: 768px) 100vw, 896px"
+              quality={90}
               priority
             />
           </div>

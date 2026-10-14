@@ -89,3 +89,13 @@ export async function deleteStoredUploadByUrl(url: string | null | undefined) {
 
   return deleteStoredUpload(parsed.folder, parsed.filename);
 }
+
+export async function deleteStoredUploadsByUrls(
+  urls: Array<string | null | undefined>
+) {
+  const unique = [...new Set(urls.filter(Boolean) as string[])];
+
+  for (const url of unique) {
+    await deleteStoredUploadByUrl(url);
+  }
+}

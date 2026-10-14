@@ -9,6 +9,7 @@ import { ShopHeroBanner } from "@/components/shop/ShopHeroBanner";
 import { ShopOccasionPills } from "@/components/shop/ShopOccasionPills";
 import { ShopSortBar } from "@/components/shop/ShopSortBar";
 import { ShopPagination } from "@/components/shop/ShopPagination";
+import { ShopCorporateSubscriptionsIntro } from "@/components/shop/ShopCorporateSubscriptionsIntro";
 
 interface ShopPageProps {
   searchParams: Promise<{
@@ -49,6 +50,8 @@ async function ShopContent({
             <ShopSortBar />
           </Suspense>
         </div>
+
+        {searchParams.occasion === "Corporate" ? <ShopCorporateSubscriptionsIntro /> : null}
 
         <p className="mb-6 text-sm text-deep-ink/55">
           {result.total} {result.total === 1 ? "arrangement" : "arrangements"}

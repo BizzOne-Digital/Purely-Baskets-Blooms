@@ -8,7 +8,7 @@ import type { SerializedProduct } from "@/lib/storefront";
 import { PriceDisplay } from "./PriceDisplay";
 import { Badge } from "@/components/ui/Badge";
 import { isSaleActive } from "@/lib/utils";
-import { resolveImageSrc } from "@/lib/image-url";
+import { resolveImageSrc, shouldUnoptimizeImageSrc } from "@/lib/image-url";
 import { cn } from "@/lib/utils";
 
 interface ProductCardProps {
@@ -43,6 +43,7 @@ export function ProductCard({ product, onQuickView, priority }: ProductCardProps
             )}
             sizes="(max-width: 768px) 50vw, 25vw"
             priority={priority}
+            unoptimized={shouldUnoptimizeImageSrc(product.mainImage.url)}
           />
           {galleryImage ? (
             <Image
@@ -54,6 +55,7 @@ export function ProductCard({ product, onQuickView, priority }: ProductCardProps
                 hovered ? "opacity-100" : "opacity-0"
               )}
               sizes="(max-width: 768px) 50vw, 25vw"
+              unoptimized={shouldUnoptimizeImageSrc(product.gallery?.[0]?.url)}
               aria-hidden
             />
           ) : null}

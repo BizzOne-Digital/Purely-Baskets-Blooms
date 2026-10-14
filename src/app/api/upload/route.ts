@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { auth } from "@/lib/auth";
+import { requireAdminApiAuth } from "@/lib/admin-api-auth";
 import {
   getClientIdentifier,
   rateLimit,
@@ -17,9 +17,9 @@ export const runtime = "nodejs";
 
 export async function POST(request: NextRequest) {
   try {
-    const session = await auth();
-    if (!session?.user) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    const { error: authError } = await requireAdminApiAuth();
+    if (authError) {
+      return authError;
     }
 
     const ip = getClientIdentifier(request.headers);

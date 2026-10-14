@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
-import { resolveImageSrc } from "@/lib/image-url";
+import { resolveImageSrc, shouldUnoptimizeImageSrc } from "@/lib/image-url";
 import type { ProductImage } from "@/types";
 
 interface ProductGalleryProps {
@@ -29,6 +29,7 @@ export function ProductGallery({ mainImage, gallery, productName }: ProductGalle
           className="object-contain p-6 transition-opacity duration-500"
           sizes="(max-width: 1024px) 100vw, 50vw"
           priority
+          unoptimized={shouldUnoptimizeImageSrc(active.url)}
         />
       </div>
 
@@ -53,6 +54,7 @@ export function ProductGallery({ mainImage, gallery, productName }: ProductGalle
                 fill
                 className="object-contain p-1"
                 sizes="64px"
+                unoptimized={shouldUnoptimizeImageSrc(img.url)}
               />
             </button>
           ))}

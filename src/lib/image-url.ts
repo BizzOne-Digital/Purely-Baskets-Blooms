@@ -71,6 +71,11 @@ export function resolveImageSrc(url: string | undefined | null): string {
   return url;
 }
 
+/** Next.js Image should skip optimization for Mongo-backed upload URLs. */
+export function shouldUnoptimizeImageSrc(url: string | undefined | null): boolean {
+  return Boolean(url && isStoredUploadUrl(url));
+}
+
 export function isValidImagePath(value: string): boolean {
   if (value.startsWith("/")) {
     return true;

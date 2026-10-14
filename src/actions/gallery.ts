@@ -5,6 +5,7 @@ import { requireAdmin } from '@/lib/auth';
 import { connectDB } from '@/lib/mongodb';
 import { GalleryItem } from '@/models';
 import { galleryItemSchema } from '@/validations/settings';
+import { deleteStoredUploadByUrl } from '@/lib/stored-upload';
 import {
   actionError,
   actionSuccess,
@@ -80,6 +81,8 @@ export async function deleteGalleryItem(id: string): Promise<ActionResult> {
     if (!item) {
       return actionError('Gallery item not found');
     }
+
+    await deleteStoredUploadByUrl(item.image?.url);
 
     revalidatePath('/');
     revalidatePath('/admin/gallery');

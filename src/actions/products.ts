@@ -5,6 +5,7 @@ import { requireAdmin } from '@/lib/auth';
 import { connectDB } from '@/lib/mongodb';
 import { Product } from '@/models';
 import { slugify, omitUndefined } from '@/lib/utils';
+import { deleteStoredUploadsByUrls } from '@/lib/stored-upload';
 import { productSchema, productUpdateSchema } from '@/validations/product';
 import {
   actionError,
@@ -104,6 +105,11 @@ export async function deleteProduct(id: string): Promise<ActionResult> {
     if (!product) {
       return actionError('Product not found');
     }
+
+    await deleteStoredUploadsByUrls([
+      product.mainImage?.url,
+      ...(product.gallery?.map((image) => image.url) ?? []),
+    ]);
 
     revalidatePath('/shop');
     revalidatePath('/admin/products');

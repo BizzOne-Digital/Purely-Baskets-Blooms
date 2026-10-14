@@ -31,13 +31,14 @@ export function SympathyPageContent() {
               </Link>
             </div>
           </div>
-          <div className="relative aspect-[4/3] overflow-hidden rounded-sm border border-deep-ink/10 bg-pure-white">
+          <div className="relative aspect-[866/546] w-full overflow-hidden rounded-sm border border-deep-ink/10 bg-pure-white shadow-sm">
             <Image
               src="/pages/sympathy/funeral-tribute.jpg"
               alt="Sympathy floral tributes and funeral arrangements"
               fill
               className="object-cover object-center"
               sizes="(max-width: 768px) 100vw, 50vw"
+              quality={92}
               priority
             />
           </div>

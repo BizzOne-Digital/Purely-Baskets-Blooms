@@ -10,10 +10,11 @@ export function SacredSpacesPageContent() {
         <div className="relative order-2 aspect-[4/3] overflow-hidden rounded-sm border border-deep-ink/10 bg-pure-white md:order-1">
           <Image
             src="/pages/sacred/church-flowers.jpg"
-            alt="Fresh floral arrangement in a bright sacred space"
+            alt="White floral arrangements in a church sanctuary"
             fill
             className="object-cover object-center"
             sizes="(max-width: 768px) 100vw, 50vw"
+            quality={90}
             priority
           />
         </div>

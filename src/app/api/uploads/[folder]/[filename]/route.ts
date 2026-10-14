@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import mongoose from "mongoose";
-import { auth } from "@/lib/auth";
+import { requireAdminApiAuth } from "@/lib/admin-api-auth";
 import { isSafeUploadPath } from "@/lib/image-url";
 import {
   deleteStoredUpload,
@@ -61,9 +61,9 @@ export async function GET(_request: NextRequest, { params }: RouteParams) {
 
 export async function DELETE(_request: NextRequest, { params }: RouteParams) {
   try {
-    const session = await auth();
-    if (!session?.user) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    const { error: authError } = await requireAdminApiAuth();
+    if (authError) {
+      return authError;
     }
 
     const { folder, filename } = await params;

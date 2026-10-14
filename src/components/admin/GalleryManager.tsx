@@ -9,6 +9,7 @@ import { createGalleryItem, updateGalleryItem, deleteGalleryItem } from '@/actio
 import { ImageUploader } from './ImageUploader';
 import { ConfirmDialog } from './ConfirmDialog';
 import { UPLOAD_FOLDERS } from '@/lib/constants';
+import { resolveImageSrc, shouldUnoptimizeImageSrc } from '@/lib/image-url';
 import type { IGalleryItem } from '@/types';
 
 interface GalleryManagerProps {
@@ -83,7 +84,13 @@ export function GalleryManager({ items }: GalleryManagerProps) {
         {items.map((item) => (
           <div key={String(item._id)} className="group relative overflow-hidden rounded-xl border border-[#F5D6DC]/60 bg-white">
             <div className="relative aspect-square">
-              <Image src={item.image.url} alt={item.title ?? ''} fill className="object-cover" />
+              <Image
+                src={resolveImageSrc(item.image.url)}
+                alt={item.title ?? ''}
+                fill
+                className="object-cover"
+                unoptimized={shouldUnoptimizeImageSrc(item.image.url)}
+              />
             </div>
             <div className="p-3">
               <p className="font-medium text-sm text-[#241920]">{item.title || 'Untitled'}</p>

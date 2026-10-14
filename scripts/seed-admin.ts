@@ -58,6 +58,13 @@ async function seedAdmin() {
       console.log(`Admin user created: ${normalizedEmail}`);
     }
 
+    const baseUrl =
+      process.env.AUTH_URL ??
+      process.env.NEXT_PUBLIC_SITE_URL ??
+      'http://localhost:3000';
+    console.log(`Admin login: ${baseUrl.replace(/\/$/, '')}/admin/login`);
+    console.log('Upload images from Admin → Products, Gallery, or Settings (hero/logo).');
+
     process.exit(0);
   } catch (error) {
     console.error('Seed failed:', error);
