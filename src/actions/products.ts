@@ -1,6 +1,7 @@
 'use server';
 
 import { revalidatePath } from 'next/cache';
+import { revalidateStorefrontCatalog } from '@/lib/revalidate-storefront';
 import { requireAdmin } from '@/lib/auth';
 import { connectDB } from '@/lib/mongodb';
 import { Product } from '@/models';
@@ -52,9 +53,8 @@ export async function createProduct(
     const { $set } = buildProductWriteUpdate({ ...parsed.data, slug });
     const product = await Product.create($set);
 
-    revalidatePath('/shop');
+    revalidateStorefrontCatalog(product.slug);
     revalidatePath('/admin/products');
-    revalidatePath('/riwaaz');
 
     return actionSuccess({ id: product._id.toString() });
   } catch (error) {
@@ -78,6 +78,8 @@ export async function updateProduct(
 
     await connectDB();
 
+    const previous = await Product.findById(id).select('slug').lean();
+
     if (parsed.data.slug) {
       const existing = await Product.findOne({
         slug: parsed.data.slug,
@@ -98,10 +100,8 @@ export async function updateProduct(
       return actionError('Product not found');
     }
 
-    revalidatePath('/shop');
-    revalidatePath(`/shop/${product.slug}`);
+    revalidateStorefrontCatalog(product.slug, previous?.slug);
     revalidatePath('/admin/products');
-    revalidatePath('/riwaaz');
 
     return actionSuccess(serialize(product));
   } catch (error) {
@@ -127,9 +127,8 @@ export async function deleteProduct(id: string): Promise<ActionResult> {
       ...(product.gallery?.map((image) => image.url) ?? []),
     ]);
 
-    revalidatePath('/shop');
+    revalidateStorefrontCatalog(product.slug);
     revalidatePath('/admin/products');
-    revalidatePath('/riwaaz');
 
     return actionSuccess({ deleted: true });
   } catch (error) {
@@ -203,7 +202,7 @@ export async function toggleProductStatus(
       return actionError('Product not found');
     }
 
-    revalidatePath('/shop');
+    revalidateStorefrontCatalog(product.slug);
     revalidatePath('/admin/products');
 
     return actionSuccess(serialize(product));

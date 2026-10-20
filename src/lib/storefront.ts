@@ -248,13 +248,7 @@ export async function getPublicProducts(
 
   const totalPages = Math.ceil(total / pageSize);
 
-  const serialized = applyLocalProductImages(
-    serialize(items) as SerializedProduct[]
-  );
-
-  if (serialized.length === 0 && !filters.isRiwaaz && !filters.isFeatured && !filters.isBestseller) {
-    return buildDemoProductResult(filters);
-  }
+  const serialized = serialize(items) as SerializedProduct[];
 
   return {
     items: serialized,
@@ -277,10 +271,7 @@ export async function getProductBySlug(slug: string): Promise<SerializedProduct 
       const demo = getDemoProductBySlug(slug) ?? getDemoShopProducts().find((p) => p.slug === slug);
       return demo ? (applyLocalProductImages([demo as SerializedProduct])[0] ?? null) : null;
     }
-    const serialized = applyLocalProductImages([
-      serialize(product) as SerializedProduct,
-    ]);
-    return serialized[0] ?? null;
+    return serialize(product) as SerializedProduct;
   }, (() => {
     const demo = getDemoProductBySlug(slug) ?? getDemoShopProducts().find((p) => p.slug === slug);
     if (!demo) return null;

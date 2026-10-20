@@ -302,11 +302,22 @@ function toDemoProduct(row: CatalogRow, index: number): DemoProduct {
 export const DEMO_SHOP_PRODUCTS: DemoProduct[] = CATALOG.map(toDemoProduct);
 
 export function applyLocalProductImages<
-  T extends { slug: string; name: string; mainImage?: { url: string; alt?: string } },
+  T extends {
+    slug: string;
+    name: string;
+    _id?: string;
+    mainImage?: { url: string; alt?: string };
+  },
 >(products: T[]): T[] {
   return products.map((product) => {
+    // Only override images for in-memory demo catalog — not MongoDB admin products.
+    if (!String(product._id ?? "").startsWith("demo-")) {
+      return product;
+    }
+
     const localUrl = LOCAL_PRODUCT_IMAGES[product.slug];
     if (!localUrl) return product;
+
     return {
       ...product,
       mainImage: {
