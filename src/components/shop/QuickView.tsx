@@ -12,6 +12,7 @@ import { createCartItemFromProduct, useCartStore } from "@/store/cart-store";
 import { useCartDrawer } from "@/components/layout/cart-drawer-context";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
 import { resolveImageSrc, shouldUnoptimizeImageSrc } from "@/lib/image-url";
+import { stripHtmlToPlainText } from "@/lib/plain-text";
 
 interface QuickViewProps {
   product: SerializedProduct | null;
@@ -88,7 +89,7 @@ export function QuickView({ product, onClose }: QuickViewProps) {
                   />
                 </div>
                 <p className="mt-4 flex-1 text-sm leading-relaxed text-cream/75">
-                  {product.shortDescription}
+                  {stripHtmlToPlainText(product.shortDescription)}
                 </p>
                 <div className="mt-6 flex flex-col gap-2 sm:flex-row">
                   {product.priceType !== "quote" && product.availability !== "out_of_stock" ? (

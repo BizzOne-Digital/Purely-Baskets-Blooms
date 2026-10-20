@@ -13,6 +13,7 @@ import { createCartItemFromProduct, useCartStore } from "@/store/cart-store";
 import { useCartDrawer } from "@/components/layout/cart-drawer-context";
 import { getEffectiveUnitPrice } from "@/lib/utils";
 import Link from "next/link";
+import { stripHtmlToPlainText } from "@/lib/plain-text";
 
 interface ProductDetailsProps {
   product: SerializedProduct;
@@ -85,7 +86,9 @@ export function ProductDetails({ product }: ProductDetailsProps) {
         ) : null}
       </div>
 
-      <p className="leading-relaxed text-deep-ink/75">{product.shortDescription}</p>
+      <p className="leading-relaxed text-deep-ink/75">
+        {stripHtmlToPlainText(product.shortDescription)}
+      </p>
 
       {product.sizeOptions.length > 0 ? (
         <Select
@@ -176,7 +179,9 @@ export function ProductDetails({ product }: ProductDetailsProps) {
       {product.careInstructions ? (
         <div className="rounded-sm border border-deep-ink/10 bg-ivory p-4">
           <h3 className="text-xs uppercase tracking-widest text-deep-berry">Care Instructions</h3>
-          <p className="mt-2 text-sm text-deep-ink/70">{product.careInstructions}</p>
+          <p className="mt-2 whitespace-pre-line text-sm text-deep-ink/70">
+            {stripHtmlToPlainText(product.careInstructions)}
+          </p>
         </div>
       ) : null}
     </div>

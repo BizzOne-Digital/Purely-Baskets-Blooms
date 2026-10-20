@@ -18,6 +18,7 @@ import {
 import { ImageUploader } from './ImageUploader';
 import type { ProductInput } from '@/validations/product';
 import type { IProduct, ICategory, ICollection } from '@/types';
+import { stripHtmlToPlainText } from '@/lib/plain-text';
 
 interface ProductFormProps {
   product?: IProduct;
@@ -43,8 +44,8 @@ export function ProductForm({ product, categories, collections }: ProductFormPro
     defaultValues: {
       name: product?.name ?? '',
       slug: product?.slug ?? '',
-      shortDescription: product?.shortDescription ?? '',
-      fullDescription: product?.fullDescription ?? '',
+      shortDescription: stripHtmlToPlainText(product?.shortDescription ?? ''),
+      fullDescription: stripHtmlToPlainText(product?.fullDescription ?? ''),
       category: product?.category ? String(product.category) : '',
       collection: product?.collection ? String(product.collection) : undefined,
       occasionTags: product?.occasionTags ?? [],
@@ -62,15 +63,13 @@ export function ProductForm({ product, categories, collections }: ProductFormPro
       sizeOptions: product?.sizeOptions ?? [],
       colorPaletteOptions: product?.colorPaletteOptions ?? [],
       addOns: product?.addOns ?? [],
-      leadTime: product?.leadTime ?? '',
-      careInstructions: product?.careInstructions ?? '',
+      leadTime: stripHtmlToPlainText(product?.leadTime ?? ''),
+      careInstructions: stripHtmlToPlainText(product?.careInstructions ?? ''),
       availability: product?.availability ?? 'made_to_order',
       stockQuantity: product?.stockQuantity ?? undefined,
       isFeatured: product?.isFeatured ?? false,
       isBestseller: product?.isBestseller ?? false,
       isRiwaaz: product?.isRiwaaz ?? false,
-      seoTitle: product?.seoTitle ?? '',
-      seoDescription: product?.seoDescription ?? '',
       status: product?.status ?? 'draft',
     },
   });
@@ -180,7 +179,12 @@ export function ProductForm({ product, categories, collections }: ProductFormPro
               </div>
               <div className="sm:col-span-2">
                 <label className={labelClass}>Full Description *</label>
-                <textarea {...register('fullDescription')} rows={6} className={inputClass} />
+                <textarea
+                  {...register('fullDescription')}
+                  rows={6}
+                  className={inputClass}
+                  placeholder="Plain text only — no HTML tags"
+                />
                 {errors.fullDescription && (
                   <p className={errorClass}>{errors.fullDescription.message}</p>
                 )}
@@ -356,20 +360,6 @@ export function ProductForm({ product, categories, collections }: ProductFormPro
             ))}
           </div>
 
-          {/* SEO */}
-          <div className={sectionClass}>
-            <h2 className="text-base font-semibold text-[#7A2048]">SEO</h2>
-            <div className="space-y-3">
-              <div>
-                <label className={labelClass}>SEO Title</label>
-                <input {...register('seoTitle')} className={inputClass} maxLength={70} />
-              </div>
-              <div>
-                <label className={labelClass}>SEO Description</label>
-                <textarea {...register('seoDescription')} rows={2} className={inputClass} maxLength={160} />
-              </div>
-            </div>
-          </div>
         </div>
 
         {/* Sidebar */}

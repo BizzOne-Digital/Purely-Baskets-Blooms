@@ -1,4 +1,5 @@
 import type { IProduct } from "@/types";
+import { stripHtmlToPlainText } from "@/lib/plain-text";
 
 type DemoProduct = Omit<IProduct, "_id" | "category" | "collection"> & {
   _id: string;
@@ -264,15 +265,16 @@ const CATALOG: CatalogRow[] = [
 
 function toDemoProduct(row: CatalogRow, index: number): DemoProduct {
   const imagePath = LOCAL_PRODUCT_IMAGES[row.slug] ?? "/products/the-berry-edit.jpg";
-  const full =
+  const full = stripHtmlToPlainText(
     row.fullDescription ??
-    `<p>${row.shortDescription}</p><p>Every arrangement can be customized — share your vision and we will bring it to life.</p>`;
+      `${row.shortDescription}\n\nEvery arrangement can be customized — share your vision and we will bring it to life.`
+  );
 
   return {
     _id: `demo-${row.slug}`,
     name: row.name,
     slug: row.slug,
-    shortDescription: row.shortDescription,
+    shortDescription: stripHtmlToPlainText(row.shortDescription),
     fullDescription: full,
     occasionTags: row.occasionTags,
     mainImage: {

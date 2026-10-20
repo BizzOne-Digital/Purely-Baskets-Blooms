@@ -12,6 +12,7 @@ import './load-env';
 import { connectDB } from '../src/lib/mongodb';
 import { Product, Category } from '../src/models';
 import { DEMO_SHOP_PRODUCTS, WEBSITE_CATALOG_SLUGS } from '../src/lib/shop-demo-products';
+import { stripHtmlToPlainText } from '../src/lib/plain-text';
 
 async function seedProducts() {
   try {
@@ -33,8 +34,11 @@ async function seedProducts() {
       const payload = {
         name: item.name,
         slug: item.slug,
-        shortDescription: item.shortDescription,
-        fullDescription: item.fullDescription ?? `<p>${item.shortDescription}</p>`,
+        shortDescription: stripHtmlToPlainText(item.shortDescription),
+        fullDescription: stripHtmlToPlainText(
+          item.fullDescription ??
+            `${item.shortDescription}\n\nEvery arrangement can be customized — share your vision and we will bring it to life.`
+        ),
         category: category._id,
         collection: undefined as undefined,
         occasionTags: item.occasionTags,

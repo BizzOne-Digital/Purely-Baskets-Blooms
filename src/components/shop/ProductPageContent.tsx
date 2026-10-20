@@ -8,6 +8,7 @@ import { RelatedProducts } from "@/components/shop/RelatedProducts";
 import { PageSection } from "@/components/layout/PageSection";
 import { DisplayHeading } from "@/components/ui/DisplayHeading";
 import { useRecentlyViewed } from "@/hooks/use-recently-viewed";
+import { stripHtmlToPlainText } from "@/lib/plain-text";
 
 export function ProductPageContent({
   product,
@@ -37,7 +38,9 @@ export function ProductPageContent({
             {product.name}
           </DisplayHeading>
           {product.shortDescription ? (
-            <p className="mt-4 max-w-2xl text-deep-ink/70">{product.shortDescription}</p>
+            <p className="mt-4 max-w-2xl text-deep-ink/70">
+              {stripHtmlToPlainText(product.shortDescription)}
+            </p>
           ) : null}
         </div>
       </section>
@@ -61,10 +64,9 @@ export function ProductPageContent({
             <DisplayHeading as="h2" size="section" className="text-deep-berry">
               About This Piece
             </DisplayHeading>
-            <div
-              className="prose prose-sm mt-6"
-              dangerouslySetInnerHTML={{ __html: product.fullDescription }}
-            />
+            <p className="mt-6 whitespace-pre-line text-sm leading-relaxed text-deep-ink/75 md:text-base">
+              {stripHtmlToPlainText(product.fullDescription)}
+            </p>
           </div>
         </PageSection>
       ) : null}

@@ -1,5 +1,17 @@
 import { z } from "zod";
 import { imagePathSchema } from "@/lib/image-url";
+import { stripHtmlToPlainText } from "@/lib/plain-text";
+
+const plainText = (max?: number) => {
+  const base = z.string().transform(stripHtmlToPlainText).pipe(z.string().min(1));
+  return max !== undefined ? base.pipe(z.string().max(max)) : base;
+};
+
+const optionalPlainText = () =>
+  z
+    .string()
+    .optional()
+    .transform((value) => (value ? stripHtmlToPlainText(value) : value));
 
 export const productImageSchema = z.object({
   url: imagePathSchema,
@@ -42,8 +54,8 @@ export const productBaseSchema = z.object({
       .min(1)
       .max(200)
       .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, "Invalid slug format"),
-    shortDescription: z.string().min(1).max(300),
-    fullDescription: z.string().min(1),
+    shortDescription: plainText(300),
+    fullDescription: plainText(),
     category: z.string().min(1, "Category is required"),
     collection: z.string().optional(),
     occasionTags: z.array(z.string()).default([]),
@@ -59,8 +71,8 @@ export const productBaseSchema = z.object({
     sizeOptions: z.array(sizeOptionSchema).default([]),
     colorPaletteOptions: z.array(colorPaletteOptionSchema).default([]),
     addOns: z.array(productAddOnSchema).default([]),
-    leadTime: z.string().optional(),
-    careInstructions: z.string().optional(),
+    leadTime: optionalPlainText(),
+    careInstructions: optionalPlainText(),
     availability: z.enum(["in_stock", "made_to_order", "out_of_stock"]),
     stockQuantity: z.number().int().min(0).optional().nullable(),
     isFeatured: z.boolean().default(false),
