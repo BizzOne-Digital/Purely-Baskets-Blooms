@@ -13,6 +13,28 @@ const optionalPlainText = () =>
     .optional()
     .transform((value) => (value ? stripHtmlToPlainText(value) : value));
 
+function emptyNumberToNull(value: unknown) {
+  if (value === "" || value === null || value === undefined) {
+    return null;
+  }
+  if (typeof value === "number" && Number.isNaN(value)) {
+    return null;
+  }
+  return value;
+}
+
+const optionalPrice = z.preprocess(
+  emptyNumberToNull,
+  z.number().min(0).nullable().optional()
+);
+
+const optionalDate = z.preprocess((value) => {
+  if (value === "" || value === null || value === undefined) {
+    return null;
+  }
+  return value;
+}, z.coerce.date().nullable().optional());
+
 export const productImageSchema = z.object({
   url: imagePathSchema,
   publicId: z.string().min(1, "Public ID is required"),
@@ -62,11 +84,11 @@ export const productBaseSchema = z.object({
     mainImage: productImageSchema,
     gallery: z.array(productImageSchema).default([]),
     priceType: z.enum(["fixed", "starting", "quote"]),
-    basePrice: z.number().min(0).optional().nullable(),
-    compareAtPrice: z.number().min(0).optional().nullable(),
-    salePrice: z.number().min(0).optional().nullable(),
-    saleStartDate: z.coerce.date().optional().nullable(),
-    saleEndDate: z.coerce.date().optional().nullable(),
+    basePrice: z.preprocess(emptyNumberToNull, z.number().min(0).optional().nullable()),
+    compareAtPrice: optionalPrice,
+    salePrice: optionalPrice,
+    saleStartDate: optionalDate,
+    saleEndDate: optionalDate,
     productOptions: z.array(productOptionSchema).default([]),
     sizeOptions: z.array(sizeOptionSchema).default([]),
     colorPaletteOptions: z.array(colorPaletteOptionSchema).default([]),
@@ -74,7 +96,10 @@ export const productBaseSchema = z.object({
     leadTime: optionalPlainText(),
     careInstructions: optionalPlainText(),
     availability: z.enum(["in_stock", "made_to_order", "out_of_stock"]),
-    stockQuantity: z.number().int().min(0).optional().nullable(),
+    stockQuantity: z.preprocess(
+      emptyNumberToNull,
+      z.number().int().min(0).nullable().optional()
+    ),
     isFeatured: z.boolean().default(false),
     isBestseller: z.boolean().default(false),
     isRiwaaz: z.boolean().default(false),
@@ -98,18 +123,39 @@ export const productSchema = productBaseSchema
   )
   .refine(
     (data) => {
-      if (data.salePrice && data.basePrice && data.salePrice >= data.basePrice) {
+      if (
+        data.salePrice != null &&
+        data.basePrice != null &&
+        data.salePrice >= data.basePrice
+      ) {
         return false;
       }
       return true;
     },
     {
-      message: "Sale price must be less than base price",
+      message: "Sale price must be less than base price (leave blank if not on sale)",
       path: ["salePrice"],
     }
   );
 
-export const productUpdateSchema = productBaseSchema.partial();
+export const productUpdateSchema = productBaseSchema
+  .partial()
+  .refine(
+    (data) => {
+      if (
+        data.salePrice != null &&
+        data.basePrice != null &&
+        data.salePrice >= data.basePrice
+      ) {
+        return false;
+      }
+      return true;
+    },
+    {
+      message: "Sale price must be less than base price (leave blank if not on sale)",
+      path: ["salePrice"],
+    }
+  );
 
 export const categorySchema = z.object({
   name: z.string().min(1, "Category name is required").max(100),

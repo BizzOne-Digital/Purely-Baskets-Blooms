@@ -137,6 +137,14 @@ export function ProductForm({ product, categories, collections }: ProductFormPro
   const sectionClass = 'rounded-xl border border-[#F5D6DC]/60 bg-white p-5 space-y-4';
   const errorClass = 'text-xs text-red-600 mt-1';
 
+  const optionalNumberValue = (value: string | number | null | undefined) => {
+    if (value === '' || value === null || value === undefined) {
+      return null;
+    }
+    const parsed = typeof value === 'number' ? value : Number(value);
+    return Number.isNaN(parsed) ? null : parsed;
+  };
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
       <div className="grid gap-6 lg:grid-cols-3">
@@ -212,7 +220,7 @@ export function ProductForm({ product, categories, collections }: ProductFormPro
                   <input
                     type="number"
                     step="0.01"
-                    {...register('basePrice', { valueAsNumber: true })}
+                    {...register('basePrice', { setValueAs: optionalNumberValue })}
                     className={inputClass}
                   />
                   {errors.basePrice && (
@@ -221,22 +229,32 @@ export function ProductForm({ product, categories, collections }: ProductFormPro
                 </div>
               )}
               <div>
-                <label className={labelClass}>Compare At Price</label>
+                <label className={labelClass}>Compare At Price (optional)</label>
                 <input
                   type="number"
                   step="0.01"
-                  {...register('compareAtPrice', { valueAsNumber: true })}
+                  min={0}
+                  {...register('compareAtPrice', { setValueAs: optionalNumberValue })}
                   className={inputClass}
+                  placeholder="Leave blank if not used"
                 />
+                {errors.compareAtPrice && (
+                  <p className={errorClass}>{errors.compareAtPrice.message}</p>
+                )}
               </div>
               <div>
-                <label className={labelClass}>Sale Price</label>
+                <label className={labelClass}>Sale Price (optional)</label>
                 <input
                   type="number"
                   step="0.01"
-                  {...register('salePrice', { valueAsNumber: true })}
+                  min={0}
+                  {...register('salePrice', { setValueAs: optionalNumberValue })}
                   className={inputClass}
+                  placeholder="Leave blank if not on sale"
                 />
+                {errors.salePrice && (
+                  <p className={errorClass}>{errors.salePrice.message}</p>
+                )}
               </div>
               <div>
                 <label className={labelClass}>Sale Start Date</label>
@@ -424,7 +442,7 @@ export function ProductForm({ product, categories, collections }: ProductFormPro
                 <label className={labelClass}>Stock Quantity</label>
                 <input
                   type="number"
-                  {...register('stockQuantity', { valueAsNumber: true })}
+                  {...register('stockQuantity', { setValueAs: optionalNumberValue })}
                   className={inputClass}
                 />
               </div>
