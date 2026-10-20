@@ -35,6 +35,14 @@ const optionalDate = z.preprocess((value) => {
   return value;
 }, z.coerce.date().nullable().optional());
 
+/** Empty select → null so MongoDB can unset optional ObjectId refs. */
+const optionalObjectId = z.preprocess((value) => {
+  if (value === "" || value === null || value === undefined) {
+    return null;
+  }
+  return value;
+}, z.string().min(1).nullable().optional());
+
 export const productImageSchema = z.object({
   url: imagePathSchema,
   publicId: z.string().min(1, "Public ID is required"),
@@ -79,7 +87,7 @@ export const productBaseSchema = z.object({
     shortDescription: plainText(300),
     fullDescription: plainText(),
     category: z.string().min(1, "Category is required"),
-    collection: z.string().optional(),
+    collection: optionalObjectId,
     occasionTags: z.array(z.string()).default([]),
     mainImage: productImageSchema,
     gallery: z.array(productImageSchema).default([]),

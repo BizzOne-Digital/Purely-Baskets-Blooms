@@ -13,6 +13,23 @@ import {
   serialize,
   type ActionResult,
 } from './helpers';
+import type { ProductInput, ProductUpdateInput } from '@/validations/product';
+
+function buildProductWriteUpdate(
+  data: ProductInput | ProductUpdateInput
+): { $set: Record<string, unknown>; $unset?: Record<string, 1> } {
+  const { collection, ...rest } = data;
+  const $set = omitUndefined(rest as Record<string, unknown>);
+  const $unset: Record<string, 1> = {};
+
+  if (collection === null) {
+    $unset.collection = 1;
+  } else if (collection !== undefined) {
+    $set.collection = collection;
+  }
+
+  return Object.keys($unset).length ? { $set, $unset } : { $set };
+}
 
 export async function createProduct(
   input: unknown
@@ -32,9 +49,8 @@ export async function createProduct(
       return actionError('A product with this slug already exists');
     }
 
-    const product = await Product.create(
-      omitUndefined({ ...parsed.data, slug }) as Record<string, unknown>
-    );
+    const { $set } = buildProductWriteUpdate({ ...parsed.data, slug });
+    const product = await Product.create($set);
 
     revalidatePath('/shop');
     revalidatePath('/admin/products');
@@ -74,7 +90,7 @@ export async function updateProduct(
 
     const product = await Product.findByIdAndUpdate(
       id,
-      { $set: parsed.data },
+      buildProductWriteUpdate(parsed.data),
       { new: true, runValidators: true }
     );
 

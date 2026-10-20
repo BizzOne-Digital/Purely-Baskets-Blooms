@@ -47,7 +47,7 @@ export function ProductForm({ product, categories, collections }: ProductFormPro
       shortDescription: stripHtmlToPlainText(product?.shortDescription ?? ''),
       fullDescription: stripHtmlToPlainText(product?.fullDescription ?? ''),
       category: product?.category ? String(product.category) : '',
-      collection: product?.collection ? String(product.collection) : undefined,
+      collection: product?.collection ? String(product.collection) : '',
       occasionTags: product?.occasionTags ?? [],
       mainImage: product?.mainImage ?? undefined,
       gallery: product?.gallery ?? [],
@@ -419,7 +419,12 @@ export function ProductForm({ product, categories, collections }: ProductFormPro
               </div>
               <div>
                 <label className={labelClass}>Collection</label>
-                <select {...register('collection')} className={inputClass}>
+                <select
+                  {...register('collection', {
+                    setValueAs: (value) => (value === '' ? null : value),
+                  })}
+                  className={inputClass}
+                >
                   <option value="">None</option>
                   {collections.map((col) => (
                     <option key={String(col._id)} value={String(col._id)}>
